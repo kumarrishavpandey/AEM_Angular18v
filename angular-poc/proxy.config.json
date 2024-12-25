@@ -1,0 +1,17 @@
+[
+  {
+    "auth": "admin:admin",
+    "context": [
+      "/content/**/*.(jpg|jpeg|png|model.json)",
+      "/etc.clientlibs/**/*"
+    ],
+    "target": "http://localhost:4502"
+  },
+  {
+    "context": ["/AEMDATA/**/*"],
+    "pathRewrite": { "^/AEMDATA": "" },
+    "target": "https://publish-p124507-e1228102.adobeaemcloud.com",
+    "secure": true,
+    "changeOrigin": true
+  }
+]

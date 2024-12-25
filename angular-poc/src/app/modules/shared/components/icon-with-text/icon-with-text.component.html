@@ -1,0 +1,39 @@
+<a
+  class="frame"
+  (click)="onClick()"
+  (mouseenter)="hover = true"
+  (mouseleave)="hover = false"
+>
+  <div class="component-wrapper">
+    <div
+      class="component"
+      [ngStyle]="{
+        'background-color': hover ? tool.iconHoverBgColor : tool.iconBgColor,
+        'border-radius.px': borderRadius
+      }"
+    >
+      <mat-icon
+        *ngIf="tool.iconName"
+        [style.color]="tool.iconColor"
+        class="material-symbols-rounded no-fill"
+        >{{ tool.iconName ? tool.iconName : "link" }}</mat-icon
+      >
+      <mat-icon
+        *ngIf="tool.iconName === '' && tool.iconUrl === null"
+        [style.color]="tool.iconColor"
+        class="material-symbols-rounded no-fill"
+        >link</mat-icon
+      >
+      <img
+        [ngClass]="{ 'img-fluid': isClass }"
+        *ngIf="tool?.iconUrl && tool?.iconUrl?._path"
+        [src]="getIconPath(tool.iconUrl._path)"
+        [alt]="tool.label"
+        [ngStyle]="{
+          'border-radius.px': borderRadius
+        }"
+      />
+    </div>
+  </div>
+  <div class="text-wrapper">{{ tool.label }}</div>
+</a>

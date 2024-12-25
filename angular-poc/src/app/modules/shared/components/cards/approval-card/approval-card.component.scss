@@ -1,0 +1,209 @@
+@import 'src/styles.scss';
+
+.approval-card {
+  .tag-container {
+    padding: $size-10 $size-16;
+    width: fit-content;
+    height: fit-content;
+
+    .tag-title {
+      font-size: $font-12;
+      font-weight: 600;
+      color: $dark-grey;
+      line-height: $size-16;
+    }
+
+    .tag-data {
+      font-family: AirIndiaVariable !important;
+      font-size: $font-18;
+      font-weight: 600;
+      color: $black;
+      line-height: $size-16;
+    }
+  }
+
+  .employee-email {
+    font-size: $font-12;
+    font-weight: 600;
+    color: $dark-grey;
+    line-height: 16.8px;
+  }
+
+  .seperator {
+    color: $ai-grey-g200;
+  }
+
+  .light-yellow-backgroud {
+    background: $light-yellow;
+  }
+
+  .lighter-grey-section {
+    background: $light-white-bg;
+    border-radius: $size-8;
+  }
+}
+
+.card-one {
+  position: relative;
+  z-index: 4;
+}
+
+.card-two {
+  position: absolute;
+  top: $size-8;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 98.5%;
+  height: 100%;
+}
+
+.card-three {
+  position: absolute;
+  top: $size-16;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 96.5%;
+  height: 100%;
+}
+.badge {
+  font-size: $font-12;
+  font-weight: 600;
+  text-align: center;
+  line-height: normal;
+  width: fit-content;
+  margin-left: -24px;
+
+  &.badge-blue {
+    color: $sky-blue;
+    background: $light-blue;
+    padding: $size-4 $size-16;
+    border-radius: $size-0 $size-4 $size-4 $size-0;
+  }
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .approval-card {
+    p {
+      margin-bottom: $size-4;
+    }
+
+    .light-yellow-backgroud {
+      font-size: $font-10;
+      display: flex;
+      padding: $size-4 $size-8;
+      margin-top: $size-8;
+    }
+
+    .lighter-grey-section {
+      p {
+        margin-bottom: $size-12;
+      }
+    }
+  }
+
+  .badge {
+    margin-left: -16px;
+  }
+
+  .res-flex {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .button-positioning {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-two {
+    position: absolute;
+    top: $size-8;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 96.5%;
+    height: 100%;
+  }
+
+  .card-three {
+    position: absolute;
+    top: $size-16;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 91.5%;
+    height: 100%;
+  }
+
+  .approval-card {
+    p {
+      margin-top: $size-4;
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .card-two {
+    position: absolute;
+    top: $size-8;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 97.5%;
+    height: 100%;
+  }
+
+  .card-three {
+    position: absolute;
+    top: $size-16;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 94.5%;
+    height: 100%;
+  }
+
+  .approval-card {
+    .light-yellow-backgroud {
+      margin-top: $size-8;
+    }
+
+    p {
+      margin-top: $size-4;
+    }
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .card-two {
+    position: absolute;
+    top: $size-8;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 97.5%;
+    height: 100%;
+  }
+
+  .card-three {
+    position: absolute;
+    top: $size-16;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 94.5%;
+    height: 100%;
+  }
+}

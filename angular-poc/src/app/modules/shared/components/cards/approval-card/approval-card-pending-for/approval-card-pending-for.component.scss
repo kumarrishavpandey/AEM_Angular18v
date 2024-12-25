@@ -1,0 +1,14 @@
+@import 'src/styles.scss';
+
+.darkbrown {
+  color: $dark-orange-1;
+  font-size: $font-12;
+  font-weight: 600;
+  line-height: normal;
+
+  mat-icon {
+    font-size: $font-16;
+    width: $size-16;
+    height: $size-16;
+  }
+}

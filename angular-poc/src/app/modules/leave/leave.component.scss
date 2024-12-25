@@ -1,0 +1,22 @@
+@import "../../../styles.scss";
+
+::ng-deep .mat-mdc-tab-body {
+  margin-bottom: 30px !important;
+}
+
+// new angular 18 code
+
+::ng-deep {
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    font-size: $font-14;
+    color: $black-90 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0;
+  }
+  .mat-mdc-tab .mdc-tab__text-label {
+    font-size: $font-14;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}

@@ -1,0 +1,51 @@
+<h4 class="box-heading-18">{{ dashboardLabels?.labelUpcomingHeading }}</h4>
+<div class="divider"></div>
+
+<!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
+
+<app-calendar-holiday-calendar
+  [currentDate]="selectedCalendarDate"
+  [leaveHoliday]="upcomingHolidayLeavesList"
+  (getSelectedDate)="getSelectedDate.emit($event)"
+></app-calendar-holiday-calendar>
+
+<!-- 4 notifier -->
+<div class="mobile-notifier">
+  <!-- Calendar labels -->
+  <ul class="leave-type-labels">
+    <li class="leave-type-label-name">
+      <span class="leave-type-bullet weekend"></span>
+      <span class="leave-type-name">{{ dashboardLabels?.labelWeekend }}</span>
+    </li>
+    <!-- Mobile view -->
+    <li class="visible-mobile">
+      <div class="leave-type-label-name">
+        <span class="leave-type-bullet leave-approved"></span>
+        <span class="leave-type-name">{{
+          dashboardLabels?.labelApprovedLeave
+        }}</span>
+      </div>
+    </li>
+    <li class="leave-type-label-name visible-mobile">
+      <div class="leave-type-label-name">
+        <span class="leave-type-bullet leave-pending"></span>
+        <span class="leave-type-name">{{
+          dashboardLabels?.labelPendingLeave
+        }}</span>
+      </div>
+    </li>
+    <!-- Mobile view end -->
+    <li class="leave-type-label-name">
+      <span class="leave-type-bullet working-week"></span>
+      <span class="leave-type-name">{{
+        dashboardLabels?.labelWorkingWeek
+      }}</span>
+    </li>
+    <li class="leave-type-label-name visible-mobile">
+      <div class="leave-type-label-name">
+        <span class="leave-type-bullet leave-holiday"></span>
+        <span class="leave-type-name">{{ dashboardLabels?.labelHoliday }}</span>
+      </div>
+    </li>
+  </ul>
+</div>

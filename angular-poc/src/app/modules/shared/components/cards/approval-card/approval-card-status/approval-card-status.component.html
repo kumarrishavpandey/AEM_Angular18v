@@ -1,0 +1,7 @@
+<span
+  *ngIf="requestStatus && (!isPendingRequest() || shouldShowPendingRequest())"
+  class="request-status"
+  [class]="getRequestStatusClass()"
+>
+  {{ getRequestStatus() }}
+</span>

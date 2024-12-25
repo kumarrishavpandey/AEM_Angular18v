@@ -1,0 +1,45 @@
+<div *ngIf="applyLeaveForm">
+  <form [formGroup]="applyLeaveForm">
+    <mat-form-field
+      (click)="picker.open()"
+      class="common-calendar-form-container cursor_pointer"
+      appearance="fill"
+    >
+      <mat-label>{{ calenderTitle }}</mat-label>
+      <input
+        class="cursor_pointer"
+        matInput
+        [required]="isrequired"
+        readonly
+        [matDatepicker]="picker"
+        [placeholder]="datePlaceholder"
+        [min]="
+          applyLeaveForm.value.startDate && customFormControlName === 'endDate'
+            ? applyLeaveForm.value.startDate
+            : minimumDate
+            ? minimumDate
+            : null
+        "
+        [max]="
+          applyLeaveForm.value.endDate && customFormControlName === 'startDate'
+            ? applyLeaveForm.value.endDate
+            : null
+        "
+        [formControlName]="customFormControlName"
+        (ngModelChange)="onDateValueChange($event)"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="
+          applyLeaveForm.get(customFormControlName).hasError('required') &&
+          applyLeaveForm.get(customFormControlName).touched
+        "
+        >You must select {{ calenderTitle }}</mat-error
+      >
+    </mat-form-field>
+  </form>
+</div>

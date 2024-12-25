@@ -1,0 +1,24 @@
+<div [class]="componentClass">
+  <div *ngIf="isUserImageValid; else showInitials" [class]="imgContainerClass">
+    <img
+      class="img-fluid avatar-{{ size }} {{ imgClass }}"
+      [src]="userProfileImageUrl + '&wid=' + size * 1.5"
+      [width]="size"
+      [height]="size"
+      [alt]="userProfileImageUrl"
+    />
+  </div>
+
+  <ng-template #showInitials>
+    <div *ngIf="addIntitals" class="initials-container {{ initialsContainerClass }} {{ initialsTheme }}" [ngStyle]="{ width: size + 'px', height: size + 'px' }">
+      <h1 *ngIf="initialsSize === headerSize.H1" class="initials {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</h1>
+      <h2 *ngIf="initialsSize === headerSize.H2" class="initials {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</h2>
+      <h3 *ngIf="initialsSize === headerSize.H3" class="initials {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</h3>
+      <h4 *ngIf="initialsSize === headerSize.H4" class="initials {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</h4>
+      <h5 *ngIf="initialsSize === headerSize.H5" class="initials {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</h5>
+      <h6 *ngIf="initialsSize === headerSize.H6" class="initials {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</h6>
+      <div *ngIf="initialsSize === headerSize.SM" class="initials small {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</div>
+      <div *ngIf="initialsSize === headerSize.XS" class="initials x-small {{ initialsClass }}">{{ getInitials(empData.firstName, empData.lastName) }}</div>
+    </div>
+  </ng-template>
+</div>

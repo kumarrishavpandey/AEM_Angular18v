@@ -1,0 +1,215 @@
+@import '../../../styles.scss';
+
+.aem-list-container {
+  .search-bar-base-manager-cont {
+    justify-content: flex-end;
+    align-items: center;
+    .search-bar-base-manager {
+      min-width: 400px;
+    }
+    ::ng-deep .search-bar-base-manager {
+      .mat-form-field-wrapper {
+        padding-bottom: 0 !important;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .mat-form-field:not(.mat-form-field-appearance-legacy)
+        .mat-form-field-prefix
+        .mat-icon,
+      .mat-form-field:not(.mat-form-field-appearance-legacy)
+        .mat-form-field-suffix
+        .mat-icon {
+        display: block;
+        margin-right: $size-8;
+        margin-left: $size-8;
+        color: $light-grey-20;
+      }
+
+      .mat-input-element {
+        caret-color: $dark-blue;
+      }
+
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        border-radius: 50px !important;
+        -webkit-border-radius: 50px !important;
+        -moz-border-radius: 50px !important;
+        -ms-border-radius: 50px !important;
+        -o-border-radius: 50px !important;
+        align-items: center !important;
+        padding: 0px 10px !important;
+        background-color: $white;
+      }
+
+      .mat-option .mat-icon {
+        margin-right: $size-8 !important;
+      }
+    }
+    .close-button-search {
+      cursor: pointer;
+    }
+  }
+}
+
+.view-more-link {
+  color: $violet;
+  font-size: $font-16;
+  font-weight: 500;
+  text-decoration: none !important;
+  display: flex;
+  cursor: pointer;
+}
+
+// No attachment section
+.error-details-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-title {
+  color: $mat-black;
+  font-size: $font-24;
+  font-weight: 700;
+  font-family: AirIndiaVariable;
+}
+
+.unauthorized-text {
+  color: $grey-lighter-2;
+  text-align: center;
+  font-size: $font-12;
+  font-weight: 600;
+}
+
+.search-result-text {
+  color: $black-95;
+  font-weight: 700;
+  font-size: $font-14;
+}
+
+.approved-icon-color {
+  color: $approved-green;
+}
+
+.rejected-icon-color {
+  color: $dark-red;
+}
+
+.pending-icon-color {
+  color: $dark-orange-1;
+}
+
+.active-btn .approved-icon-color {
+  color: $white;
+}
+
+.active-btn .rejected-icon-color {
+  color: $white;
+}
+
+.active-btn .pending-icon-color {
+  color: $white;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.border-top-base-manager-line {
+  border-bottom: 1px solid $border-white;
+  padding-bottom: $size-8;
+  margin-bottom: $size-8;
+}
+.skeleton-flight-details-display {
+  display: flex;
+}
+.skeleton-flight-common-block1 {
+  margin-right: 8px;
+}
+.skeleton-profile-details-block1 {
+  width: 334px;
+}
+.skeleton-profile-details-block2 {
+  width: 317px;
+}
+.hide-block-desktop {
+  display: none;
+}
+.skeleton-search-block {
+  width: 258px;
+}
+.skeleton-seach-block-list {
+  display: flex;
+  justify-content: flex-end;
+}
+.skeleton-btn-view {
+  width: 140px;
+}
+// Media queries
+@media (min-width: 350px) and (max-width: 768px) {
+  .aem-list-container {
+    .approve-decline-button-cont {
+      overflow-y: hidden;
+    }
+    .search-bar-base-manager-cont {
+      justify-content: center;
+      .search-bar-base-manager {
+        min-width: 100%;
+      }
+    }
+  }
+  .skeleton-flight-details-display {
+    display: block;
+    margin-top: 24px;
+  }
+  .skeleton-flight-common-block1 {
+    margin-right: 0;
+  }
+  .skeleton-flight-common-block2 {
+    margin-top: 16px;
+  }
+  .skeleton-profile-details-block1 {
+    width: 136px;
+  }
+  .skeleton-profile-details-block2 {
+    width: 170px;
+  }
+  .hide-block-desktop {
+    display: block;
+  }
+  .skeleton-search-block {
+    width: 220px;
+  }
+  .skeleton-tab-hide-mobile {
+    display: none;
+  }
+  .skeleton-seach-block-list {
+    display: block;
+  }
+  .skeleton-btn-view {
+    width: 400px;
+  }
+  .search-margin-top-res {
+    margin-top: 24px;
+  }
+}
+@media (min-width: 767px) and (max-width: 992px) {
+  .aem-list-container {
+    .search-bar-base-manager-cont {
+      justify-content: center;
+      .search-bar-base-manager {
+        min-width: 100%;
+      }
+    }
+  }
+  .skeleton-flight-details-display {
+    margin-top: 24px;
+    display: block;
+  }
+  .skeleton-flight-common-block2 {
+    margin-top: 16px;
+  }
+}

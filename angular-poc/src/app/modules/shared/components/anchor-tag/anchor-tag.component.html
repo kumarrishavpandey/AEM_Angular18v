@@ -1,0 +1,39 @@
+<a
+  *ngIf="isExternal; else anchorTagInternal"
+  [class]="labelColor"
+  [style.padding]="padding ?? ''"
+  [href]="link"
+  [target]="target"
+  [style.fontSize]="fontSize"
+  [style.fontWeight]="fontWeight"
+  (click)="trackClickEvent()"
+>
+  <ng-container *ngTemplateOutlet="anchorTagContent"></ng-container>
+</a>
+
+<ng-template #anchorTagInternal>
+  <a
+    [class]="labelColor"
+    [style.padding]="padding ?? ''"
+    [routerLink]="link"
+    [queryParams]="queryParams"
+    [target]="target"
+    [style.fontSize]="fontSize"
+    [style.fontWeight]="fontWeight"
+    (click)="trackClickEvent()"
+  >
+    <ng-container *ngTemplateOutlet="anchorTagContent"></ng-container>
+  </a>
+</ng-template>
+
+<ng-template #anchorTagContent>
+  <span class="d-inline-flex align-items-center gap-1">
+    <span>
+      {{ label }}
+    </span>
+
+    <mat-icon *ngIf="anchorIcon" class="material-symbols-rounded">
+      {{ anchorIcon }}
+    </mat-icon>
+  </span>
+</ng-template>

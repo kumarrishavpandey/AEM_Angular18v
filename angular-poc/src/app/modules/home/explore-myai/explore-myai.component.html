@@ -1,0 +1,133 @@
+<div class="white-section-box">
+  <div class="row padding-80">
+    <!-- top heading -->
+    <div class="col-12">
+      <div
+        class="explore-my-ai-head d-flex flex-column align-items-center text-center"
+      >
+        <!-- Heading of explore myai section -->
+        <app-title [title]="fieldsConstant.heading"></app-title>
+        <!-- Title of explore myai section -->
+        <app-title-desc [titleDesc]="fieldsConstant.title"></app-title-desc>
+      </div>
+    </div>
+    <!-- card layout = desktop view -->
+    <div
+      class="d-xxl-flex d-xl-flex d-lg-flex m-top-48 m-bottom-48 desktop-view"
+    >
+      <div
+        class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 m-top-8-res"
+        *ngFor="let cardInfo of fieldsConstant.cardList"
+      >
+        <!-- Image and Title of explore Card -->
+        <div class="explore-myai-card-container m-right-16">
+          <!-- img with background -->
+          <div class="img-background-colour">
+            <div
+              class="d-flex align-items-center justify-content-center img-height"
+            >
+              <img src="{{ cardInfo.imageLink }}" alt="" class="img-fluid" />
+            </div>
+          </div>
+          <!-- text -->
+          <div class="padding-24 white-box">
+            <!-- heading -->
+            <h5 class="card-title light-grey-border-bottom p-bottom-8">
+              {{ cardInfo.title }}
+            </h5>
+
+            <!-- text -->
+            <p class="m-top-32 card-para">{{ cardInfo.message }}</p>
+            <!-- button -->
+            <div class="card-button-position m-top-8">
+              <button mat-flat-button class="box-button-edit">
+                <mat-icon class="material-symbols-rounded">{{
+                  cardInfo.buttonIcon
+                }}</mat-icon>
+                {{ cardInfo.buttonText }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mobile view -->
+    <div class="m-top-48 m-bottom-48 mobile-view">
+      <div
+        id="explore-myai-carouselExample"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            *ngFor="let cardInfo of fieldsConstant.cardList; let i = index"
+            [class.active]="i === 0"
+            data-bs-target="#explore-myai-carouselExample"
+            [attr.data-bs-slide-to]="i"
+            [attr.aria-label]="'slide ' + i"
+          >
+            {{ i }}
+          </button>
+        </div>
+
+        <div class="carousel-inner">
+          <div
+            class="carousel-item"
+            *ngFor="let cardInfo of fieldsConstant.cardList; let i = index"
+            [class.active]="i === 0"
+          >
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+              <!-- Image and Title of explore Card -->
+              <div class="explore-myai-card-container m-right-16">
+                <!-- img with background -->
+                <div class="img-background-colour">
+                  <div
+                    class="d-flex align-items-center justify-content-center img-height"
+                  >
+                    <img
+                      src="{{ cardInfo.imageLink }}"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
+                <!-- text -->
+                <div class="padding-24 white-box">
+                  <!-- heading -->
+                  <h5 class="card-title light-grey-border-bottom p-bottom-8">
+                    {{ cardInfo.title }}
+                  </h5>
+
+                  <!-- text -->
+                  <p class="m-top-32 card-para">{{ cardInfo.message }}</p>
+                  <!-- button -->
+                  <div class="card-button-position m-top-8">
+                    <button mat-flat-button class="box-button-edit">
+                      <mat-icon class="material-symbols-rounded">{{
+                        cardInfo.buttonIcon
+                      }}</mat-icon>
+                      {{ cardInfo.buttonText }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add navigation controls if needed -->
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#explore-myai-carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#explore-myai-carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button> -->
+      </div>
+    </div>
+  </div>
+</div>

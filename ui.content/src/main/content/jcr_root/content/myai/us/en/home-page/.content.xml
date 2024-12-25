@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2024-12-07T10:28:36.201+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/myai/settings/wcm/templates/page-content"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Home Page"
+        sling:resourceType="myai/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="myai/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="myai/components/container"
+                layout="responsiveGrid">
+                <title
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="myai/components/title"/>
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="myai/components/container"
+                    layout="responsiveGrid">
+                    <homepage_component
+                        jcr:created="{Date}2024-03-08T07:32:59.990Z"
+                        jcr:createdBy="rishav.kumar@airindia.com"
+                        jcr:lastModified="{Date}2024-06-03T13:18:01.585Z"
+                        jcr:lastModifiedBy="muskan.kapoor@airindia.com"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="myai/components/homepage-component"
+                        ago="ago"
+                        awardtitle="Awards and Appreciations"
+                        bannerImage="/content/dam/my-ai/home-page/banner/Banner1.png"
+                        bannerImageAltText="Banner"
+                        boardTitle="My Board"
+                        btnText="View More"
+                        closeIcon="close"
+                        coid="Company ID Card"
+                        countryCode="us"
+                        countryName="Usa"
+                        crewAlertListAep="60"
+                        crewAlertListAtpl="60"
+                        crewAlertListCa35="30"
+                        crewAlertListCmc="60"
+                        crewAlertListCoid="30"
+                        crewAlertListCpl="60"
+                        crewAlertListEgca="60"
+                        crewAlertListExpmed="60"
+                        crewAlertListFata="60"
+                        crewAlertListFrro="60"
+                        crewAlertListFrto="60"
+                        crewAlertListIrend="60"
+                        crewAlertListMedical="30"
+                        crewAlertListPassport="30"
+                        crewAlertListPmr="60"
+                        crewAlertListTsa="60"
+                        crewAlertListVisa="90"
+                        crewAlertListYf="30"
+                        crewListNoDataDesc="Your alerts and roster updates will appear here"
+                        crewListNoDataTitle="You're all set!"
+                        ctaText="Appreciate your colleagues"
+                        durationText="Duration"
+                        errorText="Data not available. Please try again later."
+                        errorTxt="No data available. Please try again later"
+                        flightNoTxt="Flight No."
+                        goodAfternoon="Good Afternoon"
+                        goodEvening="Good Evening"
+                        goodMorning="Good Morning"
+                        holidaysListBgColor="rgb(218 14 41 / 6%)"
+                        holidaysListCriticality="low"
+                        holidaysListDuration="21"
+                        holidaysListIcon="mood"
+                        holidaysListIconColor="#DA0E29"
+                        holidaysListIsExternal="false"
+                        language="en"
+                        learningCalendarIsExternal="false"
+                        noData="No Data"
+                        noDataDesc="Check back here later for upcoming events and alerts"
+                        noDataTextAward="Every achievement begins with the first step"
+                        noDataTitle="Nothing Upcoming"
+                        pageName="myAI"
+                        pageType="AEM"
+                        personalisedCrew="/content/dam/my-ai/content_fragment/us/en/navigation-content/my-ai-personalised-all-employee"
+                        personalisedEmployee="/content/dam/my-ai/content_fragment/us/en/navigation-content/my-ai-personalised-all-employee"
+                        personalizedNav="/content/dam/my-ai/content_fragment/us/en/navigation-content/my-ai-personalised-General"
+                        quickAction="/content/dam/my-ai/content_fragment/us/en/navigation-content/my-ai-action-category-list-"
+                        quickActionCrew="/content/dam/my-ai/content_fragment/us/en/navigation-content/my-ai-action-category-list-crew"
+                        quickActionEmployee="/content/dam/my-ai/content_fragment/us/en/navigation-content/my-ai-action-category-list-all-employee"
+                        roasterNoDataDesc="You don't have any scheduled flights for today and tomorrow"
+                        roasterNoDataTitle="No flight"
+                        roastertitle="Scheduled Flight"
+                        seeMoreBtnText="See More"
+                        server="airindia.com"
+                        siteName="myAI"
+                        teamBirthdaysCriticality="medium"
+                        teamBirthdaysDuration="7"
+                        teamBirthdaysIcon="cake"
+                        teamBirthdaysIconBgColor="rgb(218 14 41 / 6%)"
+                        teamBirthdaysIconColor="#DA0E29"
+                        teamBirthdaysIsExternal="false"
+                        teamBirthdaysTitle="Birthday"
+                        title="Quick Action"
+                        upcomingTitle="Upcoming"
+                        viewLess="View Less"
+                        viewMore="View More"
+                        viewMoreIcon="chevron_right"
+                        workPlacetitle="Workplace"
+                        yf="Vaccination - Yellow Fever">
+                        <salutationPersonaData jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                salutationPersona="Pilot">
+                                <salutationText jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        goodAfternoon="Good afternoon, Captain"
+                                        goodEvening="Good evening, Captain"
+                                        goodMorning="Good morning, Captain"/>
+                                </salutationText>
+                            </item0>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                salutationPersona="Cabin Crew">
+                                <salutationText jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        goodAfternoon="Good afternoon,"
+                                        goodEvening="Good evening,"
+                                        goodMorning="Good morning,"/>
+                                </salutationText>
+                            </item1>
+                            <item2
+                                jcr:primaryType="nt:unstructured"
+                                salutationPersona="General">
+                                <salutationText jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        goodAfternoon="Good afternoon,"
+                                        goodEvening="Good evening,"
+                                        goodMorning="Good morning,"/>
+                                </salutationText>
+                            </item2>
+                        </salutationPersonaData>
+                        <personaData jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                persona="Pilot">
+                                <cards jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#3174E0"
+                                        dataUnit="Hours"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#D1E3FF"
+                                        gradient4Color="#106EFF"
+                                        icon="flight_takeoff"
+                                        id="payHours"
+                                        infoIcon="info"
+                                        infoText="For March 2024"
+                                        infoTextTooltip="This data is for start_date to end_date"
+                                        subTitle="Completed"
+                                        title="Pay Hours"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No hours yet">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Flying"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="SIM hours"/>
+                                        </unitArray>
+                                    </item0>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#FF8C00"
+                                        dataUnit="Total"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFE0BA"
+                                        gradient4Color="#FF8C00"
+                                        icon="flight"
+                                        id="takeoffsLandings"
+                                        infoIcon="info"
+                                        infoText="Per PSR for past 90 days"
+                                        infoTextTooltip="This data is for start_date to end_date"
+                                        title="Take Offs / Landings"
+                                        unitColor="#FF8C00"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No Take Offs / Landings">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Take offs"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Landings"/>
+                                        </unitArray>
+                                    </item1>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#DA0E29"
+                                        dataUnit="Hours"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFC1C9"
+                                        gradient4Color="#DA0E29"
+                                        icon="work_history"
+                                        id="sodHours"
+                                        infoIcon="info"
+                                        infoText="For March 2024"
+                                        infoTextTooltip="This data is for start_date to end_date"
+                                        subTitle="Completed"
+                                        title="SOD Hours"
+                                        unitColor="#DA0E29"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No SOD Hours">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Intl"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Dom"/>
+                                        </unitArray>
+                                    </item2>
+                                    <item3
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#A71EA2"
+                                        dataUnit="Days"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFCFFD"
+                                        gradient4Color="#A71EA2"
+                                        icon="calendar_today"
+                                        id="leaveBalance"
+                                        infoIcon="info"
+                                        infoText="Per CAE-CM as of today"
+                                        infoTextTooltip="This data was last updated on current_timestamp"
+                                        title="Leave Balance"
+                                        unitColor="#A71EA2"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No Leaves">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="PL"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="CL"/>
+                                            <item2
+                                                jcr:primaryType="nt:unstructured"
+                                                key="SL"/>
+                                        </unitArray>
+                                    </item3>
+                                </cards>
+                            </item0>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                persona="Cabin Crew">
+                                <cards jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#3174E0"
+                                        dataUnit="Hours"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#D1E3FF"
+                                        gradient4Color="#106EFF"
+                                        icon="flight_takeoff"
+                                        id="payHours"
+                                        infoIcon="info"
+                                        infoText="For March 2024"
+                                        infoTextTooltip="This data is for start_date to end_date"
+                                        subTitle="Completed"
+                                        title="Pay Hours"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No hours yet">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="CP"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="FO"/>
+                                        </unitArray>
+                                    </item0>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#FF8C00"
+                                        dataUnit="Stops"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFE0BA"
+                                        gradient4Color="#FF8C00"
+                                        icon="flight"
+                                        id="flightDutyPeriod"
+                                        infoIcon="info"
+                                        infoText="For March 2024"
+                                        infoTextTooltip="This data is for start_date to end_date"
+                                        subTitle="Completed (Domestic)"
+                                        title="Night Stops"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No Night Stops">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Take offs"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Landings"/>
+                                        </unitArray>
+                                    </item1>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#DA0E29"
+                                        dataUnit="Hours"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFC1C9"
+                                        gradient4Color="#DA0E29"
+                                        icon="work_history"
+                                        id="sodHours"
+                                        infoIcon="info"
+                                        infoText="For March 2024"
+                                        infoTextTooltip="This data is for start_date to end_date"
+                                        subTitle="Completed"
+                                        title="SOD Hours"
+                                        unitColor="#DA0E29"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No SOD Hours">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Intl"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="Dom"/>
+                                        </unitArray>
+                                    </item2>
+                                    <item3
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#A71EA2"
+                                        dataUnit="Days"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFCFFD"
+                                        gradient4Color="#A71EA2"
+                                        icon="calendar_today"
+                                        id="leaveBalance"
+                                        infoIcon="info"
+                                        infoText="Per CAE-CM as of today"
+                                        infoTextTooltip="This data was last updated on current_timestamp"
+                                        title="Leave Balance"
+                                        unitColor="#A71EA2"
+                                        zeroDataInfoText="Nothing yet"
+                                        zeroDataSubtitle="No Leaves">
+                                        <unitArray jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                key="PL"/>
+                                            <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                key="CL"/>
+                                            <item2
+                                                jcr:primaryType="nt:unstructured"
+                                                key="SL"/>
+                                        </unitArray>
+                                    </item3>
+                                </cards>
+                            </item1>
+                            <item2
+                                jcr:primaryType="nt:unstructured"
+                                persona="General">
+                                <cards jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#3174E0"
+                                        dataUnit="Hours"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#D1E3FF"
+                                        gradient4Color="#106EFF"
+                                        icon="book_5"
+                                        id="learningHoursCompleted"
+                                        subTitle="Spent"
+                                        title="Learning Time"
+                                        zeroDataSubtitle="Start your learning"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#FF8C00"
+                                        dataUnit="Courses"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFE0BA"
+                                        gradient4Color="#FF8C00"
+                                        icon="assignment_add"
+                                        id="coursesEnrolled"
+                                        subTitle="Enrolled"
+                                        title="Courses Enrolled "
+                                        zeroDataSubtitle="No courses yet"/>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        cardcolor="#DA0E29"
+                                        dataUnit="Courses"
+                                        dataUnitHrs="hr"
+                                        dataUnitMins="min"
+                                        gradient1Color="white"
+                                        gradient2Color="white"
+                                        gradient3Color="#FFC1C9"
+                                        gradient4Color="#DA0E29"
+                                        icon="school"
+                                        id="coursesCompleted"
+                                        subTitle="Completed"
+                                        title="Courses Completed"
+                                        zeroDataSubtitle="Start your learning"/>
+                                </cards>
+                            </item2>
+                        </personaData>
+                    </homepage_component>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

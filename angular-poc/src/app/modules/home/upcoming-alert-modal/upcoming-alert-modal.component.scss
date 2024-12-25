@@ -1,0 +1,135 @@
+@import '../../../../styles.scss';
+
+::ng-deep .upcoming-modal {
+  height: 30rem;
+}
+
+.pop-heading {
+  color: $dark-blue;
+  font-size: $font-24;
+  font-weight: 700;
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.list-section {
+  background: $white;
+}
+
+.row-section {
+  padding-top: $size-16;
+  padding-bottom: $size-16;
+}
+
+.row-border {
+  border-bottom: 1px solid $light-white-grey;
+}
+
+.light-grey-border-bottom:last-child {
+  border-bottom: 0px;
+}
+
+.cursor-pointer-custom {
+  cursor: pointer;
+}
+
+.upcoming-row-icon {
+  background: $lighter-red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  .icon-color {
+    color: $dark-red;
+  }
+}
+
+.title-text {
+  font-size: $font-18;
+  font-weight: 700;
+  color: $dark-blue;
+  margin-bottom: 8px;
+}
+
+.desc-text {
+  font-size: $font-14;
+  color: $dark-blue;
+  text-wrap: wrap;
+  font-weight: 400;
+  margin-bottom: $size-4;
+}
+
+.location-text {
+  display: flex;
+  margin-left: -4px;
+  font-size: $font-14;
+  align-items: center;
+
+  mat-icon {
+    transform: scale(0.7);
+    color: $medium-plus-grey;
+  }
+}
+
+.icon-name {
+  font-size: $font-14;
+  font-weight: 400;
+  color: $dark-grey;
+}
+
+.upcoming-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 190px;
+}
+
+.icon-spacing {
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+.summary-alert-text {
+  color: $dark-red;
+  font-size: $font-14;
+  font-weight: 700;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.summary-container {
+  display: table;
+
+  .summary-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+
+    .desc-text-alert {
+      font-size: $font-14;
+      color: $dark-red;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .location-text {
+    margin-left: 0px;
+    align-items: normal;
+    flex-direction: column;
+  }
+
+  .icon-name {
+    width: 100%;
+    white-space: normal;
+    overflow: auto;
+  }
+  .icon-spacing {
+    margin-top: 4px;
+  }
+}

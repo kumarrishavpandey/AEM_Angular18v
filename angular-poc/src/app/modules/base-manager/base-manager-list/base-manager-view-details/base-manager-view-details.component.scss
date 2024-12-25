@@ -1,0 +1,41 @@
+@import '../../../../../styles.scss';
+
+.back-link {
+  text-align: left;
+  margin-bottom: 20px;
+
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: $font-16;
+    color: $violet;
+    width: fit-content;
+  }
+
+  .back-icon {
+    color: $violet;
+    margin-right: $size-4;
+  }
+}
+
+.skeleton-back-btn {
+  width: 104px;
+}
+.skeleton-title {
+  width: 280px;
+}
+.skeleton-history-title {
+  width: 602px;
+}
+
+// media query
+@media (min-width: 350px) and (max-width: 768px) {
+  .skeleton-back-btn {
+    width: 72px;
+  }
+  .skeleton-title,
+  .skeleton-history-title {
+    width: 220px;
+  }
+}

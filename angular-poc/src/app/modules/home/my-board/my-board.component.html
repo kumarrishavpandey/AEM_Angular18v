@@ -1,0 +1,248 @@
+<ng-container *ngIf="isDataLoaded; else showSkeleton">
+  <!-- General Persona Section -->
+  <section *ngIf="persona === 'General'">
+    <!-- 3 box -->
+    <div class="row">
+      <!-- left side -->
+
+      <!-- heading -->
+      <div class="col-12 m-bottom-16">
+        <h5 class="emp-heading-5">
+          {{ myBoardData.title }}
+        </h5>
+      </div>
+
+      <!-- dynamic cards -->
+      <div class="col-12 d-xxl-flex d-xl-flex d-lg-flex m-bottom-24">
+        <ng-container *ngFor="let card of selectedResponse?.cards">
+          <div
+            class="col-xxl-{{ isTimeProfileEqual ? '4' : '3' }} col-xl-{{
+              isTimeProfileEqual ? '4' : '3'
+            }} col-lg-{{
+              isTimeProfileEqual ? '4' : '3'
+            }} col-md-12 col-sm-12 col-12 m-top-8-res"
+            *ngIf="isTimeProfileEqual ? card.id !== 'leaveBalance' : true"
+          >
+            <div
+              class="white-box padding-16 border-white-box"
+              [style.border-bottom]="generateBorderBottom(card.cardcolor)"
+              (click)="navigateTo(card.id, card.title)"
+            >
+              <h6 class="emp-heading-6 m-bottom-8">{{ card?.title }}</h6>
+              <!-- square icon + time -->
+              <div class="d-flex justify-content-between p-bottom-32">
+                <!-- time -->
+                <div class="card-text-col">
+                  <ng-container
+                    *ngIf="
+                      !learningResponseError &&
+                      !(card.id === 'leaveBalance' && leaveBalResponseError)
+                    "
+                  >
+                    <p
+                      class="learning-data"
+                      [style.color]="card.cardcolor"
+                      *ngIf="
+                        card.id !== 'learningHoursCompleted';
+                        else contentForLearning
+                      "
+                    >
+                      {{ getCardData(card) }}
+                      <span class="card-sub-text">{{ card?.dataUnit }}</span>
+                    </p>
+                    <ng-template #contentForLearning>
+                      <p
+                        class="learning-data"
+                        [style.color]="card.cardcolor"
+                        *ngIf="getLearningCardData(card).value"
+                      >
+                        <span
+                          class="learning-card-value learning-value-margin-right"
+                          >{{ getLearningCardData(card).value }}</span
+                        >
+                        <span class="learning-card-unit">{{
+                          getLearningCardData(card).unit
+                        }}</span>
+                        <span *ngIf="getLearningCardData(card).minObj">
+                          <span
+                            class="learning-card-value learning-value-margin-both"
+                            >{{ getLearningCardData(card).minObj.value }}</span
+                          >
+                          <span class="learning-card-unit">{{
+                            getLearningCardData(card).minObj.unit
+                          }}</span>
+                        </span>
+                      </p>
+                    </ng-template>
+                    <p
+                      class="learning-data-text"
+                      *ngIf="card.id === 'leaveBalance'"
+                    >
+                      {{ getLeaveBalanceText(card) }}
+                    </p>
+                    <p
+                      class="learning-data-text"
+                      *ngIf="card.id !== 'leaveBalance'"
+                    >
+                      {{ getCardSubText(card) }}
+                    </p>
+                  </ng-container>
+                  <div
+                    class="card-text-col no-data-error-block"
+                    *ngIf="
+                      learningResponseError ||
+                      (leaveBalResponseError && card.id === 'leaveBalance')
+                    "
+                  >
+                    <p class="learning-data-data-not-available">
+                      {{ myBoardData?.commonMessages?.errorText }}
+                    </p>
+                  </div>
+                  <!-- square icon -->
+                </div>
+                <div
+                  class="icon-block-with-border"
+                  [style.background]="
+                    generateLinearGradient(
+                      card.gradient1Color,
+                      card.gradient2Color,
+                      card.gradient3Color,
+                      card.gradient4Color
+                    )
+                  "
+                >
+                  <div class="icon-inner-transparent-block">
+                    <mat-icon
+                      class="material-symbols-rounded no-fill"
+                      [style.color]="card?.cardcolor"
+                      >{{ card?.icon }}</mat-icon
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="persona !== 'General'">
+    <!-- 3 box -->
+    <div class="row">
+      <!-- left side -->
+
+      <!-- heading -->
+      <div class="col-12 m-bottom-16" *ngIf="selectedResponse">
+        <h5 class="emp-heading-5">{{ myBoardData?.title }}</h5>
+      </div>
+      <!-- dynamic cards -->
+      <div
+        class="col-12 d-xxl-flex d-xl-flex d-lg-flex m-bottom-24"
+        *ngIf="selectedResponse"
+      >
+        <div
+          class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 m-top-8-res"
+          *ngFor="let card of selectedResponse.cards"
+        >
+          <div
+            class="white-box border-white-box card-outer"
+            [style.border-bottom]="generateBorderBottom(card.cardcolor)"
+          >
+            <h6 class="emp-heading-6 m-bottom-8">{{ card?.title }}</h6>
+            <!-- square icon + time -->
+            <div class="d-flex justify-content-between p-bottom-32">
+              <!-- time -->
+              <div class="card-text-col">
+                <p class="learning-data" [style.color]="card.cardcolor">
+                  {{ card.data }}
+                  <span class="card-sub-text">{{ card?.dataUnit }}</span>
+                </p>
+                <!-- <p class="learning-data-text">Completed</p> -->
+                <p class="learning-data-text">{{ card?.subTitle }}</p>
+              </div>
+              <!-- square icon -->
+              <div
+                class="icon-block-with-border"
+                [style.background]="
+                  generateLinearGradient(
+                    card.gradient1Color,
+                    card.gradient2Color,
+                    card.gradient3Color,
+                    card.gradient4Color
+                  )
+                "
+              >
+                <div class="icon-inner-transparent-block">
+                  <mat-icon
+                    class="material-symbols-rounded"
+                    [style.color]="card.cardcolor"
+                    >{{ card.icon }}</mat-icon
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="info-text card-info-text">
+              <span>{{ card?.infoText }}</span>
+              <mat-icon
+                *ngIf="card.infoTextTooltip.length > 0"
+                class="material-symbols-rounded"
+                [matTooltip]="card.infoTextTooltip"
+                >{{ card?.infoIcon }}</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+<ng-template #showSkeleton>
+  <div class="col-12 m-bottom-16">
+    <div class="mb-skeleton-head">
+      <app-skeleton-loader
+        type="text-load"
+        height="24px"
+        width="100%"
+      ></app-skeleton-loader>
+    </div>
+  </div>
+  <div class="col-12 d-xxl-flex d-xl-flex d-lg-flex m-bottom-24">
+    <ng-container *ngFor="let _ of [].constructor(4)">
+      <div
+        class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 m-top-8-res m-bottom-24"
+      >
+        <div
+          class="white-box padding-16 border-white-box d-flex justify-content-center align-item-center"
+        >
+          <div>
+            <div class="emp-heading-6 m-bottom-8 mb-cards-skeleton-text-width">
+              <app-skeleton-loader
+                type="text-load"
+                height="16px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+            <div class="learning-data mb-cards-skeleton-text-width m-top-16">
+              <app-skeleton-loader
+                type="text-load"
+                height="12px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+            <div
+              class="learning-data-text mb-cards-skeleton-text-width m-top-8"
+            >
+              <app-skeleton-loader
+                type="text-load"
+                height="12px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+          <div class="icon-block-with-border-skeleton m-left-16"></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

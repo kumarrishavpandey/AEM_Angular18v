@@ -1,0 +1,17 @@
+<ng-container *ngIf="type === 'text-load'">
+  <div
+    [style.height]="height"
+    [style.width]="width"
+    [style.border-radius]="borderRadius ? borderRadius : null"
+    class="loader-text"
+    *ngFor="let _ of loadersArray"
+    [style.margin-bottom.px]="spacing"
+  ></div>
+</ng-container>
+
+<div
+  *ngIf="type === 'icon-load'"
+  [style.height]="height"
+  [style.width]="width"
+  class="loader-icon"
+></div>

@@ -1,0 +1,137 @@
+<mat-dialog-content class="mat-typography">
+  <!-- upload drop area -->
+  <div
+    *ngIf="checkDevice !== 'Mobile'; else whileMobile"
+    class="upload-container"
+    (fileDropped)="onFileDropped($event)"
+  >
+    <input
+      type="file"
+      #fileDropRef
+      id="fileDropRef"
+      [multiple]="isMultiple"
+      accept=".pdf,.doc, .docx,.png, .jpg, .jpeg,.mp4"
+      (change)="onFileSelected($event)"
+    />
+
+    <div class="d-flex align-items-center flex-column">
+      <!-- upload icon -->
+      <div>
+        <!-- this svg icon has to be replaced based on media type -->
+        <mat-icon class="upload-icon material-symbols-rounded">{{
+          uploadDocumentLabels?.iconCloudUpload
+        }}</mat-icon>
+      </div>
+      <!-- upload icon end -->
+
+      <!-- upload text -->
+      <div class="d-inline-flex">
+        <h3>
+          {{ uploadDocumentLabels?.labelDragDropFiles
+          }}<label for="fileDropRef">{{
+            uploadDocumentLabels?.labelBrowse
+          }}</label>
+        </h3>
+      </div>
+      <div>
+        <p class="upload-text margin-bottom-8">
+          {{ uploadDocumentLabels?.labelDescriptionOne }}
+        </p>
+        <p class="upload-text">
+          {{ uploadDocumentLabels?.labelDescriptionTwo }}
+        </p>
+      </div>
+      <!-- upload text ends -->
+    </div>
+  </div>
+
+  <!-- mobile view for uploader -->
+  <ng-template #whileMobile>
+    <div class="upload-container-mobile">
+      <button
+        class="button violet secondary-solid-outline-grey button-width"
+        mat-flat-button
+      >
+        <mat-icon class="m-right-8 material-symbols-rounded">{{
+          uploadDocumentLabels?.iconCloudUpload
+        }}</mat-icon>
+        <label for="fileDropRef">
+          {{ uploadDocumentLabels?.btnUploadDocument }}</label
+        >
+        <input
+          type="file"
+          #fileDropRef
+          id="fileDropRef"
+          [multiple]="isMultiple"
+          accept=".pdf,.doc, .docx,.png, .jpg, .jpeg,.mp4"
+          (change)="onFileSelected($event)"
+        />
+      </button>
+    </div>
+  </ng-template>
+  <!-- upload drop area ends -->
+
+  <!-- progress bar -->
+  <div class="files-list">
+    <div *ngIf="!errorFileUploadingMultipleTimes">
+      <div class="single-file" *ngFor="let file of files; let i = index">
+        <!-- upload icon -->
+        <div class="file-icon">
+          <mat-icon class="material-symbols-rounded">{{
+            uploadDocumentLabels?.iconArticle
+          }}</mat-icon>
+        </div>
+        <div class="info">
+          <!-- file name -->
+          <div class="m-right-8">
+            <h4 class="name ellipsis-label-30">
+              {{ file?.name }}
+            </h4>
+          </div>
+          <!-- file size -->
+          <div>
+            <p class="size">
+              <span *ngIf="file?.progress < 100">{{
+                uploadDocumentLabels?.labelUploading
+              }}</span>
+              <span *ngIf="file?.progress === 100">{{
+                uploadDocumentLabels?.labelUploaded
+              }}</span
+              >{{ formatBytes(file?.size, 2) }}
+              <!-- {{ formatBytes(file?.size) }} -->
+            </p>
+          </div>
+          <!-- app progress 1 -->
+
+          <div class="progress-cont">
+            <div class="progress" [style.width]="file?.progress + '%'"></div>
+          </div>
+
+          <div class="d-none">
+            <h4 class="name">
+              {{ file.progress
+              }}{{ uploadDocumentLabels?.labelProgressIndicator }}
+            </h4>
+          </div>
+        </div>
+        <!-- delete icon -->
+        <button class="delete" (click)="deleteFile(i)">
+          <mat-icon class="material-symbols-rounded">{{
+            uploadDocumentLabels?.iconClose
+          }}</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- progress bar ends -->
+  <!-- button -->
+  <!-- <div>
+    <button class="upload-button">Upload Files</button>
+  </div> -->
+  <!-- button ends -->
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+    </mat-dialog-actions> -->

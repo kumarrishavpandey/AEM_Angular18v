@@ -1,0 +1,36 @@
+<div
+  *ngIf="isDialogVisible"
+  class="ai-dialog-container"
+  (click)="closeDialog($event)"
+>
+  <div class="ai-dialog-box" (click)="handleDialogClick($event)">
+    <div class="ai-dialog-header">
+      <button
+        mat-icon-button
+        class="ai-close-button"
+        (click)="closeDialog($event)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <div class="ai-dialog-content">
+      <div *ngFor="let event of eventHolidayData" class="ai-event-container">
+        <div class="ai-dialog-title">
+          {{ getDateString(event.start) }} - {{ getDateString(event.end) }}
+          {{ getEventDuration(event) }}
+        </div>
+
+        <div class="ai-event ai-{{ getLeaveStatus(event) }}">
+          <span class="ai-title">
+            {{ getEventTitle(event) }}
+          </span>
+
+          <span class="ai-content">
+            {{ getEventContent(event) }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

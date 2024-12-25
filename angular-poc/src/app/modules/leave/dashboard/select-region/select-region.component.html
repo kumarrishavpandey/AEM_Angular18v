@@ -1,0 +1,133 @@
+<div class="space-between d-flex align-items-center">
+  <div class="d-flex align-items-center">
+    <span class="region-icon">
+      <mat-icon class="material-symbols-rounded" mat-list-icon>{{
+        dashboardLabels?.iconSelectRegion
+      }}</mat-icon>
+    </span>
+    <span class="location-font ellipsis-label-30 responsive-ellipsis"
+      >{{ selectedElementName }}
+    </span>
+  </div>
+  <div
+    class="select-region"
+    (click)="onSelectRegionButtonClick()"
+    #ddTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="selectRegionDropdown"
+  >
+    {{ dashboardLabels?.labelSelectRegion }}
+  </div>
+</div>
+
+<!-- Select Region drop down without nested menu-item button -->
+<mat-menu #selectRegionDropdown="matMenu" class="select-region-menu-panel">
+  <span *ngFor="let region of sortMenuItem(holidayCalendars, 'label')">
+    <span class="main-region-item">
+      <button
+        *ngIf="region?.calendarList?.length > 1; else noSubRegionData"
+        (click)="
+          onMenuItemClick({
+            item: region?.label,
+            subItem: null,
+            code: region?.countryCode,
+            size: region?.calendarList?.length
+          })
+        "
+        (click)="toggleClass(region?.countryCode, holidayCalendars)"
+        (click)="$event.stopPropagation()"
+        mat-menu-item
+        class="d-flex align-items-center region-menu-hover"
+      >
+        <img
+          class="img-fluid phone-trigger-image"
+          [src]="getSVGbyISD(region?.countryCodeA2)"
+        />
+        <span>
+          {{ region.label }}
+        </span>
+        <!-- icon -->
+        <span
+          *ngIf="region?.calendarList?.length >= 1"
+          class="exapnd-collaps-icon arrow-position-region"
+          id="main-menu-{{ region?.countryCode }}"
+          (click)="toggleClass(region?.countryCode, holidayCalendars)"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon class="exapand_more material-symbols-rounded">{{
+            dashboardLabels?.iconExpandMore
+          }}</mat-icon>
+          <mat-icon class="chevron_right material-symbols-rounded">{{
+            dashboardLabels?.iconRightArrow
+          }}</mat-icon>
+        </span>
+      </button>
+      <ng-template #noSubRegionData>
+        <button
+          (click)="
+            onMenuItemClick({
+              item: region?.label,
+              subItem: null,
+              code: region?.calendarList[0]?.calendarCode,
+              size: 0
+            })
+          "
+          (click)="toggleClass(region?.countryCode, holidayCalendars)"
+          (click)="$event.stopPropagation()"
+          mat-menu-item
+          class="d-flex align-items-center region-menu-hover"
+        >
+          <img
+            class="img-fluid phone-trigger-image"
+            [src]="getSVGbyISD(region?.countryCodeA2)"
+          />
+          <span>
+            {{ region.label }}
+          </span>
+        </button>
+      </ng-template>
+    </span>
+    <span
+      *ngIf="region?.calendarList?.length > 1"
+      class="sub-region-list"
+      id="sub-menu-{{ region?.countryCode }}"
+    >
+      <button
+        (click)="
+          onMenuItemClick({
+            item: region?.label,
+            subItem: subReg?.calendarName,
+            subItemCode: subReg?.calendarCode,
+            size: 0
+          })
+        "
+        (click)="toggleClass(region?.countryCode, holidayCalendars)"
+        (click)="$event.stopPropagation()"
+        *ngFor="let subReg of sortMenuItem(region.calendarList, 'calendarName')"
+        mat-menu-item
+        class="text-wrap m-bottom-8"
+      >
+        <ng-container *ngIf="subReg?.calendarName; else calendarCodeData">
+          {{ subReg?.calendarName }}
+        </ng-container>
+        <ng-template #calendarCodeData>
+          {{ subReg?.calendarCode }}
+        </ng-template>
+
+        <span
+          *ngIf="subReg?.subRegion?.length > 0"
+          class="exapnd-collaps-icon"
+          id="sub-menu-{{ region?.countryCode }}"
+          (click)="toggleClass(region?.countryCode, holidayCalendars)"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon class="exapand_more material-symbols-rounded">{{
+            dashboardLabels?.iconExpandMore
+          }}</mat-icon>
+          <mat-icon class="chevron_right material-symbols-rounded">{{
+            dashboardLabels?.iconRightArrow
+          }}</mat-icon>
+        </span>
+      </button>
+    </span>
+  </span>
+</mat-menu>

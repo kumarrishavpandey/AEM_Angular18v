@@ -1,0 +1,123 @@
+<div class="container-fluid container-97">
+  <!-- Title -->
+  <div class="back-link">
+    <a
+      class="cursor-pointer"
+      (click)="goBack()"
+      *ngIf="
+        isDetailsDataLoaded || isHistoryDetailsDataLoaded;
+        else showLinkSkeleton
+      "
+      ><mat-icon class="back-icon">{{
+        labelsBaseManagerACMapproval?.iconBtnBack
+      }}</mat-icon>
+      {{ labelsBaseManagerACMapproval?.labelBtnBack }}</a
+    >
+
+    <ng-template #showLinkSkeleton>
+      <div class="skeleton-back-btn">
+        <app-skeleton-loader
+          type="text-load"
+          height="32px"
+          width="100%"
+        ></app-skeleton-loader>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-xl-12 col-md-12 col-sm-12"
+      *ngIf="
+        isDetailsDataLoaded || isHistoryDetailsDataLoaded;
+        else showTitleSkeleton
+      "
+    >
+      <app-title [title]="title"></app-title>
+    </div>
+    <ng-template #showTitleSkeleton>
+      <div class="col-xl-12 col-md-12 col-sm-12">
+        <div
+          [class]="hideDetails ? 'skeleton-history-title' : 'skeleton-title'"
+        >
+          <app-skeleton-loader
+            type="text-load"
+            height="40px"
+            width="100%"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <div *ngIf="!hideDetails">
+    <mat-tab-group
+      mat-align-tabs="start"
+      #tabGroup
+      class="mat-tab-group"
+      [selectedIndex]="selectedTabIndex"
+      (selectedTabChange)="onTabChange($event)"
+    >
+      <mat-tab [label]="labelsBaseManagerACMapproval.tabCurrentRequests.labelTab"  class="m-bottom-24">
+        <ng-template mat-tab-label>
+          <app-skeleton-loader
+            *ngIf="!isDetailsDataLoaded; else requestTabLabelContent"
+            type="text-load"
+            height="21px"
+            width="137px"
+          ></app-skeleton-loader>
+          <ng-template #requestTabLabelContent>
+            {{ labelsBaseManagerACMapproval?.tabCurrentRequests?.labelTab }}
+          </ng-template>
+        </ng-template>
+
+        <!-- Request Tab -->
+        <div class="row">
+          <app-base-manager-current-request
+            [siteSection]="title"
+            [managerData]="managerData"
+            [labelsBaseManagerACMapproval]="labelsBaseManagerACMapproval"
+            [isDataLoaded]="isDetailsDataLoaded"
+            (refreshData)="refreshOnRejection($event)"
+          ></app-base-manager-current-request>
+        </div>
+      </mat-tab>
+      <mat-tab [label]="labelsBaseManagerACMapproval.tabHistory.labelTab">
+        <ng-template mat-tab-label>
+          <app-skeleton-loader
+            *ngIf="!isDetailsDataLoaded; else historyTabLabelContent"
+            type="text-load"
+            height="21px"
+            width="137px"
+          ></app-skeleton-loader>
+          <ng-template #historyTabLabelContent>
+            {{ labelsBaseManagerACMapproval?.tabHistory?.labelTab }}
+          </ng-template>
+        </ng-template>
+
+        <!-- History Tab -->
+        <app-base-manager-history
+          [siteSection]="title"
+          [historyData]="historyData"
+          [viewMoreData]="viewMoreData"
+          (selectedTab)="onCountryTypeChange($event)"
+          [historyTabLabels]="labelsBaseManagerACMapproval?.tabHistory"
+          [isDataLoaded]="isHistoryDataLoaded"
+        ></app-base-manager-history>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div *ngIf="hideDetails">
+    <app-common-acm-request-details
+      [reqNo]="selectedReq"
+      [history]="isHistory"
+      (nameData)="getRequestData($event)"
+      (skeletonData)="getSkeletonData($event)"
+      [detailsComponentlabel]="
+        labelsBaseManagerACMapproval?.tabHistory?.detailsComponent
+      "
+      [siteSection]="labelsBaseManagerACMapproval.tabCurrentRequests.labelCaptain"
+    ></app-common-acm-request-details>
+  </div>
+</div>

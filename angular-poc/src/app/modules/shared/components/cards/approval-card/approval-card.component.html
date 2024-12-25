@@ -1,0 +1,181 @@
+<div class="white-box px-3 px-md-4 py-4 mb-4" [ngClass]="className">
+  <!-- card badge -->
+  <div
+    *ngIf="showBadge"
+    class="badge badge-blue mb-4"
+  >
+    {{ getBadgeLabel() }}
+  </div>
+
+  <div class="d-flex flex-column gap-3 approval-card">
+    <!-- card header -->
+    <div class="d-flex align-items-lg-center gap-2">
+      <app-employee-card
+        [empData]="cardData.employee"
+        [initialsTheme]="getEmpAvatarTheme()"
+        [size]="getEmpAvatarSize()"
+      ></app-employee-card>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between w-100">
+        <div class="d-flex flex-column flex-lg-row justify-content-between">
+          <div class="d-none d-lg-flex flex-column">
+            <div class="d-flex align-items-center gap-2">
+              <app-approval-card-employee-name
+                [employee]="cardData.employee"
+              ></app-approval-card-employee-name>
+
+              <app-approval-card-pending-for
+                *ngIf="showPendingFor"
+                [iconTimer]="labelsApprovalCard.iconTimer"
+                [labelPendingFor]="labelsApprovalCard.labelPendingFor"
+                [labelPendingCancellationFor]="labelsApprovalCard.labelPendingCancellationFor"
+                [labelDay]="labelsApprovalCard.labelDay"
+                [labelDays]="labelsApprovalCard.labelDays"
+                [lastModifiedDateTime]="cardData.lastModifiedDateTime"
+                [requestStatus]="cardData.status"
+              ></app-approval-card-pending-for>
+
+              <app-approval-card-status
+                *ngIf="showRequestStatus"
+                [requestStatus]="cardData.status"
+                [submittedOn]="cardData.submittedOn"
+              ></app-approval-card-status>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <span class="employee-email text-decoration-none">
+                {{ cardData.employee.email }}
+              </span>
+
+              <span class="seperator">
+                |
+              </span>
+
+              <app-approval-card-submitted-on
+                [labelSubmittedOn]="labelsApprovalCard.labelSubmittedOn"
+                [labelLastUpdatedOn]="labelsApprovalCard.labelLastUpdatedOn"
+                [labelRejectedOn]="labelsApprovalCard.labelRejectedOn"
+                [labelApprovedOn]="labelsApprovalCard.labelApprovedOn"
+                [submittedOn]="cardData.submittedOn"
+                [lastModifiedDateTime]="cardData.lastModifiedDateTime"
+                [requestStatus]="cardData.status"
+              ></app-approval-card-submitted-on>
+            </div>
+          </div>
+
+          <!-- left side - Ipad + mobile -->
+          <div class="d-flex flex-column d-lg-none">
+            <app-approval-card-employee-name
+              [employee]="cardData.employee"
+            ></app-approval-card-employee-name>
+
+            <div class="employee-email text-decoration-none ellipsis">
+              {{ cardData.employee.email }}
+            </div>
+
+            <app-approval-card-submitted-on
+              [labelSubmittedOn]="labelsApprovalCard.labelSubmittedOn"
+              [labelLastUpdatedOn]="labelsApprovalCard.labelLastUpdatedOn"
+              [labelRejectedOn]="labelsApprovalCard.labelRejectedOn"
+              [labelApprovedOn]="labelsApprovalCard.labelApprovedOn"
+              [submittedOn]="cardData.submittedOn"
+              [lastModifiedDateTime]="cardData.lastModifiedDateTime"
+              [requestStatus]="cardData.status"
+            ></app-approval-card-submitted-on>
+
+            <app-approval-card-pending-for
+              *ngIf="showPendingFor"
+              [iconTimer]="labelsApprovalCard.iconTimer"
+              [labelPendingFor]="labelsApprovalCard.labelPendingFor"
+              [labelPendingCancellationFor]="labelsApprovalCard.labelPendingCancellationFor"
+              [labelDay]="labelsApprovalCard.labelDay"
+              [labelDays]="labelsApprovalCard.labelDays"
+              [lastModifiedDateTime]="cardData.lastModifiedDateTime"
+              [requestStatus]="cardData.status"
+            ></app-approval-card-pending-for>
+
+            <app-approval-card-status
+              *ngIf="showRequestStatus"
+              [requestStatus]="cardData.status"
+              [submittedOn]="cardData.submittedOn"
+            ></app-approval-card-status>
+          </div>
+        </div>
+
+        <ng-container *ngIf="showTagData">
+          <div
+            *ngIf="cardData.tagData; else tagDataSkeleton"
+            class="d-flex align-items-center gap-1 rounded-1 light-yellow-backgroud tag-container"
+            [matTooltip]="labelsApprovalCard.labelTagTitle + ' ' + formatTagData(cardData.tagData)"
+            [matTooltipPosition]="'above'"
+          >
+            <span class="tag-title">
+              {{ labelsApprovalCard.labelTagTitle }}
+            </span>
+
+            <span class="tag-data">
+              {{ formatTagData(cardData.tagData) }}
+            </span>
+          </div>
+
+          <ng-template #tagDataSkeleton>
+            <app-skeleton
+              [width]="150"
+              [height]="36"
+            ></app-skeleton>
+          </ng-template>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- card body -->
+    <div class="lighter-grey-section p-3 px-md-4">
+      <ng-content></ng-content>
+    </div>
+
+    <!-- card footer -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+      <div class="d-flex align-items-start w-100">
+        <app-anchor-tag
+          *ngIf="showDetailLink"
+          [siteSection]="siteSection"
+          [siteSubSection]="siteSubSection"
+          [componentName]="labelsApprovalCard.labelCardTitle"
+          [link]="labelsApprovalCard.linkGoTo"
+          [queryParams]="cardData.queryParamsGoTo"
+          [label]="labelsApprovalCard.labelGoTo"
+          [labelColor]="enumAnchorTagLabelColor.VIOLET"
+          [fontSize]="'14px'"
+          [fontWeight]="'600'"
+        ></app-anchor-tag>
+      </div>
+
+      <div
+        *ngIf="showActionButtons"
+        class="d-flex flex-column flex-md-row justify-content-md-end gap-3 w-100"
+      >
+        <app-common-button
+          [siteSection]="siteSection"
+          [siteSubSection]="siteSubSection"
+          [componentName]="labelsApprovalCard.labelCardTitle"
+          [btnLabel]="labelsApprovalCard.labelCancelBtn"
+          [btnType]="'stroke'"
+          [btnColor]="'red-default'"
+          [isDisabled]="isButtonClicked()"
+          (handleClickEvent)="onCancelClick()"
+        ></app-common-button>
+
+        <app-common-button
+          [siteSection]="siteSection"
+          [siteSubSection]="siteSubSection"
+          [componentName]="labelsApprovalCard.labelCardTitle"
+          [btnLabel]="labelsApprovalCard.labelSubmitBtn"
+          [btnIconSize]="16"
+          [isDisabled]="isButtonClicked()"
+          [isLoading]="submitClicked"
+          (handleClickEvent)="onSubmitClick()"
+        ></app-common-button>
+      </div>
+    </div>
+  </div>
+</div>

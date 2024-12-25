@@ -1,0 +1,110 @@
+@use 'sass:math';
+
+@mixin no-user-select {
+  speak: none;
+  user-select: none;
+}
+
+@mixin hidden {
+  visibility: hidden;
+  cursor: auto;
+}
+
+@function px2em($px, $base-font-size: 16px) {
+  @if type-of($px) != number {
+    @error "Invalid value: $px must be a number.";
+  }
+
+  @return math.div($px, $base-font-size) * 1em;
+}
+
+$border-radius-sm: px2em(8px);
+$border-radius-default: px2em(16px);
+
+$font-size-xxs: px2em(10px);
+$font-size-xs: px2em(12px);
+$font-size-sm: px2em(14px);
+$font-size-default: px2em(16px);
+$font-size-md: px2em(18px);
+
+$padding-none: 0;
+$padding-xs: px2em(4px);
+$padding-sm: px2em(8px);
+$padding-default: px2em(16px);
+$padding-md: px2em(24px);
+
+$radius-rounded: 50%;
+
+$size-8: 0.5rem;
+$size-16: 1rem;
+$size-20: 1.25rem;
+$size-24: 1.5rem;
+$size-32: 2rem;
+
+$cards: (
+  card-stroke: #f0f1f7,
+);
+
+$text: (
+  text-default: #2f304a,
+  text-subtle: #595b6b,
+  text-on-dark: #ffffff,
+);
+
+$interactive: (
+  interactive-default: #531251,
+  interactive-neutral: #3a3d57,
+);
+
+$stroke: (
+  stroke-default: #d7d8e1,
+  stroke-subtle: #f0f1f7,
+);
+
+$surface: (
+  surface-default: #ffffff,
+  surface-elevated: #ffffff,
+);
+
+$semantic: (
+  positive: #17732b,
+);
+
+$global-colours: (
+  ai-base: (
+    ai-white: #ffffff,
+  ),
+  ai-grey: (
+    g50: #fbfbfc,
+    g100: #f7f8fa,
+    g200: #f0f1f7,
+    g500: #838493,
+  ),
+  ai-purple: (
+    p600: #952391,
+    p800: #531251,
+  ),
+  ai-blue: (
+    b50: #ebf2ff,
+    b500: #3174e0,
+    b600: #2160c7,
+    b700: #1550b0,
+    b800: #11418f,
+  ),
+  ai-green: (
+    g50: #e5ffec,
+    g700: #17732b,
+    g800: #09591a,
+  ),
+  ai-orange: (
+    o50: #ffefdb,
+    o100: #ffd9AA,
+    o500: #ff8c00,
+    o800: #a84907,
+  ),
+);
+
+$bid-period: #eae0e9;
+$training: #2aa646;
+$all-day-event-bg: #f1e2f1;
+$pending-event-bg: #e96f1a;

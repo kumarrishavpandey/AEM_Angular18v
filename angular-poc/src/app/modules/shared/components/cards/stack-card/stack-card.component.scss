@@ -1,0 +1,41 @@
+@import 'src/styles.scss';
+
+.card-heading {
+  font-size: $font-24;
+  font-weight: 700;
+  color: $grey-blue;
+}
+
+.white-box-approvals {
+  border: $size-0;
+  border-radius: $size-8 $size-8 $size-0 $size-0;
+}
+
+.red-circle-number {
+  background-color: $red;
+  font-size: $font-12;
+  font-family: AirIndiaVariable !important;
+  color: $white;
+  width: $size-32;
+  height: $size-32;
+  font-weight: 400;
+}
+
+.grey-background {
+  background: $border-white;
+  padding: $size-12 $size-16;
+}
+
+.view-more-card {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+  margin-bottom: $size-18;
+}
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .red-circle-number {
+    width: $size-24;
+    height: $size-24;
+  }
+}

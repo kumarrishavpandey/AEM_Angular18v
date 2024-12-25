@@ -1,0 +1,23 @@
+<!-- If multiple errors -->
+<div *ngIf="errorMessagesList">
+  <p
+    *ngFor="let error of errorMessagesList"
+    class="d-flex align-items-center m-bottom-4 padding-12 rule-error-container"
+  >
+    <span class="new-request-error-info">
+      <mat-icon class="material-symbols-rounded">cancel</mat-icon>
+    </span>
+    {{ error }}
+  </p>
+</div>
+
+<!-- If single error -->
+<p
+  *ngIf="errorMessage"
+  class="d-flex align-items-center m-bottom-4 padding-12 rule-error-container"
+>
+  <span class="new-request-error-info">
+    <mat-icon class="material-symbols-rounded">cancel</mat-icon>
+  </span>
+  {{ errorMessage }}
+</p>

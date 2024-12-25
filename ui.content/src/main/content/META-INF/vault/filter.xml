@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/myai" mode="merge"/>
+    <filter root="/content/myai" mode="merge"/>
+    <filter root="/content/dam/myai" mode="merge">
+        <exclude pattern="/content/dam/myai(/.*)?"/>
+        <include pattern="/content/dam/myai/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/myai/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/myai" mode="merge"/>
+</workspaceFilter>

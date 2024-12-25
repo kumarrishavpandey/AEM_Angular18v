@@ -1,0 +1,62 @@
+@import '../../../../styles.scss';
+.dialog-title{
+    font-weight: bold;
+}
+.dialog-icon-color-error{
+    color: $red;
+}
+.dialog-icon-color-info{
+    color: $sky-blue;
+}
+
+img{
+    width: 135px;
+}
+
+h2{
+    color: $black;
+    font-size: $font-24;
+    font-weight: 700;
+    font-family: "Nunito Sans", sans-serif!important;
+    font-family: "Nunito", sans-serif!important;
+}
+
+p{
+    color: $medium-plus-grey;
+    font-family: "Nunito Sans", sans-serif!important;
+    font-family: "Nunito", sans-serif!important;
+    font-size: $font-18;
+    font-weight: 400;
+}
+.extra-padding{
+    padding-left: $size-50;
+    padding-right: $size-50;
+  }
+
+/// #######################################
+/// Media Query
+/// #######################################
+
+@media (min-width: 350px) and (max-width: 768px) {
+
+    ::ng-deep {
+        mat-dialog-container{
+            position: absolute!important;
+            bottom: $size-0;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            height: auto!important;
+            max-height: auto!important;
+            min-height: auto!important;
+            left: 0;
+            right: 0;
+            border-radius: $size-24 $size-24 0px 0px !important;
+            -webkit-border-radius: $size-24 $size-24 0px 0px !important;
+            -moz-border-radius: $size-24 $size-24 0px 0px !important;
+            -ms-border-radius: $size-24 $size-24 0px 0px !important;
+            -o-border-radius: $size-24 $size-24 0px 0px !important;
+            }
+    }
+}
+

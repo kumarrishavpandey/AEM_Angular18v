@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="customFormGroup">
+    <!-- <form [formGroup]="applyLeaveForm"> -->
+    <mat-form-field appearance="fill">
+      <mat-label>{{ selectInputName }}</mat-label>
+      <mat-select
+        required="true"
+        [formControlName]="customFormControlName"
+        ngDefaultControl
+        [disabled]="dropdownDisabled"
+      >
+        <mat-option
+          *ngFor="let item of selectInputOptions"
+          [value]="getMatOptionValue(item)"
+          (onSelectionChange)="onSelectValueChange(item, $event)"
+        >
+          {{ getMatOptionLabel(item) }}
+        </mat-option>
+      </mat-select>
+
+      <mat-error
+        *ngIf="
+          customFormGroup?.get(customFormControlName)?.hasError('required')
+        "
+        >You must make a selection</mat-error
+      >
+    </mat-form-field>
+  </form>
+</div>

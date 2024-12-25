@@ -1,0 +1,101 @@
+@use '../../styles.scss';
+
+.ai-event {
+  &.ai-desktop,
+  &.ai-tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    position: absolute;
+    z-index: 1;
+    bottom: styles.px2em(8px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: styles.px2em(78px);
+    height: 60%;
+    margin-top: styles.px2em(15px);
+    padding: styles.$padding-sm;
+    cursor: pointer;
+    border-radius: 0px styles.$border-radius-sm styles.$border-radius-sm 0px;
+
+    .ai-title-container {
+      display: flex;
+      align-items: flex-start;
+      gap: styles.px2em(4px);
+      width: 100%;
+
+      .ai-title {
+        font-size: styles.$font-size-sm;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.3;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      mat-icon {
+        font-size: styles.$size-16;
+        width: styles.$size-16;
+        height: styles.$size-16;
+      }
+    }
+
+    .ai-status {
+      width: 100%;
+      font-size: styles.$font-size-xs;
+      font-style: normal;
+      font-weight: 400;
+      color: map-get(styles.$text, text-subtle);
+      letter-spacing: styles.px2em(0.048px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.ai-pending,
+    &.ai-pending_cancellation {
+      background-color: map-get(styles.$global-colours, ai-orange, o50);
+      border-left: 2px solid map-get(styles.$global-colours, ai-orange, o500);
+      color: map-get(styles.$global-colours, ai-orange, o800);
+    }
+
+    &.ai-approved {
+      background-color: map-get(styles.$global-colours, ai-green, g50);
+      border-left: 2px solid map-get(styles.$semantic, positive);
+      color: map-get(styles.$semantic, positive);
+    }
+
+    &.ai-all-day {
+      background-color: styles.$all-day-event-bg;
+      border-left: 2px solid map-get(styles.$global-colours, ai-purple, p600);
+      color: map-get(styles.$global-colours, ai-purple, p600);
+    }
+  }
+
+  &.ai-mobile {
+    position: absolute;
+    width: styles.px2em(8px);
+    height: styles.px2em(8px);
+    border-radius: 50%;
+    cursor: pointer;
+    bottom: 7px;
+    translate: -50% 50%;
+
+    &.ai-pending,
+    &.ai-pending_cancellation {
+      background-color: styles.$pending-event-bg;
+    }
+
+    &.ai-approved {
+      background-color: map-get(styles.$semantic, positive);
+    }
+
+    &.ai-all-day {
+      background-color: map-get(styles.$global-colours, ai-purple, p600);
+    }
+  }
+}

@@ -1,0 +1,138 @@
+@import '../../../../styles.scss';
+
+.award-badge-text {
+  display: flex;
+  justify-content: center;
+  width: 141px;
+}
+
+.award-badge-text-head {
+  @extend .award-badge-text;
+  font-size: $font-10;
+  color: $grey-80;
+  font-weight: 700;
+  margin-top: $size-16;
+  margin-bottom: $size-4;
+}
+
+.carousel-block {
+  width: 32px;
+  height: 32px;
+  margin-top: 35px;
+  background-color: $border-white;
+  border-radius: 100px;
+  .mat-icon {
+    color: $violet;
+  }
+}
+
+.award-heading {
+  font-weight: 700;
+  font-size: $size-18;
+  color: $black-95;
+}
+
+.border-white-box {
+  position: relative;
+  margin-right: 16px;
+}
+
+.award-image-width {
+  width: 80px;
+  image-rendering: auto;
+}
+
+.badge-number-block {
+  position: absolute;
+  top: $size-5;
+  right: $size-14;
+  width: $size-18;
+  height: $size-18;
+  border: 1px solid $white;
+  background-color: $sky-blue;
+  font-size: $font-10;
+  font-weight: 700;
+  text-align: center;
+  color: $white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge-image-number-block {
+  position: relative;
+}
+
+.white-box-no-data-custom {
+  height: 270px !important;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.no-award-appreciation-title {
+  font-size: $font-20; 
+  font-weight: 700; 
+  line-height: normal;
+  font-family: "Nunito Sans", sans-serif !important;
+}
+
+.no-awards-button-text {
+  font-family: "Nunito Sans", sans-serif !important;
+}
+
+.box-button-edit {
+  text-transform: none;
+}
+
+.emp-award-skeleton-head {
+  width: 100px;
+}
+
+.emp-award-skeleton-img {
+  width: 54px;
+}
+
+.emp-award-skeleton-img-text {
+  width: 77px;
+}
+
+.emp-award-skeleton-btn {
+  width: 219px;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .award-block {
+    width: auto;
+  }
+  .awards-container {
+    padding-right: 0;
+  }
+  .award-badge-block {
+    margin-top: 30px;
+  }
+  .award-block-margin {
+    margin-left: 46px;
+  }
+  .border-white-box {
+    position: relative;
+    margin-right: 0;
+  }
+  .no-awards-button-text {
+    width: 100%;
+    text-wrap: wrap;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 994px) {
+  .m-right-24 {
+    margin-right: 0px;
+  }
+  .border-white-box {
+    position: relative;
+    margin-right: 0px;
+  }
+}

@@ -1,0 +1,129 @@
+@import "../../../../styles.scss";
+
+.view-edit-btn {
+  border-radius: 4px;
+  color: $violet !important;
+  font-size: $font-14;
+  font-weight: 500;
+  padding: 4px 8px;
+  font-family: "Nunito Sans", sans-serif !important;
+}
+
+.requested-leave-btn {
+  border: 1px solid $dark-grey-l2;
+  border-radius: $size-8;
+  height: 40px;
+  color: $dark-blue;
+  font-size: 0.875rem;
+  line-height: inherit;
+  mat-icon {
+    margin-right: $size-4;
+    font-size: $font-20;
+    display: flex;
+    align-items: center;
+    color: $dark-grey;
+  }
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  background: unset;
+
+  overflow: auto;
+  max-height: 500px;
+
+  td {
+    background: $white;
+    font-size: $font-14;
+    color: $dark-blue;
+    font-family: "Nunito Sans", sans-serif !important;
+    padding-top: 12px;
+  }
+
+  th {
+    background: $white;
+    color: $dark-grey;
+    font-family: "Nunito Sans", sans-serif !important;
+  }
+
+  tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+  }
+}
+
+.mat-mdc-row {
+  height: 72px;
+}
+
+/* Hide default sorting icons */
+::ng-deep .mat-sort-header-arrow {
+  visibility: hidden;
+}
+
+::ng-deep .mat-sort-inactive {
+  opacity: 0.4;
+}
+
+// table column width helper for mat-tables
+@for $index from 0 through 200 {
+  $size: $index * 2;
+
+  .table-column-#{$size} {
+    // flex: 0 1 #{$size}#{"px"};
+    min-width: #{$size}#{"px"};
+  }
+}
+
+.skeleton-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 200px;
+  width: 100%;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.Skeleton-table {
+  width: 100%;
+  td {
+    padding-top: $size-24;
+  }
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .m-top-res-8 {
+    margin-top: $size-8;
+  }
+  .leave-responsive-overflow {
+    overflow-y: scroll;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .m-top-res-8 {
+    margin-top: $size-8;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1400px) {
+  .m-top-res-8 {
+    margin-top: $size-8;
+  }
+}

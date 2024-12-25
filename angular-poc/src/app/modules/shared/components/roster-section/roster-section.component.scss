@@ -1,0 +1,86 @@
+@import '../../../../styles.scss';
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 48px;
+  h3 {
+    font-family: AirIndiaVariable !important;
+    color: $dark-blue;
+    font-size: $font-40;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: $size-0;
+  }
+  h5 {
+    color: $dark-grey;
+    font-size: $font-24;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: $size-0;
+  }
+}
+.show-more-less {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    padding: $size-8 $size-16;
+    background: none;
+    border: none;
+    display: flex;
+    gap: $size-4;
+    align-items: center;
+    color: $violet;
+    font-size: $font-14;
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+.no-data-error {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.no-data-text {
+  font-size: 18px;
+  color: $mat-black;
+  font-weight: 700;
+}
+
+.no-data-desc {
+  color: $grey-lighter-2;
+  font-size: $font-14;
+}
+
+.left-img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rs-skeleton-content-block {
+  margin-top: 20px;
+  width: 97%;
+}
+
+.rs-skeleton-white-box {
+  height: 64px; 
+  border-radius: 8px 8px 0 0;
+}
+
+@media (min-width: 350px) and (max-width: 992px) {
+  .m-right-16 {
+    margin-right: $size-0;
+  }
+  .height-mob {
+    min-height: 270px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .m-right-16 {
+    margin-right: $size-16;
+  }
+  .height-mob {
+    min-height: inherit;
+  }
+}

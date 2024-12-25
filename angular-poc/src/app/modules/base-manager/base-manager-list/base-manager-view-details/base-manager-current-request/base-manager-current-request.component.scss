@@ -1,0 +1,664 @@
+@import '../../../../../../styles.scss';
+
+.profile-image {
+  display: contents;
+  img {
+    width: 56px;
+    border-radius: 50%;
+    height: 56px;
+  }
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.captain-name-text {
+  color: $dark-blue;
+  font-size: $font-18;
+  font-weight: 700;
+}
+
+.dot {
+  width: $size-6;
+  height: $size-6;
+  background-color: $medium-plus-grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.profile-text {
+  color: $dark-grey;
+  font-weight: 700;
+  font-size: $font-14;
+  grid-gap: $size-12;
+  display: inline-flex !important;
+  align-items: center;
+}
+
+.location-image-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.grid-gap-base-manager-12 {
+  grid-gap: $size-12;
+}
+
+.grid-gap-base-manager-16 {
+  grid-gap: $size-16;
+}
+
+.border-bottom-base-manager-line {
+  border-top: 1px solid $border-white;
+  padding-bottom: $size-8;
+  margin-bottom: $size-8;
+}
+
+.border-top-base-manager-line {
+  border-bottom: 1px solid $border-white;
+  padding-bottom: $size-8;
+  margin-bottom: $size-8;
+}
+
+.updated-date-text {
+  color: $black-90;
+  font-weight: 700;
+  font-size: $font-14;
+}
+
+.attach-heading {
+  font-size: $font-16;
+  font-weight: 600;
+  color: $dark-blue;
+}
+
+// user profile section
+.location-name {
+  font-family: AirIndiaVariable !important;
+  font-size: $font-14;
+  font-weight: 500;
+  color: $red-title;
+}
+
+.location-date {
+  font-size: $font-12;
+  font-weight: 600;
+  color: $trip-text-grey;
+}
+
+.flight-location-grey-background {
+  background: $light-white-bg;
+  border-radius: $size-8;
+  -webkit-border-radius: $size-8;
+  -moz-border-radius: $size-8;
+  -ms-border-radius: $size-8;
+  -o-border-radius: $size-8;
+  padding-top: $size-8;
+  padding-bottom: $size-8;
+}
+
+// flight section
+.trip-card-padding {
+  padding-left: $size-16;
+  padding-right: $size-16;
+  position: relative;
+  .duration-info-acm {
+    span {
+      background: $light-yellow;
+      font-family: 'Nunito Sans', sans-serif !important;
+      font-size: $font-10;
+      font-weight: 600;
+      text-align: center;
+      padding: 4px 12px;
+      border-radius: $size-36;
+      -webkit-border-radius: $size-36;
+      -moz-border-radius: $size-36;
+      -ms-border-radius: $size-36;
+      -o-border-radius: $size-36;
+      z-index: 2;
+      margin: auto 0;
+      display: flex;
+      align-items: center;
+      color: $black;
+      top: 0px;
+    }
+    &::after {
+      content: '';
+      border: 1px dashed $grey-ligter;
+      display: flex;
+      width: 68%;
+      position: absolute;
+      text-align: center;
+      justify-content: center;
+      left: 0;
+      right: 0;
+      margin: -12px auto;
+      z-index: 1;
+    }
+  }
+}
+
+.location-with-stop-second {
+  align-items: center;
+  div {
+    font-family: AirIndiaVariable !important;
+    font-size: $font-12;
+    font-weight: 500;
+    color: $red;
+    &:nth-child(2) {
+      font-family: 'Nunito Sans', sans-serif !important;
+      font-size: $font-10;
+      font-weight: 600;
+      text-align: center;
+      color: $grey-blue;
+      line-height: 0;
+    }
+  }
+}
+
+.time-card {
+  line-height: 28px;
+  p {
+    font-family: AirIndiaVariable !important;
+    font-size: $font-18;
+    font-weight: 600;
+    color: $black;
+    line-height: 1;
+    margin-top: 4px;
+    &:nth-child(2) {
+      font-size: $font-12;
+      font-weight: 400;
+      color: $trip-text-grey;
+      font-family: 'Nunito Sans', sans-serif !important;
+    }
+  }
+}
+
+.flight-location-grey-background {
+  background: $light-white-bg;
+  border-radius: $size-8;
+  -webkit-border-radius: $size-8;
+  -moz-border-radius: $size-8;
+  -ms-border-radius: $size-8;
+  -o-border-radius: $size-8;
+  padding: 8px 16px;
+}
+
+.base-manager-tag {
+  padding: 8px 24px;
+  &.green-tag {
+    background: $lightest-green;
+    width: fit-content;
+    border-radius: 8px 0px 8px 0px;
+    -webkit-border-radius: 8px 0px 8px 0px;
+    -moz-border-radius: 8px 0px 8px 0px;
+    -ms-border-radius: 8px 0px 8px 0px;
+    -o-border-radius: 8px 0px 8px 0px;
+    p {
+      font-size: $font-10;
+      font-weight: 600;
+      line-height: 14px;
+      color: $green-ribbon;
+    }
+  }
+  &.alternate-tag {
+    background: $light-blue;
+    width: fit-content;
+    border-radius: 8px 0px 8px 0px;
+    -webkit-border-radius: 8px 0px 8px 0px;
+    -moz-border-radius: 8px 0px 8px 0px;
+    -ms-border-radius: 8px 0px 8px 0px;
+    -o-border-radius: 8px 0px 8px 0px;
+    p {
+      font-size: $font-10;
+      font-weight: 600;
+      line-height: 14px;
+      color: $lightest-blue-10;
+    }
+  }
+}
+
+// attachment
+.icon-violet {
+  color: $violet;
+}
+
+.file-upload-wrapper {
+  display: inline-block;
+}
+
+.file-upload-border {
+  display: inline-flex;
+  padding: $size-8;
+  border-radius: $size-4;
+  border: 1px solid $lighter-grey;
+  background: $off-white;
+  -webkit-border-radius: $size-4;
+  -moz-border-radius: $size-4;
+  -ms-border-radius: $size-4;
+  -o-border-radius: $size-4;
+
+  .file-upload-name {
+    font-family: 'Nunito Sans', sans-serif !important;
+    color: $violet;
+    font-size: $font-14;
+    font-weight: 500;
+  }
+  mat-icon {
+    font-size: $font-16;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.file-upload-view-btn {
+  background: $border-white;
+  border: 0px solid $border-white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.ellipsis-label-30 {
+  width: 260px;
+}
+
+.attach-view-icon-label {
+  width: auto;
+  font-weight: 500;
+  font-size: $font-12;
+  color: $violet;
+}
+
+.left-column {
+  border-left: 1px solid $lighter-grey;
+}
+
+.hide-desk {
+  display: none !important;
+}
+
+// No attachment section
+.error-details-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-box {
+  text-align: center;
+  max-width: 600px;
+}
+
+.error-title {
+  color: $mat-black;
+  font-size: $font-24;
+  font-weight: 700;
+  font-family: AirIndiaVariable;
+}
+
+// comment
+.comment-label {
+  color: $dark-blue;
+  font-size: $font-16;
+  font-weight: 600;
+}
+
+.comment-field {
+  width: 100%;
+}
+
+::ng-deep .comment-field .mat-form-field-ripple {
+  background-color: unset;
+  height: 1px !important;
+}
+
+.base-manager-tag {
+  padding: 8px 16px;
+  &.green-tag {
+    background: $lightest-green;
+    width: fit-content;
+    border-radius: 8px 0px 8px 0px;
+    -webkit-border-radius: 8px 0px 8px 0px;
+    -moz-border-radius: 8px 0px 8px 0px;
+    -ms-border-radius: 8px 0px 8px 0px;
+    -o-border-radius: 8px 0px 8px 0px;
+    font-size: $font-10;
+    font-weight: 600;
+    line-height: 14px;
+    color: $approved-green;
+  }
+  &.rejected-tag {
+    background: $lavender-blush;
+    width: fit-content;
+    border-radius: 8px 0px 8px 0px;
+    -webkit-border-radius: 8px 0px 8px 0px;
+    -moz-border-radius: 8px 0px 8px 0px;
+    -ms-border-radius: 8px 0px 8px 0px;
+    -o-border-radius: 8px 0px 8px 0px;
+    font-size: $font-10;
+    font-weight: 600;
+    line-height: 14px;
+    color: $dark-red;
+  }
+
+  &.extra-border-radius {
+    border-radius: $size-8;
+    -webkit-border-radius: $size-8;
+    -moz-border-radius: $size-8;
+    -ms-border-radius: $size-8;
+    -o-border-radius: $size-8;
+    font-size: $font-16;
+  }
+}
+
+.over-ride-text-area-bm {
+  ::ng-deep {
+    .mat-form-field-appearance-fill .mat-form-field-underline::before {
+      background-color: $border-comment;
+      transition: all 1s linear;
+      -webkit-transition: all 1s linear;
+      -moz-transition: all 1s linear;
+      -ms-transition: all 1s linear;
+      -o-transition: all 1s linear;
+    }
+  }
+}
+
+// skeleton
+.skeleton-flight-details-display {
+  display: flex;
+}
+.skeleton-flight-common-block1 {
+  margin-right: 8px;
+}
+.skeleton-profile-details-block1 {
+  width: 334px;
+}
+.skeleton-profile-details-block2 {
+  width: 317px;
+}
+
+.skeleton-attach-heading {
+  width: 94px;
+}
+
+.skeleton-attach-file-wrapper {
+  width: 285px;
+}
+.skeleton-attach-file-view {
+  width: 101px;
+}
+.skeleton-comment-heading {
+  width: 165px;
+}
+.skeleton-btn {
+  width: 89px;
+}
+
+// media query
+@media (min-width: 350px) and (max-width: 768px) {
+  .file-upload-border {
+    width: 100%;
+    height: $size-40;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+
+  // flight section
+  .location-with-stop-second {
+    &::after {
+      width: 60%;
+    }
+  }
+  .trip-card-padding {
+    .duration-info-acm {
+      &::after {
+        width: 44%;
+      }
+    }
+  }
+
+  .flight-location-grey-background {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  .time-card {
+    p {
+      font-size: $font-12;
+      padding-bottom: 4px;
+
+      &:nth-child(2) {
+        font-size: $font-10;
+      }
+    }
+  }
+  .res-border-bottom-8-just {
+    border-bottom: 1px solid $lighter-grey;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  .res-margin-16 {
+    margin-bottom: 16px;
+  }
+  .left-column {
+    border-left: 0px solid $lighter-grey;
+  }
+  .attach-view-icon-label {
+    display: none;
+  }
+  .m-right-8 {
+    margin-right: 0 !important;
+  }
+  .ellipsis-label-30 {
+    width: 170px;
+  }
+  .m-bottom-12-res-bm {
+    margin-bottom: 12px !important;
+  }
+  .profile-image {
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  .captain-name-text {
+    font-size: $font-14;
+  }
+  .profile-text {
+    font-size: $font-10;
+  }
+  .d-none-m {
+    display: none !important;
+  }
+  .d-show-m {
+    display: block !important;
+  }
+  .grid-gap-base-manager-12 {
+    grid-gap: 5px;
+  }
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+  .margin-top-8-res-btn {
+    margin-top: $size-8;
+  }
+  .trip-card-padding {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  mat-radio-button {
+    margin-right: 8px;
+  }
+
+  // skeleton
+  .skeleton-flight-details-display {
+    display: block;
+    margin-top: 24px;
+  }
+  .skeleton-flight-common-block1 {
+    margin-right: 0;
+  }
+  .skeleton-flight-common-block2 {
+    margin-top: 16px;
+  }
+  .skeleton-profile-details-block1 {
+    width: 136px;
+  }
+  .skeleton-profile-details-block2 {
+    width: 205px;
+  }
+
+  .skeleton-attach-heading {
+    width: 169px;
+  }
+  .skeleton-attach-file-wrapper {
+    width: 210px;
+  }
+  .skeleton-attach-file-view {
+    width: 40px;
+    height: 56px;
+  }
+  .skeleton-comment-heading {
+    width: 80px;
+  }
+  .skeleton-btn {
+    width: 156px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .file-upload-border {
+    width: 100%;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+
+  .location-with-stop-second {
+    &::after {
+      width: 84%;
+    }
+  }
+
+  .trip-card-padding {
+    .duration-info-acm {
+      &::after {
+        width: 54%;
+      }
+    }
+  }
+
+  .ellipsis-label-30 {
+    width: 120px;
+  }
+
+  .flight-location-grey-background {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  .res-border-bottom-8-just {
+    border-bottom: 1px solid $lighter-grey;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  .res-margin-16 {
+    margin-bottom: 16px;
+  }
+  .left-column {
+    border-left: 0px solid $lighter-grey;
+  }
+  .attach-view-icon-label {
+    display: none;
+  }
+  .m-right-8 {
+    margin-right: 0 !important;
+  }
+  .d-none-m {
+    display: none !important;
+  }
+  .d-show-m {
+    display: block !important;
+  }
+  .margin-top-8-res-btn {
+    margin-top: $size-8;
+  }
+
+  // skeleton
+  .skeleton-flight-details-display {
+    margin-top: 24px;
+    display: block;
+  }
+  .skeleton-flight-common-block2 {
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+
+  .location-with-stop-second {
+    &::after {
+      width: 74%;
+    }
+  }
+  .trip-card-padding {
+    .duration-info-acm {
+      &::after {
+        width: 54%;
+      }
+    }
+  }
+
+  .flight-location-grey-background {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 1199px) and (max-width: 1300px) {
+  .location-with-stop-second {
+    &::after {
+      width: 64%;
+    }
+  }
+  .trip-card-padding {
+    .duration-info-acm {
+      &::after {
+        width: 64%;
+      }
+    }
+  }
+  .flight-location-grey-background {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 1299px) and (max-width: 1400px) {
+  .location-with-stop-second {
+    &::after {
+      width: 84%;
+    }
+  }
+  .trip-card-padding {
+    .duration-info-acm {
+      &::after {
+        width: 64%;
+      }
+    }
+  }
+}

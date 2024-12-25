@@ -1,0 +1,528 @@
+<ng-container *ngIf="isDataLoaded; else showSkeleton">
+  <div class="container-fluid" *ngIf="formIsCreated">
+    <!-- heading -->
+    <div class="row">
+      <div class="col-12 d-flex light-grey-border-bottom p-bottom-16">
+        <!-- title -->
+        <div class="col-6">
+          <h2 class="heading-pop">
+            {{
+              isFormDisabled
+                ? dialogViewEditLabels?.labelDialogView
+                : dialogViewEditLabels?.labelDialogViewEdit
+            }}
+          </h2>
+        </div>
+        <!-- close button -->
+        <div class="col-6 d-flex justify-content-end">
+          <button mat-dialog-close mat-icon-button>
+            <mat-icon class="material-symbols-rounded" fontIcon="close">{{
+              newRequestLabels?.iconClose
+            }}</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="viewEditDialog" class="view-edit-form-container">
+      <div class="row m-top-24">
+        <!-- Rule errors -->
+        <!-- Rule errors -->
+        <div
+          *ngIf="
+            apiErrors.length > 0 ||
+            documentMandatoryError ||
+            documentSizeOrTypeError ||
+            doubleFileExtensionError ||
+            approvedPendingLeaveCancellationError
+          "
+          class="m-bottom-16"
+        >
+          <app-common-error-message-bar
+            [errorMessagesList]="apiErrors"
+          ></app-common-error-message-bar>
+          <app-common-error-message-bar
+            *ngIf="documentMandatoryError"
+            [errorMessage]="newRequestLabels?.labelMandatoryDocumentErrorMsg"
+          ></app-common-error-message-bar>
+          <app-common-error-message-bar
+            *ngIf="documentSizeOrTypeError"
+            [errorMessage]="
+              newRequestLabels?.labelWrongDocumentTypeOrSizeErrorMsg
+            "
+          ></app-common-error-message-bar>
+          <app-common-error-message-bar
+            *ngIf="doubleFileExtensionError"
+            [errorMessage]="newRequestLabels?.labelDoubleFileExtensionErrorMsg"
+          ></app-common-error-message-bar>
+          <app-common-error-message-bar
+            *ngIf="approvedPendingLeaveCancellationError"
+            [errorMessage]="
+              newRequestLabels?.labelApprovedPendingLeaveCancellationErrorMsg
+            "
+          ></app-common-error-message-bar>
+        </div>
+
+        <form class="view-edit-leave-form" [formGroup]="editLeaveForm">
+          <div
+            *ngIf="
+              (isRejectedLeaveDialogOpen || isApprovedLeaveDialogOpen) &&
+              managerCommentOnRejectedLeave
+            "
+            class="leave-comment-container m-bottom-16"
+          >
+            <div class="m-bottom-12">
+              <span class="approver-text">{{
+                newRequestLabels.labelApproverComment
+              }}</span>
+            </div>
+            <mat-form-field
+              appearance="fill"
+              class="example-full-width leave-comment-field rejected-leave-reason"
+            >
+              <textarea
+                matInput
+                matTextareaAutosize
+                rows="2"
+                formControlName="managerLeaveRejectedReason"
+              ></textarea>
+            </mat-form-field>
+          </div>
+          <!-- 1 -->
+          <div class="col-12 p-0 d-xxl-flex d-xl-flex">
+            <div class="col-xl-6 col-sm-12 p-right-16">
+              <app-common-dropdown
+                [selectInputName]="newRequestLabels?.labelLeaveType"
+                [selectInputOptions]="leaveTypesOptionArray"
+                [customFormGroup]="editLeaveForm"
+                [customFormControlName]="'leaveType'"
+                (selectValueChanged)="selectValueChange($event)"
+                class="m-right-16"
+              >
+              </app-common-dropdown>
+            </div>
+            <div
+              *ngIf="showLeaveBalanceField && editLeaveForm?.value?.leaveType"
+              class="col-xl-6 col-sm-12"
+            >
+              <p class="duration-text">
+                {{
+                  leaveBalanceDynamicTitle +
+                    " " +
+                    newRequestLabels?.labelLeaveBalance
+                }}<br /><span class="day-font-number"
+                  >{{ leaveBalance }}
+                  <span class="day-text"
+                    >{{ newRequestLabels?.labelDays }}
+                  </span></span
+                >
+              </p>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="col-12 p-0 d-xxl-flex d-xl-flex">
+            <!-- calendar start date -->
+            <div class="col-xxl-6 col-xl-6 col-sm-12 p-right-16">
+              <app-common-calendar
+                class="m-right-24"
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelStartDate"
+                [customFormControlName]="'startDate'"
+                (dateValueChanged)="dateValueChange()"
+              >
+              </app-common-calendar>
+            </div>
+            <!-- calendar end date -->
+            <div class="col-xxl-6 col-xl-6 col-sm-12">
+              <app-common-calendar
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelEndDate"
+                [customFormControlName]="'endDate'"
+                (dateValueChanged)="dateValueChange()"
+              ></app-common-calendar>
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="col-12 p-0 d-xxl-flex d-xl-flex">
+            <!-- leave duration + returning to work -->
+            <!-- left side -->
+            <div class="col-xxl-6 col-xl-6 col-sm-12 p-right-16 m-bottom-24">
+              <div
+                *ngIf="
+                  this.editLeaveForm.value?.leaveType ===
+                    this.leaveTypesCode?.casualLeave &&
+                    (editLeaveForm.value?.leaveDuration === 1 ||
+                      editLeaveForm.value?.leaveDuration === 0.5);
+                  else elseBlock
+                "
+              >
+                <app-common-dropdown
+                  [selectInputName]="newRequestLabels?.labelLeaveDuration"
+                  [selectInputOptions]="fractionQuantityOptionArray"
+                  [customFormGroup]="editLeaveForm"
+                  [customFormControlName]="'fractionQuantity'"
+                  (selectValueChanged)="onFractionalQuantityChange()"
+                  class="m-right-16"
+                ></app-common-dropdown>
+              </div>
+
+              <ng-template #elseBlock>
+                <div class="">
+                  <p class="duration-text border-bottom-1">
+                    {{ newRequestLabels?.labelLeaveDuration }}<br /><span
+                      class="day-font-number"
+                    >
+                      {{
+                        editLeaveForm.get("leaveDuration").value
+                          ? editLeaveForm.get("leaveDuration").value
+                          : 0
+                      }}
+                      <span class="day-text"
+                        >{{ newRequestLabels?.labelDays }}
+                      </span></span
+                    >
+                  </p>
+                </div>
+              </ng-template>
+            </div>
+
+            <!-- right side -->
+            <div
+              *ngIf="
+                editLeaveForm?.value?.fractionQuantity !==
+                fractionQuantityOptionArray[0]?.value
+              "
+              class="col-xxl-6 col-xl-6 col-sm-12 m-bottom-32"
+            >
+              <p class="duration-text">
+                {{ newRequestLabels?.labelReturningToWork }}<br /><span
+                  class="day-font-number"
+                  >{{
+                    getReturningDateInFormat(
+                      editLeaveForm?.value?.returningToWorkDate
+                    )
+                  }}</span
+                >
+              </p>
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="col-12 p-0 d-xxl-flex d-xl-flex m-bottom-16">
+            <div
+              *ngIf="showDateOfDelivery()"
+              class="col-xl-6 col-sm-12 p-right-16"
+            >
+              <app-common-calendar
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelDateOfDelivery"
+                [customFormControlName]="'dateOfDelivery'"
+              ></app-common-calendar>
+            </div>
+            <div
+              *ngIf="isLeaveAdoption()"
+              class="col-xl-6 col-sm-12 p-right-16"
+            >
+              <!-- Employee's child age -->
+              <app-common-dropdown
+                [selectInputName]="newRequestLabels?.labelEmployeeChildAge"
+                [selectInputOptions]="employeeChildAgeOptionsArray"
+                [customFormGroup]="editLeaveForm"
+                [customFormControlName]="'employeeChildAge'"
+              ></app-common-dropdown>
+            </div>
+            <div
+              *ngIf="showActualOrExpectedDateOfChild()"
+              class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+            >
+              <app-common-calendar
+                [isrequired]="true"
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="
+                  newRequestLabels?.labelExpectedOrActualDateOfChildBirth
+                "
+                [customFormControlName]="'expectedOrActualDateOfChildBirth'"
+              ></app-common-calendar>
+            </div>
+            <div
+              *ngIf="showDateOfRelocation()"
+              class="col-xl-6 col-sm-12 p-right-16"
+            >
+              <app-common-calendar
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelDateOfRelocation"
+                [customFormControlName]="'dateOfRelocation'"
+              ></app-common-calendar>
+            </div>
+            <div
+              *ngIf="showExpectedDateOfChild()"
+              class="col-xl-6 col-sm-12 p-right-16"
+            >
+              <app-common-calendar
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelExpectedDateOfChild"
+                [customFormControlName]="'expectedDateOfDelivery'"
+              ></app-common-calendar>
+            </div>
+
+            <div
+              *ngIf="showDateOfCompoff()"
+              class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+            >
+              <app-common-calendar
+                [isrequired]="true"
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelCompoffDate"
+                [customFormControlName]="'compoffDate'"
+              ></app-common-calendar>
+            </div>
+
+            <div
+              *ngIf="showDateOfMiscarriage()"
+              class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+            >
+              <app-common-calendar
+                [isrequired]="true"
+                [applyLeaveForm]="editLeaveForm"
+                [calenderTitle]="newRequestLabels?.labelMiscarriageDate"
+                [customFormControlName]="'miscarriageMedicalDate'"
+              ></app-common-calendar>
+            </div>
+          </div>
+          <!-- 5 leave a comment -->
+          <div class="leave-comment-container m-bottom-16">
+            <mat-form-field
+              appearance="fill"
+              class="example-full-width leave-comment-field"
+            >
+              <mat-label>{{ newRequestLabels?.labelLeaveReason }}</mat-label>
+              <textarea
+                matInput
+                #leaveReasonMessage
+                matTextareaAutosize
+                formControlName="leaveReason"
+                [maxlength]="newRequestLabels?.maxCharLengthLeaveReason"
+                [placeholder]="newRequestLabels?.labelLeaveReasonPlaceholder"
+              ></textarea>
+              <mat-hint
+                >{{ leaveReasonMessage?.value?.length }} /
+                {{ newRequestLabels?.maxCharLengthLeaveReason }}</mat-hint
+              >
+            </mat-form-field>
+          </div>
+          <!-- 6 -->
+          <div class="col-12 p-0 d-xxl-flex d-xl-flex m-bottom-16">
+            <div class="col-xxl-6 col-xl-6 col-sm-12 p-right-16">
+              <h6>
+                {{ dialogViewEditLabels?.labelApprovalStatus }}
+              </h6>
+              <p
+                class="approval-status-pending"
+                *ngIf="
+                  editLeaveForm?.value?.approvalStatus ===
+                  approvalStatusOptions.pending
+                "
+              >
+                {{
+                  approvalStatusConstant[editLeaveForm?.value?.approvalStatus]
+                }}
+              </p>
+              <p
+                class="approval-status-pending"
+                *ngIf="
+                  editLeaveForm?.value?.approvalStatus ===
+                  approvalStatusOptions.pendingCancellation
+                "
+              >
+                {{
+                  approvalStatusConstant[editLeaveForm?.value?.approvalStatus]
+                }}
+              </p>
+              <p
+                class="approval-status-approved"
+                *ngIf="
+                  editLeaveForm?.value?.approvalStatus ===
+                  approvalStatusOptions.approved
+                "
+              >
+                {{
+                  approvalStatusConstant[editLeaveForm?.value?.approvalStatus]
+                }}
+              </p>
+              <p
+                class="approval-status-rejected"
+                *ngIf="
+                  editLeaveForm?.value?.approvalStatus ===
+                  approvalStatusOptions.rejected
+                "
+              >
+                {{
+                  approvalStatusConstant[editLeaveForm?.value?.approvalStatus]
+                }}
+              </p>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-sm-12">
+              <h6>
+                {{ dialogViewEditLabels?.labelCreatedOn }}
+              </h6>
+              <p>
+                {{ getReturningDateInFormat(editLeaveForm?.value?.createdOn) }}
+              </p>
+            </div>
+          </div>
+          <!-- 7 Upload document -->
+          <div class="col-12 p-0">
+            <!-- upload file name -->
+            <div class="col-12">
+              <div
+                class="selected-document-info"
+                *ngIf="showFileUploader !== true"
+              >
+                <div>
+                  <h6 class="m-bottom-8">
+                    {{ dialogViewEditLabels?.labelUploadedDocuments }}
+                  </h6>
+                </div>
+                <div class="d-xl-flex d-lg-flex d-md-flex">
+                  <!-- upload bar -->
+                  <div
+                    class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 extra-margin-bottom-8"
+                  >
+                    <div
+                      class="mobile-responsive-with-upload file-upload-border d-flex align-items-center"
+                    >
+                      <span class="icon-violet d-flex m-right-8"
+                        ><mat-icon class="material-symbols-rounded">{{
+                          newRequestLabels?.iconArticle
+                        }}</mat-icon></span
+                      >
+                      <span
+                        class="ellipsis-label-30 file-upload-name m-right-8"
+                        >{{ selectedUploadDocument["name"] }}</span
+                      >
+                    </div>
+                  </div>
+                  <!-- view edit button -->
+                  <div
+                    class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-xl-flex d-lg-flex d-md-flex justify-content-end"
+                  >
+                    <!-- first button -->
+                    <div
+                      *ngIf="!isFormDisabled"
+                      class="file-upload-border extra-margin-bottom-8 justify-content-center file-upload-delete-btn m-right-16 file-upload-delete-btn d-flex align-items-center cursor-pointer"
+                      (click)="onClickOfRemoveDocument()"
+                    >
+                      <!-- *ngIf="!isPendingCancelDisabled" -->
+                      <span class="icon-violet d-flex m-right-8"
+                        ><mat-icon class="material-symbols-rounded"
+                          >delete</mat-icon
+                        ></span
+                      >
+                      <span class="file-upload-name m-right-8">Delete</span>
+                    </div>
+                    <!-- second button -->
+                    <div
+                      class="file-upload-border extra-margin-bottom-8 justify-content-center file-upload-view-btn d-flex align-items-center cursor-pointer"
+                      (click)="viewDocument()"
+                    >
+                      <span class="icon-violet d-flex m-right-8">
+                        <mat-icon class="material-symbols-rounded">
+                          {{ newRequestLabels.iconView }}
+                        </mat-icon>
+                      </span>
+
+                      <span class="file-upload-name m-right-8">
+                        {{ newRequestLabels.labelView }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- upload region -->
+            <div class="col-12">
+              <div
+                aria-disabled="true"
+                *ngIf="showFileUploader === true && !isFormDisabled"
+              >
+                <app-common-file-uploader
+                  (selectedDocument)="selectedDocument($event)"
+                  (sizeOrTypeError)="onSizeOrTypeErrorInSelectDocument($event)"
+                  (doubleFileExtensionError)="
+                    onDoubleFileExtensionErrorInSelectDocument($event)
+                  "
+                  (removeDocument)="onClickOfRemoveDocument()"
+                  [isAttachmentFileUploaded]="isAttachmentFileUploaded"
+                  [uploadDocumentLabels]="uploadDocumentLabels"
+                ></app-common-file-uploader>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- button -->
+        <div
+          *ngIf="!isFormDisabled"
+          class="d-xxl-flex d-xl-flex d-lg-flex d-md-flex justify-content-between m-top-24"
+        >
+          <div class="text-start">
+            <button
+              class="button text-red"
+              (click)="deleteLeaveRequest()"
+              mat-stroked-button
+              [disabled]="isFormDisabled || !isWithinFinancialYear"
+              [class.opacity-25]="isFormDisabled"
+            >
+              <mat-icon>
+                {{ dialogViewEditLabels.iconDelete }}
+              </mat-icon>
+
+              {{ dialogViewEditLabels.btnDeleteLeave }}
+            </button>
+          </div>
+          <!-- button submit + cancel -->
+          <div class="text-end">
+            <button
+              class="button primary-stroke-red m-right-16"
+              mat-stroked-button
+              mat-dialog-close
+              color="accent"
+              (click)="onCancelEditButtonClick()"
+            >
+              {{
+                pendingCancellationData || !isWithinFinancialYear
+                  ? dialogDeleteLeaveLabels?.btnCancel
+                  : dialogViewEditLabels?.btnCancelEdit
+              }}
+            </button>
+
+            <button
+              class="button primary-solid-red m-top-res-8"
+              mat-flat-button
+              *ngIf="!checkValidation() && isFormChanged"
+              color="accent"
+              (click)="onEditLeaveFormSubmit()"
+              [disabled]="isFormDisabled"
+            >
+              {{ dialogViewEditLabels?.btnSave }}
+              <div *ngIf="isLoadingOnLeaveSubmit" class="uploader-status">
+                <mat-spinner diameter="20"></mat-spinner>
+              </div>
+            </button>
+            <button
+              mat-flat-button
+              *ngIf="checkValidation() || !isFormChanged"
+              class="button"
+              [disabled]="isFormDisabled"
+            >
+              {{ dialogViewEditLabels?.btnSave }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #showSkeleton>
+  <div class="d-flex justify-content-center align-item-center">
+    <app-loaders class="loader-block"></app-loaders>
+  </div>
+</ng-template>

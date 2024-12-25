@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="myAI Home"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <bannerLabels
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Banner Labels"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Banner Lables"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <defaultimagepath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="bannerImage"
+                                                name="./bannerImage"/>
+                                            <defualtimagealttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="bannerImageAltText"
+                                                name="./bannerImageAltText"/>
+                                            <defaulttitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Default Title"
+                                                name="./bannerTitle"/>
+                                            <defaultdesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Default Description"
+                                                name="./bannerDesc"/>
+                                            <defaultctatitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Default CTA Title"
+                                                name="./bannerCtaText"/>
+                                            <defaultctapath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Default CTA Path"
+                                                name="./bannerCtaPath"/>
+                                            <bannerCtaBgColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="bannerCtaBgColor"
+                                                name="./bannerCtaBgColor"/>
+                                            <defaulttitleColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Default Title Color"
+                                                name="./bannerTitleColor"/>
+                                            <bannerDescColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="bannerDescColor"
+                                                name="./bannerDescColor"/>
+                                            <bannerCtaTextColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="bannerCtaTextColor"
+                                                name="./bannerCtaTextColor"/>
+                                            <salutationPersona-data
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldLabel="Salutation Persona Data">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./salutationPersonaData">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <salutation-persona
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="persona"
+                                                                    name="./salutationPersona"/>
+                                                                <salutation-text
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Salutation Text">
+                                                                    <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./salutationText">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <morning
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Good Morning"
+                                                                                        name="./goodMorning"/>
+                                                                                    <afternoon
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Good Afternoon"
+                                                                                        name="./goodAfternoon"/>
+                                                                                    <evening
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Good Evening"
+                                                                                        name="./goodEvening"/>
+                                                                                </items>
+                                                                            </column>
+                                                                        </items>
+                                                                    </field>
+                                                                </salutation-text>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </salutationPersona-data>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </bannerLabels>
+                            <quickActionLabels
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Quick Action Labels"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Quick Action Labels"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./title"/>
+                                            <quickAction
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Provide the path to content fragment for Quick Action Path."
+                                                fieldLabel="Quick Action"
+                                                name="./quickAction"/>
+                                            <personalizedNav
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Personalized Nav"
+                                                name="./personalizedNav"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </quickActionLabels>
+                            <myBoardLabels
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title=" My Board Labels"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="My Board Labels"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <boardtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Board Title"
+                                                name="./boardTitle"/>
+                                            <errorText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error Text"
+                                                name="./errorText"/>
+                                            <persona-data
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldLabel="Persona Data">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./personaData">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <persona
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="persona"
+                                                                    name="./persona"/>
+                                                                <cards
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Cards">
+                                                                    <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./cards">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <id
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="ID"
+                                                                                        name="./id"/>
+                                                                                    <title
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Title"
+                                                                                        name="./title"/>
+                                                                                    <unitColor
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Unit Color"
+                                                                                        name="./unitColor"/>
+                                                                                    <unitArray
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                                        composite="{Boolean}true"
+                                                                                        fieldLabel="Unit Array">
+                                                                                        <field
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                                            name="./unitArray">
+                                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                                <column
+                                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                                                        <key
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                            fieldLabel="Key"
+                                                                                                            name="./key"/>
+                                                                                                    </items>
+                                                                                                </column>
+                                                                                            </items>
+                                                                                        </field>
+                                                                                    </unitArray>
+                                                                                    <subTitle
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="subTitle"
+                                                                                        name="./subTitle"/>
+                                                                                    <cardcolor
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Cardcolor"
+                                                                                        name="./cardcolor"/>
+                                                                                    <icon
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Icon"
+                                                                                        name="./icon"/>
+                                                                                    <gradient1Color
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="gradient1Color"
+                                                                                        name="./gradient1Color"/>
+                                                                                    <gradient2Color
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="gradient2Color"
+                                                                                        name="./gradient2Color"/>
+                                                                                    <gradient3Color
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="gradient3Color"
+                                                                                        name="./gradient3Color"/>
+                                                                                    <gradient4Color
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="gradient4Color"
+                                                                                        name="./gradient4Color"/>
+                                                                                    <infoText
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="InfoText"
+                                                                                        name="./infoText"/>
+                                                                                    <infoTextTooltip
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="infoTextTooltip"
+                                                                                        name="./infoTextTooltip"/>
+                                                                                    <infoIcon
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="infoIcon"
+                                                                                        name="./infoIcon"/>
+                                                                                    <zeroDataSubtitle
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="zeroDataSubtitle"
+                                                                                        name="./zeroDataSubtitle"/>
+                                                                                    <zeroDataInfoText
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="zeroDataInfoText"
+                                                                                        name="./zeroDataInfoText"/>
+                                                                                    <dataUnit
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="dataUnit"
+                                                                                        name="./dataUnit"/>
+                                                                                    <dataUnitMins
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Data Unit Minutes"
+                                                                                        name="./dataUnitMins"/>
+                                                                                    <dataUnitHours
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Data Unit Hours"
+                                                                                        name="./dataUnitHrs"/>
+                                                                                </items>
+                                                                            </column>
+                                                                        </items>
+                                                                    </field>
+                                                                </cards>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </persona-data>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </myBoardLabels>
+                            <awardsAndAppreciationsLabels
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Awards And Appreciations Labels"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Awards And Appreciations Labels"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./awardtitle"/>
+                                            <ctaText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CTA Text"
+                                                name="./ctaText"/>
+                                            <noDataTextAward
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No Data Text"
+                                                name="./noDataTextAward"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </awardsAndAppreciationsLabels>
+                            <upcomingLabels
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Upcoming Labels"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Upcoming Labels"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./upcomingTitle"/>
+                                            <btnText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="BTN Text"
+                                                name="./btnText"/>
+                                            <learningCalendarListName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Learning CalendarList Name"
+                                                name="./learningCalendarListName"/>
+                                            <learningCalendarListSummary
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Learning CalendarList Summary"
+                                                name="./learningCalendarListSummary"/>
+                                            <learningCalendarListDuration
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Learning CalendarList Duration"
+                                                name="./learningCalendarListDuration"/>
+                                            <learningCalendarListIcon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Learning CalendarList Icon"
+                                                name="./learningCalendarListIcon"/>
+                                            <learningCalendarListIconColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="learningCalendarListIconColor"
+                                                name="./learningCalendarListIconColor"/>
+                                            <learningCalendarListIconBgColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="learningCalendarListIconBgColor"
+                                                name="./learningCalendarListIconBgColor"/>
+                                            <learningCalendarIsExternal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                defaultChecked="{Boolean}false"
+                                                fieldLabel="isExternal(Learning Calender)"
+                                                name="./learningCalendarIsExternal"
+                                                text="isExternal(Learning Calender)"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <learningCalendarExternalLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="learningCalendarExternalLink"
+                                                name="./learningCalendarExternalLink"/>
+                                            <learningCalendarMobileExternalLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="learningCalendarMobileExternalLink"
+                                                name="./learningCalendarMobileExternalLink"/>
+                                            <learningCalendarCriticality
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="learningCalendarCriticality"
+                                                name="./learningCalendarCriticality"/>
+                                            <noDataDesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="NoDataDesc"
+                                                name="./noDataDesc"/>
+                                            <viewMoreIcon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="ViewMoreIcon"
+                                                name="./viewMoreIcon"/>
+                                            <closeIcon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CloseIcon"
+                                                name="./closeIcon"/>
+                                            <noDataTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="noDataTitle"
+                                                name="./noDataTitle"/>
+                                            <holidaysListDuration
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="holidaysListDuration"
+                                                name="./holidaysListDuration"/>
+                                            <holidaysListIcon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="holidaysListIcon "
+                                                name="./holidaysListIcon"/>
+                                            <holidaysListIconColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Holidays List Icon Color"
+                                                name="./holidaysListIconColor"/>
+                                            <holidaysListIconBgColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Holiday List Icon Bg Color"
+                                                name="./holidaysListBgColor"/>
+                                            <holidaysListIsExternal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                defaultChecked="{Boolean}false"
+                                                fieldLabel="isExternal (Holidays List)"
+                                                name="./holidaysListIsExternal"
+                                                text="isExternal (Holidays List)"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <holidaysListExternalLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="holidaysListExternalLink"
+                                                name="./holidaysListExternalLink"/>
+                                            <holidaysListCriticality
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="holidaysListCriticality"
+                                                name="./holidaysListCriticality"/>
+                                            <teamBirthdaysTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysTitle"
+                                                name="./teamBirthdaysTitle"/>
+                                            <teamBirthdaysDuration
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysDuration"
+                                                name="./teamBirthdaysDuration"/>
+                                            <teamBirthdaysIcon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysIcon"
+                                                name="./teamBirthdaysIcon"/>
+                                            <teamBirthdaysIconColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysIconColor"
+                                                name="./teamBirthdaysIconColor"/>
+                                            <teamBirthdaysIconBgColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysIconBgColor"
+                                                name="./teamBirthdaysIconBgColor"/>
+                                            <teamBirthdaysIsExternal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                defaultChecked="{Boolean}false"
+                                                fieldLabel="isExternal (Team BirthDay)"
+                                                name="./teamBirthdaysIsExternal"
+                                                text="isExternal (Team BirthDay)"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <teamBirthdaysExternalLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysExternalLink"
+                                                name="./teamBirthdaysExternalLink"/>
+                                            <teamBirthdaysCriticality
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="teamBirthdaysCriticality"
+                                                name="./teamBirthdaysCriticality"/>
+                                            <crewListNoDataTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Crew List No Data Title"
+                                                name="./crewListNoDataTitle"/>
+                                            <crewListNoDataDesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Crew List No Data Desc"
+                                                name="./crewListNoDataDesc"/>
+                                            <crewAlertListPassport
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Passport"
+                                                name="./crewAlertListPassport"/>
+                                            <crewAlertListVisa
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Visa"
+                                                name="./crewAlertListVisa"/>
+                                            <crewAlertListAep
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Aep"
+                                                name="./crewAlertListAep"/>
+                                            <crewAlertListTsa
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Tsa"
+                                                name="./crewAlertListTsa"/>
+                                            <crewAlertListAtpl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List ATPL"
+                                                name="./crewAlertListAtpl"/>
+                                            <crewAlertListCpl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Cpl"
+                                                name="./crewAlertListCpl"/>
+                                            <crewAlertListIrend
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Irend"
+                                                name="./crewAlertListIrend"/>
+                                            <crewAlertListCmc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Cmc"
+                                                name="./crewAlertListCmc"/>
+                                            <crewAlertListMedical
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Medical"
+                                                name="./crewAlertListMedical"/>
+                                            <crewAlertListCa35
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Ca35"
+                                                name="./crewAlertListCa35"/>
+                                            <crewAlertListYf
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Yf"
+                                                name="./crewAlertListYf"/>
+                                            <crewAlertListCoid
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Coid"
+                                                name="./crewAlertListCoid"/>
+                                            <crewAlertListEgca
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Egca"
+                                                name="./crewAlertListEgca"/>
+                                            <crewAlertListFrto
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Frto"
+                                                name="./crewAlertListFrto"/>
+                                            <crewAlertListPmr
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Pmr"
+                                                name="./crewAlertListPmr"/>
+                                            <crewAlertListFrro
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Frro"
+                                                name="./crewAlertListFrro"/>
+                                            <crewAlertListFata
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Fata"
+                                                name="./crewAlertListFata"/>
+                                            <crewAlertListExpmed
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Crew Alert List Expmed"
+                                                name="./crewAlertListExpmed"/>
+                                            <coid
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="COID"
+                                                name="./coid"/>
+                                            <yf
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="YF"
+                                                name="./yf"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </upcomingLabels>
+                            <workPlaceLabels
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="workPlaceLabels"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Workplace Labels"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <workPlacetitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./workPlacetitle"/>
+                                            <seeMoreBtnText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="seeMoreBtnText"
+                                                name="./seeMoreBtnText"/>
+                                            <ago
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Ago"
+                                                name="./ago"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </workPlaceLabels>
+                            <roaster
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Roster Label"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Roster Labels"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <roastertitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="roastertitle"
+                                                name="./roastertitle"/>
+                                            <noData
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="noData"
+                                                name="./noData"/>
+                                            <viewMore
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="viewMore"
+                                                name="./viewMore"/>
+                                            <viewLess
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="viewLess"
+                                                name="./viewLess"/>
+                                            <durationText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="durationText"
+                                                name="./durationText"/>
+                                            <flightNoTxt
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="flightNoTxt"
+                                                name="./flightNoTxt"/>
+                                            <errorTxt
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="errorTxt"
+                                                name="./errorTxt"/>
+                                            <noDataTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No Data Title"
+                                                name="./roasterNoDataTitle"/>
+                                            <noDataDesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No Data Desc"
+                                                name="./roasterNoDataDesc"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </roaster>
+                            <analyticsInfo
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Analytics Info"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Analytics Info"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <countryCode
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Country Code"
+                                                name="./countryCode"/>
+                                            <countryName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Country Name"
+                                                name="./countryName"/>
+                                            <language
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Language"
+                                                name="./language"/>
+                                            <pageName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Page Name"
+                                                name="./pageName"/>
+                                            <pageType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Page Type"
+                                                name="./pageType"/>
+                                            <server
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Server"
+                                                name="./server"/>
+                                            <siteName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Site Name"
+                                                name="./siteName"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </analyticsInfo>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

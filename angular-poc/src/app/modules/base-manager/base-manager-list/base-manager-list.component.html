@@ -1,0 +1,97 @@
+<!-- Profile Section -->
+<div
+  *ngFor="let baseManager of baseManagerRequestsList"
+  class="col-xl-12 m-top-24"
+>
+  <div class="white-box">
+    <!-- == traveler's name + last updated ==  -->
+    <div
+      class="d-flex flex-xl-row flex-lg-row flex-sm-column-reverse flex-column-reverse align-items-xl-center align-items-lg-center align-items-md-center padding-16 border-top-base-manager-line"
+    >
+      <div class="col-xl-6 col-lg-6 col-sm-12">
+        <div class="d-flex align-items-center grid-gap-base-manager-16">
+          <div class="profile-image">
+            <app-employee-card
+              [empData]="{
+                employeeId: baseManager?.empId,
+                firstName: baseManager?.firstName,
+                lastName: baseManager?.lastName
+              }"
+              [initialsTheme]="avatarTheme.SECONDARY"
+              [size]="avatarSize.M"
+            ></app-employee-card>
+          </div>
+          <div class="profile-details">
+            <div class="d-flex grid-gap-base-manager-12 align-items-center">
+              <span class="captain-name-text"
+                >{{ labelsBaseManager?.labelNameTitle }}
+                {{ baseManager?.firstName }}
+                {{ baseManager?.middleName }}
+                {{ baseManager?.lastName }}</span
+              >
+
+              <span class="profile-text d-none-m"
+                ><span class="dot"></span>{{ baseManager?.empId }}</span
+              >
+            </div>
+            <div
+              class="d-inline-flex align-items-center grid-gap-base-manager-12"
+            >
+              <span class="profile-text d-show-m hide-desk">{{
+                baseManager?.empId
+              }}</span>
+              <span class="profile-text d-none-m">{{
+                baseManager?.designation
+              }}</span>
+              <span class="dot"></span>
+              <span class="profile-text">{{
+                baseManagerRequestsListEnum[baseManager?.journeyType]
+              }}</span>
+              <span class="dot"></span>
+              <span class="profile-text">{{
+                baseManagerRequestsListEnum[baseManager?.tripType]
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Date Section -->
+      <div
+        class="col-xl-6 col-lg-6 col-sm-12 col-12 d-flex justify-content-xl-end justify-content-lg-end align-items-center res-border-bottom-8-just"
+      >
+        <span class="updated-date-text"
+          >{{ labelsBaseManager?.labelLastUpdatedOn }}
+          {{ baseManager?.lastUpdatedDate | utcDateFormat }}</span
+        >
+      </div>
+    </div>
+    <!-- == flight travel details == -->
+    <app-flight-travel-detail-card
+      *ngFor="let tripDetail of baseManager?.trips"
+      [isRequestDomestic]="
+        baseManager.journeyType === RequestStatusEnum.DOMESTIC
+      "
+      [flightTripDetails]="tripDetail"
+      [commonLabels]="labelsBaseManager"
+      [labelStop]="labelsBaseManager?.labelStop"
+      [labelStops]="labelsBaseManager?.labelStops"
+      [imgCardLogo]="labelsBaseManager?.imgCardLogo"
+    ></app-flight-travel-detail-card>
+
+    <div
+      class="col-12 d-flex justify-content-end padding-16 r-padding-top border-bottom-base-manager-line"
+      *ngIf="baseManager?.status !== RequestStatusEnum.WITHDRAWN"
+    >
+      <button
+        mat-stroked-button
+        class="box-button-edit"
+        (click)="navigateToViewDetails(baseManager?.generatedRequestNo)"
+      >
+        <mat-icon class="material-symbols-rounded">{{
+          labelsBaseManager?.iconBtnViewDetails
+        }}</mat-icon
+        >{{ labelsBaseManager?.btnViewDetails }}
+      </button>
+    </div>
+  </div>
+</div>

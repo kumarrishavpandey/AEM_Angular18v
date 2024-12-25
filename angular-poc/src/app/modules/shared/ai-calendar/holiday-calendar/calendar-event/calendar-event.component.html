@@ -1,0 +1,49 @@
+<div *ngIf="![0, 6].includes(date.getDay()) || eventHolidayData.title">
+  <div
+    *ngIf="!isMobile()"
+    class="ai-event ai-{{ deviceType }} ai-{{
+      getLeaveStatus(eventHolidayData)
+    }}"
+    [ngStyle]="{
+      width: getEventTileWidth(eventHolidayData)
+    }"
+  >
+    <div class="ai-title-container">
+      <div [ngSwitch]="getEventIconType(eventHolidayData)">
+        <mat-icon class="material-symbols-rounded" *ngSwitchCase="'sick'"
+          >masks</mat-icon
+        >
+        <mat-icon class="material-symbols-rounded" *ngSwitchCase="'casual'"
+          >timelapse</mat-icon
+        >
+        <mat-icon class="material-symbols-rounded" *ngSwitchCase="'privilege'"
+          >luggage</mat-icon
+        >
+        <mat-icon class="material-symbols-rounded" *ngSwitchCase="'all day'"
+          >flag</mat-icon
+        >
+        <mat-icon class="material-symbols-rounded" *ngSwitchDefault
+          >logout</mat-icon
+        >
+      </div>
+
+      <div
+        class="ai-title"
+        matTooltip="{{ eventHolidayData.extendedProps.name }}"
+      >
+        {{ getEventTitle(eventHolidayData) }}
+      </div>
+    </div>
+
+    <div class="ai-status" matTooltip="{{ getEventStatus(eventHolidayData) }}">
+      {{ getEventStatus(eventHolidayData) }}
+    </div>
+  </div>
+
+  <div
+    *ngIf="isMobile()"
+    class="ai-event ai-{{ getLeaveStatus(eventHolidayData) }} ai-{{
+      deviceType
+    }}"
+  ></div>
+</div>

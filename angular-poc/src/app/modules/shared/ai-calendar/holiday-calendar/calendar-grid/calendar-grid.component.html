@@ -1,0 +1,15 @@
+<div class="ai-days ai-{{ deviceType }}">
+  <div class="ai-week-day" *ngFor="let weekDay of weekDays">
+    <span class="ai-day-name">
+      {{ weekDay }}
+    </span>
+  </div>
+
+  <app-calendar-cell
+    *ngFor="let day of days"
+    [currentDate]="currentDate"
+    [date]="day.date"
+    [dateEventMap]="dateEventMap"
+    [deviceType]="deviceType"
+  ></app-calendar-cell>
+</div>

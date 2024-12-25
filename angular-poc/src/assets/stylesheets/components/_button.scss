@@ -1,0 +1,253 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.button {
+  font-size: $font-14;
+  text-transform: capitalize;
+  padding: $size-15 $size-24;
+  border-radius: $size-8;
+  width: auto;
+  font-family: "Nunito Sans", sans-serif !important;
+  border: none;
+  height: fit-content;
+  letter-spacing: 0;
+
+  &.full-width-button {
+    width: 100% !important;
+  }
+
+  &.violet {
+    color: $violet;
+  }
+
+  &.no-border {
+    border: none !important;
+
+    &:hover {
+      background: transparent !important;
+    }
+  }
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+.primary-stroke-red-default {
+  border: 1px solid $lighter-grey !important;
+  background: $white !important;
+  color: $red !important;
+}
+
+.primary-stroke-red {
+  border: 1px solid $red !important;
+  background: $white !important;
+  color: $red !important;
+}
+
+.primary-solid-red {
+  border: 1px solid $red !important;
+  background: $red !important;
+  color: $white !important;
+
+  &:disabled {
+    border: 1px solid $mat-orange-20 !important;
+    background: $mat-orange-20 !important;
+  }
+}
+
+.primary-stroke-dark-red {
+  border: 1px solid $dark-red !important;
+  background: $white !important;
+  color: $red !important;
+}
+
+.primary-solid-dark-red {
+  background: $dark-red !important;
+  color: $white !important;
+}
+
+.primary-solid-violet {
+  background: $violet !important;
+  color: $white !important;
+}
+
+.primary-stroke-violet {
+  border: 1px solid $violet !important;
+  background: $white !important;
+  color: $red !important;
+}
+
+.text-red {
+  color: $red !important;
+  border: none;
+}
+
+.secondary-solid-outline-grey {
+  border: 1px solid $lighter-grey;
+  background: $border-white;
+
+  &.no-border {
+    border: none !important;
+
+    &:hover {
+      background: $lighter-grey !important;
+    }
+  }
+}
+
+// remove button effect
+.remove-button-effect {
+  background: transparent !important;
+  border: none;
+  &:hover {
+    background: transparent !important;
+    border: none;
+  }
+  &:active {
+    background: transparent !important;
+    border: none;
+  }
+}
+
+// button style for button toggle where we have table - Sajid
+
+.requested-leave-btn {
+  border: 1px solid $dark-grey-l2;
+  border-radius: $size-8;
+  height: $size-40 !important;
+  color: $dark-blue !important;
+  font-size: $font-14 !important;
+  display: flex;
+  height: 40px;
+  padding: $size-16;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: inherit;
+  min-width: auto;
+  max-width: fit-content;
+  font-family: "Nunito Sans", sans-serif !important;
+  letter-spacing: 0;
+  mat-icon {
+    color: $dark-grey;
+  }
+}
+
+.active-btn {
+  background: $violet !important;
+  color: $white !important;
+  font-size: $font-14 !important;
+  border: 1px solid transparent !important;
+  display: flex;
+  height: 40px;
+  padding: $size-16;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: inherit;
+  min-width: auto;
+  max-width: fit-content;
+  font-family: "Nunito Sans", sans-serif !important;
+  letter-spacing: 0;
+  mat-icon {
+    color: $white !important;
+  }
+}
+
+// button for section with icon with heading
+
+.box-button-edit {
+  border: none !important;
+  background: $border-white;
+  color: $violet;
+  text-transform: capitalize;
+  border-radius: $size-8 !important;
+  font-size: $font-14;
+  letter-spacing: $size-0;
+  padding: 12px 24px;
+  height: $size-40;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Nunito Sans", sans-serif !important;
+  box-shadow: none;
+  font-weight: 500;
+
+  &:hover {
+    box-shadow: none;
+    border: none !important;
+    background: $lighter-grey !important;
+    outline: none;
+  }
+  &:focus {
+    border: none !important;
+    outline: none;
+  }
+
+  .mat-button-focus-overlay {
+    background: #fff;
+  }
+
+  mat-icon {
+    font-size: $font-16;
+    width: auto;
+    height: auto;
+    margin-right: $size-4;
+  }
+}
+
+.text-red-button {
+  font-size: $font-12;
+  font-weight: 700;
+  text-align: center;
+  color: $red;
+  border: none;
+  background: transparent;
+  mat-icon {
+    font-size: $font-12;
+    width: auto;
+    height: auto;
+    margin-right: $size-4;
+  }
+}
+
+.secondary-grey-outline {
+  font-size: $font-14;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid $lighter-grey;
+  background: transparent;
+  width: 100%;
+  color: $red;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  mat-icon {
+    font-size: $font-16;
+    width: auto;
+    height: auto;
+    margin-right: $size-4;
+  }
+}
+
+/// #######################################
+/// Media Query
+/// #######################################
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .button {
+    width: 100%;
+  }
+}

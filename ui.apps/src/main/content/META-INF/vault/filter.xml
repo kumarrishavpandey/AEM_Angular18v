@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/myai/clientlibs"/>
+    <filter root="/apps/myai/components"/>
+    <filter root="/apps/myai/i18n"/>
+</workspaceFilter>

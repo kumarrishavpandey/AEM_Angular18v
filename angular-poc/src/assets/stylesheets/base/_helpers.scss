@@ -1,0 +1,400 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/// #######################################
+/// margin spacing Top & Bottom
+/// #######################################
+
+.m-bottom-0 {
+  margin-bottom: $size-0;
+}
+
+.m-top-0 {
+  margin-top: $size-0;
+}
+
+.m-bottom-4 {
+  margin-bottom: $size-4;
+}
+
+.m-top-4 {
+  margin-top: $size-4;
+}
+
+.m-bottom-8 {
+  margin-bottom: $size-8;
+}
+
+.m-top-8 {
+  margin-top: $size-8;
+}
+
+.m-bottom-12 {
+  margin-bottom: $size-12;
+}
+
+.m-top-12 {
+  margin-top: $size-12;
+}
+
+.m-bottom-16 {
+  margin-bottom: $size-16;
+}
+
+.m-top-16 {
+  margin-top: $size-16;
+}
+
+.m-bottom-20 {
+  margin-bottom: $size-20;
+}
+
+.m-top-20 {
+  margin-top: $size-20;
+}
+
+.m-bottom-24 {
+  margin-bottom: $size-24;
+}
+
+.m-top-24 {
+  margin-top: $size-24;
+}
+
+.m-bottom-30 {
+  margin-bottom: $size-30;
+}
+
+.m-top-30 {
+  margin-top: $size-30;
+}
+
+.m-top-32 {
+  margin-top: $size-32;
+}
+
+.m-bottom-32 {
+  margin-bottom: $size-32;
+}
+
+.m-top-36 {
+  margin-top: $size-36;
+}
+
+.m-bottom-36 {
+  margin-bottom: $size-36;
+}
+
+.m-top-40 {
+  margin-top: $size-40;
+}
+
+.m-bottom-40 {
+  margin-bottom: $size-40;
+}
+
+.m-top-48 {
+  margin-top: $size-48;
+}
+
+.m-bottom-48 {
+  margin-bottom: $size-48;
+}
+
+.m-top-60 {
+  margin-top: $size-60;
+}
+
+.m-bottom-60 {
+  margin-bottom: $size-60;
+}
+
+.m-top-80 {
+  margin-top: $size-80;
+}
+
+.m-bottom-80 {
+  margin-bottom: $size-80;
+}
+
+.m-top-100 {
+  margin-top: $size-100;
+}
+
+.m-top-120 {
+  margin-top: $size-120;
+}
+
+.m-top-480 {
+  margin-top: $size-480;
+}
+.m-top-900 {
+  margin-top: $size-900;
+}
+
+.m-bottom-120 {
+  margin-bottom: $size-120;
+}
+
+/// #######################################
+/// margin spacing Left & Right
+/// #######################################
+
+.m-right-8 {
+  margin-right: $size-8 !important;
+}
+
+.m-left-8 {
+  margin-left: $size-8;
+}
+
+.m-right-16 {
+  margin-right: $size-16;
+}
+
+.m-left-16 {
+  margin-left: $size-16;
+}
+
+.m-right-24 {
+  margin-right: $size-24;
+}
+
+.m-left-24 {
+  margin-left: $size-24;
+}
+
+.m-right-29 {
+  margin-right: $size-29;
+}
+
+.m-left-29 {
+  margin-left: $size-29;
+}
+
+.m-right-32 {
+  margin-right: $size-32;
+}
+
+.m-left-32 {
+  margin-left: $size-32;
+}
+
+.m-left-120 {
+  margin-left: $size-120;
+}
+
+.m-right-120 {
+  margin-right: $size-120;
+}
+
+/// #######################################
+/// padding spacing Left & Right
+/// #######################################
+
+.p-right-16 {
+  padding-right: $size-16;
+}
+
+.p-left-16 {
+  padding-left: $size-16;
+}
+
+.p-right-24 {
+  padding-right: $size-24;
+}
+
+.p-left-24 {
+  padding-left: $size-24;
+}
+
+.p-right-48 {
+  padding-right: $size-48;
+}
+
+.p-left-48 {
+  padding-left: $size-48;
+}
+
+.p-left-120 {
+  padding-left: $size-120;
+}
+
+.p-right-120 {
+  padding-right: $size-120;
+}
+
+.p-left-40 {
+  padding-left: 40px !important;
+}
+
+.p-right-40 {
+  padding-right: 40px !important;
+}
+
+/// #######################################
+//  padding spacing Top & Bottom
+/// #######################################
+
+.p-bottom-24 {
+  padding-bottom: $size-24;
+}
+
+.p-top-24 {
+  padding-top: $size-24;
+}
+
+.p-bottom-16 {
+  padding-bottom: $size-16;
+}
+
+.p-top-16 {
+  padding-top: $size-16;
+}
+
+.p-bottom-8 {
+  padding-bottom: $size-8;
+}
+
+.p-top-8 {
+  padding-top: $size-8;
+}
+
+.p-bottom-12 {
+  padding-bottom: $size-12;
+}
+
+.p-top-12 {
+  padding-top: $size-12;
+}
+
+.p-bottom-20 {
+  padding-bottom: $size-20;
+}
+
+.p-top-20 {
+  padding-top: $size-20;
+}
+
+.p-bottom-60 {
+  padding-bottom: 60px;
+}
+
+.p-bottom-48 {
+  padding-bottom: 48px;
+}
+
+.p-top-48 {
+  padding-top: 48px;
+}
+
+.p-bottom-32 {
+  padding-bottom: 32px;
+}
+
+.p-top-32 {
+  padding-top: 32px;
+}
+
+.p-top-80 {
+  padding-top: 80px;
+}
+
+/// #######################################
+//  padding spacing overall
+/// #######################################
+
+.padding-12 {
+  padding: $size-12;
+}
+.padding-16 {
+  padding: $size-16;
+}
+.padding-18 {
+  padding: $size-18;
+}
+
+.padding-20 {
+  padding: $size-20;
+}
+
+.padding-24 {
+  padding: $size-24;
+}
+
+.padding-40 {
+  padding: $size-40;
+}
+
+.padding-80 {
+  padding: $size-80;
+}
+
+.p-left-0 {
+  padding-left: 0px;
+}
+
+/// #######################################
+//  Overflow
+/// #######################################
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/// #######################################
+/// #######################################
+
+$transistion: 0.3s;
+
+/// #######################################
+//  centring
+/// #######################################
+
+.vertical-center {
+  align-items: center;
+  height: inherit;
+}
+
+.myai-divider {
+  color: $dark-grey-l2;
+}
+
+/// #######################################
+//  grid gap
+/// #######################################
+
+.grid-gap-4 {
+  grid-gap: $size-4;
+}
+
+.grid-gap-8 {
+  grid-gap: $size-8;
+}
+
+.grid-gap-16 {
+  grid-gap: $size-16;
+}
+
+.grid-gap-40 {
+  grid-gap: $size-40;
+}
+
+.grid-gap-24 {
+  grid-gap: $size-24;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.w-max-content {
+  width: max-content;
+}

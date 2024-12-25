@@ -1,0 +1,34 @@
+@keyframes pulse {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Container for the loading elements */
+.loader-text, .loader-icon {
+  position: relative;
+  border-radius: 0.25rem;
+  background-color: #F0F1F7;
+  overflow: hidden;
+}
+
+/* pulse effect applied using the ::before pseudo-element */
+.loader-text::before, .loader-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-90deg, #F0F1F7 25%, #e0e0e0 50%, #F0F1F7 75%);
+  background-size: 400% 400%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Specific styles for circular icons */
+.loader-icon {
+  border-radius: 50%;
+}

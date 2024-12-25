@@ -1,0 +1,176 @@
+<ng-container>
+  <!-- Banner Section -->
+  <div
+    id="home-banner-carouselExample"
+    class="carousel slide m-top-40 remove-m-top-40-banner"
+    data-bs-ride="carousel"
+  >
+    <!-- data-bs-ride="carousel"-->
+    <!-- Indicators -->
+    <div class="carousel-indicators" [hidden]="!isDataLoaded">
+      <div
+        type="button"
+        [class.active]="true"
+        data-bs-target="#home-banner-carouselExample"
+        [attr.data-bs-slide-to]="0"
+        [attr.aria-label]="'slide ' + 0"
+        class="dot circle-indicator"
+        (click)="bannerChangeInitCtaDL()"
+      ></div>
+
+      <div
+        type="button"
+        *ngFor="let slide of slides; let i = index"
+        data-bs-target="#home-banner-carouselExample"
+        [attr.data-bs-slide-to]="i + 1"
+        [attr.aria-label]="'slide ' + (i + 1)"
+        class="dot circle-indicator"
+        (click)="bannerChangeCtaDL(slide, i + 1)"
+      ></div>
+    </div>
+    <!-- Slides -->
+    <div class="carousel-inner">
+      <!-- first carousel -->
+      <div class="carousel-item" [class.active]="true">
+        <!-- Banner Section -->
+        <section class="banner-section">
+          <!-- Banner image container -->
+          <div class="banner-main-container">
+            <img
+              [src]="imageUrlFixedBanner"
+              [alt]="bannerLabels.fixedBanner.bannerImageAltText"
+              class="bgImage img-fluid"
+            />
+
+            <div
+              class="d-flex justify-content-center vertical-center banner-text"
+            >
+              <!-- main banner section content-->
+              <div
+                class="col-xxl-12 col-lg-12 col-md-12 col-sm-11 col-11 d-xxl-flex d-lg-flex d-md-flex align-item-center justify-content-center"
+              >
+                <!-- left -->
+                <div class="col-xxl-7 col-lg-7 col-md-5 col-sm-12 col-12">
+                  <h4
+                    class="banner-greeting-message m-bottom-8"
+                    *ngIf="isDataLoaded; else showSalutationSkeleton"
+                  >
+                    {{ msg ? msg : "" }}
+                  </h4>
+                  <ng-template #showSalutationSkeleton>
+                    <div class="loader-banner-text m-bottom-8"></div>
+                  </ng-template>
+                  <h4 class="banner-user-name m-bottom-24 res-bottom-banner">
+                    <!-- <span>{{userInfo.salutation}}</span> -->
+                    {{ commonService.loggedInEmployeeData?.firstName }}!
+                  </h4>
+                </div>
+
+                <!-- right -->
+                <div class="col-xxl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <ng-container *ngIf="!isRosterApplicable">
+                    <!-- transparent section -->
+                    <div
+                      class="padding-24 weather-bg"
+                      *ngIf="isDataLoaded; else showWeatherSkeleton"
+                    >
+                      <div
+                        class="banner-weather-box d-flex flex-row justify-content-around"
+                      >
+                        <div class="banner-weather-card">
+                          <h5 class="home-location">{{ userLocation }}</h5>
+                          <div class="home-time">
+                            {{
+                              formatBannerTime(
+                                timezoneData?.ReferenceTime.WallTime,
+                                "HH:mm • EEE",
+                                extractTimezoneOffset(
+                                  timezoneData?.ReferenceTime.WallTime
+                                )
+                              )
+                            }}
+                          </div>
+                          <h5 class="home-weather">
+                            {{ weatherData?.temperature.value }}&deg;{{
+                              weatherData?.temperature.unit
+                            }}
+                          </h5>
+                        </div>
+                        <div class="weatherInfo">
+                          <div class="weather-icon">
+                            <img
+                              src="{{ weatherImagePath }}"
+                              alt=""
+                              class="img-fluid"
+                            />
+                          </div>
+                          <div class="home-temp weather-condition text-center">
+                            {{ weatherData?.phrase }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ng-template #showWeatherSkeleton>
+                      <div class="loader-banner-weather"></div>
+                    </ng-template>
+                  </ng-container>
+                  <app-roster-section
+                    *ngIf="isRosterApplicable"
+                    [numberOfCards]="1"
+                  ></app-roster-section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- second carousel -->
+      <div class="carousel-item" *ngFor="let slide of slides; let i = index">
+        <!-- Banner Section -->
+        <section class="banner-section">
+          <!-- Banner image container -->
+          <div class="banner-main-container background-image-position">
+            <img
+              [src]="slide?.updatedImagePath"
+              [alt]="slide?.bannerImageAltText"
+              class="bgImage img-fluid"
+            />
+            <div
+              class="row d-flex justify-content-center vertical-center banner-text"
+            >
+              <!-- text + button start -->
+
+              <div class="col-xxl-11 col-lg-11 col-md-11 col-sm-11 col-11">
+                <h4
+                  class="banner-greeting-message m-bottom-8"
+                  [ngStyle]="{ color: slide?.bannerTitleColor }"
+                >
+                  {{ slide?.bannerTitle }}
+                </h4>
+                <h4
+                  class="banner-user-name"
+                  [ngStyle]="{ color: slide?.bannerDescColor }"
+                >
+                  {{ slide?.bannerDescription.plaintext }}
+                </h4>
+                <button
+                  *ngIf="slide?.bannerCtaText"
+                  class="button box-button-edit banner-button"
+                  [ngStyle]="{
+                    background: slide?.bannerCtaBgColor,
+                    color: slide?.bannerCtaTextColor
+                  }"
+                  (click)="bannerCtaRedirection(slide)"
+                >
+                  {{ slide?.bannerCtaText }}
+                </button>
+              </div>
+
+              <!-- text + button ends -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</ng-container>

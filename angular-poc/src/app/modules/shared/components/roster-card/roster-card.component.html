@@ -1,0 +1,53 @@
+<div class="home-card-cont" [ngClass]="{ profile: numberOfCards > 1 }">
+  <h2 *ngIf="numberOfCards < 2">{{ aemResponse?.title }}</h2>
+  <div *ngFor="let recentCard of recentCards" class="home-card">
+    <div class="card-top-section">
+      <div class="card-top-left">
+        <p class="gradient-text">{{ recentCard?.flightNumber }}</p>
+        <p>{{ aemResponse?.flightNoTxt }}</p>
+      </div>
+      <div class="card-top-right">
+        <p class="gradient-text">{{ recentCard?.depDate }}</p>
+        <p>{{ recentCard?.day }}</p>
+      </div>
+    </div>
+    <div class="card-bottom-section">
+      <figure>
+        <img
+          *ngIf="recentCard.bgImg"
+          class="img-fluid"
+          [src]="recentCard.bgImg"
+          alt=""
+          onerror="this.style.display='none'"
+        />
+      </figure>
+      <div class="card-bottom-cont">
+        <div class="card-bottom-fig-and-duration">
+          <img [src]="planeAndPathImage" alt="" class="plane-path-img" />
+          <div class="time-and-stop">
+            <p>
+              <span>{{ recentCard?.duration }}</span
+              ><span class="total-time">{{ aemResponse?.durationText }}</span>
+            </p>
+          </div>
+        </div>
+        <div class="card-bottom-airport-info">
+          <div class="card-bottom-left">
+            <p class="airport-code">{{ recentCard?.src }}</p>
+            <p class="airport-name">
+              {{ recentCard?.srcCity }}, {{ recentCard?.srcCountry }}
+            </p>
+            <p class="dept-arvl-time">{{ recentCard?.depTime }}</p>
+          </div>
+          <div class="card-bottom-right">
+            <p class="airport-code">{{ recentCard?.destination }}</p>
+            <p class="airport-name">
+              {{ recentCard?.destCity }}, {{ recentCard?.destCountry }}
+            </p>
+            <p class="dept-arvl-time">{{ recentCard?.arrTime }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

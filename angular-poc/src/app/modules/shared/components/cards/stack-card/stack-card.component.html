@@ -1,0 +1,58 @@
+<div *ngIf="cardData.length > 0">
+  <!-- card header -->
+  <div class="white-box white-box-approvals padding-24 res-padding-24">
+    <div class="d-flex align-items-center gap-2">
+      <h3 class="card-heading">
+        {{ labelsStackCard.labelCardTitle }}
+      </h3>
+
+      <span class="d-flex justify-content-center align-items-center rounded-circle red-circle-number">
+        {{ totalCount }}
+      </span>
+    </div>
+  </div>
+
+  <div class="grey-background">
+    <!-- card body -->
+    <div class="position-relative">
+      <app-approval-card
+        *ngFor="let approvalCardData of cardData | slice : 0 : 3; let i = index"
+        [siteSection]="siteSection"
+        [siteSubSection]="siteSubSection"
+        [labelsApprovalCard]="labelsApprovalCard"
+        [cardData]="approvalCardData"
+        [showRequestStatus]="true"
+        [showBadge]="false"
+        [showTagData]="showTagData"
+        [showActionButtons]="!showHistoryData"
+        [showDetailLink]="true"
+        [index]="overlapCard ? i : 0"
+        (handleCancelClick)="onRejectClick($event)"
+        (handleSubmitClick)="onApproveClick($event)"
+      >
+        <!-- card data -->
+        <ng-container *ngTemplateOutlet="stackCardRef; context: { $implicit: approvalCardData }"></ng-container>
+      </app-approval-card>
+    </div>
+
+    <!-- card footer -->
+    <div
+      *ngIf="cardData.length > 1"
+      class="view-more-card"
+    >
+      <app-anchor-tag
+        [siteSection]="siteSection"
+        [siteSubSection]="siteSubSection"
+        [componentName]="labelsStackCard.labelCardTitle"
+        [link]="labelsStackCard.linkViewMore"
+        [queryParams]="getQueryParams()"
+        [label]="labelsStackCard.labelViewMore"
+        [anchorIcon]="labelsStackCard.iconViewMore"
+        [labelColor]="enumAnchorTagLabelColor.VIOLET"
+        [padding]="'2rem'"
+        [fontSize]="'14px'"
+        [fontWeight]="'700'"
+      ></app-anchor-tag>
+    </div>
+  </div>
+</div>

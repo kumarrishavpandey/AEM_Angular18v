@@ -1,0 +1,53 @@
+<div class="white-box">
+  <div class="engineer-card padding-bottom-16-conditional">
+    <!-- image -->
+
+    <app-employee-card
+      [empData]="cardData"
+      [initialsTheme]="avatarTheme"
+      [size]="avatarSize"
+    ></app-employee-card>
+    <!-- content -->
+    <div class="engineer-card-search-content w-100">
+      <!-- emp id -->
+      <p class="emp-id m-bottom-8">
+        <img
+        [src]="imgFlight"
+          class="img-fluid"
+          width="16px"
+          height="16px"
+        />{{ cardData.employeeId }}
+      </p>
+      <!-- name -->
+      <p class="name m-bottom-4">{{ formatFullName(cardData) }}</p>
+      <!-- email id -->
+      <p class="email m-bottom-8">{{ cardData.email }}</p>
+      <!-- 3 designations -->
+      <p class="designation m-bottom-8">
+        <span>{{ cardData.designationDesc }}</span
+        >|<span>{{ cardData.departmentDescription }}</span
+        >|<span>{{ cardData.carrier }}</span>
+      </p>
+      <!-- button -->
+      <div class="d-xl-flex d-lg-flex d-md-none d-sm-none d-none grid-gap-8">
+        <button class="eACM-solid-grey-btn" (click)="recentTripClick(cardData.employeeId)">
+          {{ labelRecentEngineerCard.labelBtnRecentTrips }}
+        </button>
+        <button class="eACM-solid-grey-btn" (click)="selectEng(cardData)">
+          {{ labelRecentEngineerCard.labelBtnSelect }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- button responsive -->
+  <div
+    class="d-xl-none d-lg-none d-md-block d-sm-block d-block grid-gap-8 padding-24 remove-padding-top"
+  >
+    <button class="eACM-solid-grey-btn m-res-bottom-8" (click)="recentTripClick(cardData.employeeId)">
+      {{ labelRecentEngineerCard.labelBtnRecentTrips }}
+    </button>
+    <button class="eACM-solid-grey-btn" (click)="selectEng(cardData)">
+      {{ labelRecentEngineerCard.labelBtnSelect }}
+    </button>
+  </div>
+</div>

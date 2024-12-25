@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end">
+      <button
+        class="remove-button-effect"
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+      >
+        <mat-icon class="material-symbols-rounded">close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <!-- <mat-icon [className]="'dialog-icon-color-'+data.iconColor">{{data.icon}}</mat-icon> -->
+      <img [src]="updatedIconPath" class="img-fluid" alt="success image" />
+    </div>
+  </div>
+  <div class="row m-top-24">
+    <div class="col-12 text-center">
+      <h2 class="m-bottom-8">{{ data.title }}</h2>
+      <p [ngClass]="data.message.length < 40 ? 'extra-padding' : ''">
+        {{ data.message }}
+      </p>
+    </div>
+  </div>
+</div>

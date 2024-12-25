@@ -1,0 +1,91 @@
+@import '../../../../styles.scss';
+
+::ng-deep .feedback-dialog {
+    width: 600px;
+    height: auto;
+}
+
+.rating-container {
+    display: inline-grid;
+    gap: 0.5rem;
+}
+
+.rating-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.25rem;
+    background-color: $dull-white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    font-size: $font-12;
+}
+
+.feedback-heading {
+    font-family: AirIndiaVariable;
+    color: $black-90;
+    font-size: $font-18;
+    font-weight: 700;
+}
+
+.feedback-subheading {
+    color: $grey-80;
+    font-size: $font-16;
+    font-weight: 400;
+    text-wrap: wrap;
+    margin-bottom: $size-0;
+}
+
+.feedback-subheading-2 {
+    color: $grey-80;
+    font-size: $font-16;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.feedback-rectangle {
+    height: 6px;
+    width: 40px;
+}
+
+.success-message {
+    text-align: center;
+}
+
+.invalid-btn {
+    background-color: $mat-orange-20;
+    opacity: 0.4;
+    color: $white;
+}
+
+.valid-btn {
+    background-color: $red;
+    color: $white;
+}
+
+.success-thank-text {
+    font-size: $font-18;
+    font-weight: 700;
+    color: $black-90;
+}
+
+.success-feedback-text {
+    color: $light-grey-20;
+    font-size: $font-16;
+}
+
+.success-thumb-img {
+    width: 171px;
+    height: 171px;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+    height: 60px!important;
+}

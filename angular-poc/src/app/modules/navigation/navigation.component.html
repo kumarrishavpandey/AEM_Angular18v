@@ -1,0 +1,706 @@
+<div>
+  <div class="nav-header">
+    <div class="nav-header-container">
+      <div class="nav-banner-container">
+        <button
+          *ngIf="!isLoading; else showSkeletonAppIcon"
+          class="remove-button-effect"
+          title="Toggle Menu"
+          (click)="onClose()"
+        >
+          <span class="nav-header-button-wrapper">
+            <mat-icon class="material-symbols-rounded">{{
+              data?.commonData?.navigationMenuIcon
+            }}</mat-icon>
+          </span>
+        </button>
+
+        <ng-template #showSkeletonAppIcon>
+          <div class="nav-skeleton-icon">
+            <app-skeleton-loader
+              type="text-load"
+              height="36px"
+              width="36px"
+            ></app-skeleton-loader>
+          </div>
+        </ng-template>
+
+        <div class="d-flex align-items-center logo-gap nav-mobile-view">
+          <!-- airindia logo -->
+          <button
+            class="remove-button-effect p-0 d-flex justify-content-center"
+          >
+            <img
+              *ngIf="!isLoading; else showSkeletonLogo"
+              [src]="getLogoPath(data?.navigationData?.logo)"
+              alt="logo"
+              class="img-fluid"
+              width="64px"
+              heigth="16px"
+            />
+            <ng-template #showSkeletonLogo>
+              <div class="menu-skeleton-logo-img">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="24px"
+                  width="24px"
+                ></app-skeleton-loader>
+              </div>
+              <div class="menu-skeleton-logo-img">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="24px"
+                  width="66px"
+                ></app-skeleton-loader>
+              </div>
+            </ng-template>
+          </button>
+        </div>
+      </div>
+
+      <div class="user-greeting nav-mobile-view">
+        <div *ngIf="!isLoading; else showSkeletonAvatar">
+          <div class="avatar-container">
+            <app-employee-card
+              [empData]="employeeInfo"
+              [size]="avatarSize.XS"
+            ></app-employee-card>
+          </div>
+        </div>
+        <ng-template #showSkeletonAvatar>
+          <div class="avatar-container">
+            <div class="avatar-img-container">
+              <span class="avatar-skeleton">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="40px"
+                  width="40px"
+                  borderRadius="2.5rem"
+                ></app-skeleton-loader>
+              </span>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="desktop-view">
+      <div class="row d-flex align-items-center">
+        <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-3 col-sm-6 pe-0">
+          <h1 class="menu-title" *ngIf="!isLoading; else showSkeletonMenuTitle">
+            {{ data.navigationData.navigationMenuTitle }}
+          </h1>
+          <ng-template #showSkeletonMenuTitle>
+            <div class="menu-skeleton-title">
+              <app-skeleton-loader
+                type="text-load"
+                height="24px"
+                width="100px"
+              ></app-skeleton-loader>
+            </div>
+          </ng-template>
+        </div>
+
+        <div
+          class="col-xxl-4 col-xl-4 col-lg-6 col-md-8 p-left-48 myai-search-bar"
+        >
+          <mat-form-field
+            appearance="fill"
+            *ngIf="!isLoading; else showSkeletonsearchBarDesktop"
+          >
+            <mat-icon class="material-symbols-rounded" matPrefix>{{
+              data?.commonData?.searchIcon?.toLowerCase()
+            }}</mat-icon>
+            <input
+              matInput
+              [formControl]="searchControl"
+              (keydown.enter)="onEnter()"
+              placeholder="{{ data?.navigationData?.searchForApps }}"
+              (keyup)="onEnter()"
+              (keydown.backspace)="onBackspace()"
+            />
+            <mat-icon
+              *ngIf="searchControl.value"
+              (click)="resetSearch()"
+              class="close-button-search material-symbols-rounded"
+              >{{ data?.commonData?.closeIcon?.toLowerCase() }}</mat-icon
+            >
+          </mat-form-field>
+          <ng-template #showSkeletonsearchBarDesktop>
+            <div class="menu-skeleton-searchBar">
+              <app-skeleton-loader
+                type="text-load"
+                height="48px"
+                width="500px"
+                borderRadius="2.5rem"
+              ></app-skeleton-loader>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <!--- web -->
+      <div class="row m-top-24">
+        <!-- sidebar -  category -->
+
+        <div
+          class="col-xxl-2 col-xl-2 col-lg-3 col-md-3 border-right-nav pe-0"
+          *ngIf="!isLoading; else showSkeletonSideNav"
+        >
+          <div>
+            <ul class="mayi-nav-ul p-0">
+              <li
+                *ngFor="let nav of navigationData"
+                class="myai-nav-li cursor-pointer"
+                (click)="getActionList(nav?.categoryId, nav?.label)"
+                [class.active-btn]="selectedTab === nav?.label"
+              >
+                {{ nav?.label }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ng-template #showSkeletonSideNav>
+          <div
+            class="col-xxl-2 col-xl-2 col-lg-3 col-md-3 border-right-nav pe-0"
+          >
+            <div *ngFor="let _ of [].constructor(3)">
+              <div class="myai-nav-li-skeleton">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="24px"
+                  width="100px"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <!-- nav -->
+        <div
+          class="col-xxl-10 col-xl-10 col-lg-9 col-md-9 p-left-48 border-top-nav"
+          *ngIf="
+            (!isSearch && !isLoading) || !isSearchLoading;
+            else showSkeletonNavContainer
+          "
+        >
+          <div
+            class="tool-container m-top-24"
+            *ngIf="
+              navigationTabData && navigationTabData.length > 0 && !isSearch
+            "
+          >
+            <h2 class="myai-nav-subTitle">{{ selectedLabel }}</h2>
+            <div class="row m-top-24 p-right-16">
+              <ng-container
+                *ngFor="
+                  let tool of getNavigationData(
+                    selectedLabel,
+                    navigationTabData
+                  )
+                "
+              >
+                <div
+                  class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 m-bottom-24"
+                  *ngIf="isDeviceTypeMatch(tool?.deviceType)"
+                >
+                  <div
+                    class="box"
+                    role="button"
+                    (click)="
+                      onNavigate(
+                        tool.linkPath,
+                        tool.isExternal,
+                        tool.appId,
+                        tool.label
+                      )
+                    "
+                  >
+                    <div
+                      *ngIf="!tool?.iconUrl && !tool?.iconUrl?._path"
+                      class="icon-container"
+                      [style.background-color]="tool.iconBgColor"
+                    >
+                      <mat-icon
+                        *ngIf="tool.iconName"
+                        class="material-symbols-rounded"
+                        [style.color]="tool.iconColor"
+                        >{{ tool.iconName ? tool.iconName : "link" }}</mat-icon
+                      >
+                      <mat-icon
+                        *ngIf="
+                          tool.iconName &&
+                          tool.iconUrl &&
+                          tool.iconUrl._path === ''
+                        "
+                        class="material-symbols-rounded"
+                        >link</mat-icon
+                      >
+                    </div>
+                    <div
+                      *ngIf="tool?.iconUrl && tool?.iconUrl?._path"
+                      class="img-container"
+                    >
+                      <img
+                        [src]="getAemDamFullPath(tool.iconUrl._path)"
+                        [alt]="tool.label"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div class="title">{{ tool.label }}</div>
+                    <div>
+                      <div class="badge-container">
+                        <img
+                          *ngIf="tool.isOneIdIcon"
+                          [src]="
+                            getAemDamFullPath(
+                              '/content/dam/my-ai/icon/oneID.svg'
+                            )
+                          "
+                          class="img-fluid"
+                        />
+                        <div
+                          *ngIf="!tool.isOneIdIcon"
+                          class="emptyContainer"
+                        ></div>
+                      </div>
+                      <div class="ext-link-nav">
+                        <mat-icon
+                          class="material-symbols-rounded icon-display"
+                          *ngIf="tool.isExternal"
+                          >open_in_new</mat-icon
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <div
+              class="tool-container m-top-24 d-flex text-center flex-column justify-content-center align-item-center"
+              *ngIf="navigationTabData && navigationTabData.length === 0"
+            >
+              <div
+                class="d-flex text-center justify-content-center align-item-center"
+              >
+                <img [src]="getImageDescriptionIcon()" alt="image" />
+              </div>
+
+              <!-- Sorry, no search results message -->
+              <p class="m-bottom-24 no-apps-found">
+                {{ data?.navigationData?.noAppsData }}
+              </p>
+              <p class="extra-no-search-text">
+                {{ data?.navigationData?.noAppsDataMsg }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 p-right-16 border-top-nav" *ngIf="isSearch">
+            <div class="tool-container m-top-24">
+              <h2 class="myai-nav-subTitle">
+                {{ data?.navigationData?.searchResultText }}
+              </h2>
+              <div class="row m-top-24">
+                <div
+                  class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 m-bottom-24"
+                  *ngFor="let tool of searchResultArray"
+                >
+                  <div
+                    class="box"
+                    role="button"
+                    (click)="
+                      onNavigate(
+                        tool.linkPath,
+                        tool.isExternal,
+                        tool.appId,
+                        tool.label
+                      )
+                    "
+                  >
+                    <div
+                      *ngIf="!tool?.iconUrl && !tool?.iconUrl?._path"
+                      class="icon-container"
+                      [style.background-color]="tool.iconBgColor"
+                    >
+                      <mat-icon
+                        *ngIf="tool.iconName"
+                        class="material-symbols-rounded"
+                        [style.color]="tool.iconColor"
+                        >{{ tool.iconName ? tool.iconName : "link" }}</mat-icon
+                      >
+                      <mat-icon
+                        *ngIf="
+                          tool.iconName &&
+                          tool.iconUrl &&
+                          tool.iconUrl._path === ''
+                        "
+                        class="material-symbols-rounded"
+                        >link</mat-icon
+                      >
+                    </div>
+                    <div
+                      *ngIf="tool?.iconUrl && tool?.iconUrl?._path"
+                      class="img-container"
+                    >
+                      <img
+                        [src]="getAemDamFullPath(tool.iconUrl._path)"
+                        [alt]="tool.label"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div class="title">{{ tool.label }}</div>
+                    <div>
+                      <div class="badge-container">
+                        <img
+                          *ngIf="tool.isOneIdIcon"
+                          [src]="
+                            getAemDamFullPath(
+                              '/content/dam/my-ai/icon/oneID.svg'
+                            )
+                          "
+                          class="img-fluid"
+                        />
+                        <div
+                          *ngIf="!tool.isOneIdIcon"
+                          class="emptyContainer"
+                        ></div>
+                      </div>
+                      <div class="ext-link-nav">
+                        <mat-icon
+                          class="material-symbols-rounded icon-display"
+                          *ngIf="tool.isExternal"
+                          >open_in_new</mat-icon
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="tool-container m-top-24 d-flex text-center flex-column justify-content-center align-item-center"
+                  *ngIf="searchResultArray && searchResultArray.length === 0"
+                >
+                  <div
+                    class="d-flex text-center justify-content-center align-item-center"
+                  >
+                    <img [src]="getImageDescriptionIcon()" alt="image" />
+                  </div>
+
+                  <!-- Sorry, no search results message -->
+                  <p class="m-bottom-24 no-apps-found">
+                    {{ data?.navigationData?.noAppsData }}
+                  </p>
+                  <p class="extra-no-search-text">
+                    {{ data?.navigationData?.noAppsDataMsg }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #showSkeletonNavContainer>
+          <div
+            class="col-xxl-10 col-xl-10 col-lg-9 col-md-9 p-left-48 border-top-nav"
+          >
+            <div class="tool-container m-top-24">
+              <h2 class="myai-nav-subTitle-skeleton">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="16px"
+                  width="100px"
+                ></app-skeleton-loader>
+              </h2>
+              <div class="row m-top-24">
+                <div
+                  class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 m-bottom-24"
+                  *ngFor="let _ of [].constructor(8)"
+                >
+                  <div class="box">
+                    <div class="nav-container-skeleton-icon">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="60px"
+                        width="60px"
+                        borderRadius="20px"
+                      ></app-skeleton-loader>
+                    </div>
+                    <div class="nav-container-skeleton-titlle">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="16px"
+                        width="100px"
+                      ></app-skeleton-loader>
+                    </div>
+
+                    <div>
+                      <div class="ext-link-nav-skeleton">
+                        <app-skeleton-loader
+                          type="text-load"
+                          height="16px"
+                          width="71px"
+                        ></app-skeleton-loader>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <!-----------------------------Mobile View ----------------------------------------------->
+    </div>
+    <div class="mobile-view m-top-24">
+      <div class="myai-search-bar">
+        <mat-form-field
+          appearance="fill"
+          *ngIf="!isLoading; else showSkeletonsearchBarMobile"
+        >
+          <mat-icon class="material-symbols-rounded" matPrefix>{{
+            data?.commonData?.searchIcon?.toLowerCase()
+          }}</mat-icon>
+          <input
+            matInput
+            [formControl]="searchControl"
+            (keydown.enter)="onEnter()"
+            placeholder="{{ data?.navigationData?.searchForApps }}"
+            (keyup)="onSearchKeyUp($event)"
+            (keydown.backspace)="onBackspace()"
+          />
+          <mat-icon
+            matSuffix
+            *ngIf="searchControl.value"
+            (click)="resetSearch()"
+            class="close-button-search material-symbols-rounded"
+            >{{ data?.commonData?.closeIcon?.toLowerCase() }}</mat-icon
+          >
+          <mat-autocomplete (optionSelected)="onSelectionChange($event)">
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <ng-template #showSkeletonsearchBarMobile>
+          <div class="menu-skeleton-searchBar">
+            <app-skeleton-loader
+              type="text-load"
+              height="46px"
+              width="328px"
+              borderRadius="2.5rem"
+            ></app-skeleton-loader>
+          </div>
+        </ng-template>
+      </div>
+      <ng-container *ngIf="!isSearch">
+        <mat-accordion
+          *ngIf="!isLoading || !isSearchLoading; else showSkeletonAccordion"
+        >
+          <mat-expansion-panel
+            hideToggle
+            class="navigation-expansion-panel"
+            *ngFor="
+              let toolCategory of getMobileNavigationData(navigationData);
+              let i = index
+            "
+            [id]="'panel-id' + i"
+            [expanded]="getMobileNavigationData(navigationData)?.length === 1"
+          >
+            <mat-expansion-panel-header
+              class="navigation-expansion-panel-header p-0"
+            >
+              <!-- text - left side -->
+              <mat-panel-title>
+                <div class="navigation-expansion-panel-title">
+                  <div class="navigation-panel-text">
+                    {{ toolCategory.label | titlecase }}
+                  </div>
+                </div>
+              </mat-panel-title>
+              <!-- icon - right side -->
+              <mat-panel-description class="m-right-0-nav">
+                <div class="navigation-expansion-panel-indicator">
+                  <mat-icon
+                    class="material-symbols-rounded"
+                    *ngIf="!isPanelExpanded('panel-id' + i)"
+                    >add</mat-icon
+                  >
+                  <mat-icon
+                    class="material-symbols-rounded"
+                    *ngIf="isPanelExpanded('panel-id' + i)"
+                    >remove</mat-icon
+                  >
+                </div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-container
+              *ngIf="
+                toolCategory &&
+                toolCategory.actionList &&
+                toolCategory.actionList.length
+              "
+            >
+              <mat-list role="list" class="navigation-list">
+                <ng-container
+                  *ngFor="
+                    let action of getFilteredMobileNavActionList(
+                      toolCategory.label,
+                      navigationData
+                    )
+                  "
+                >
+                  <mat-list-item
+                    class="navigation-list-item"
+                    role="listitem"
+                    *ngIf="isDeviceTypeMatch(action?.deviceType)"
+                  >
+                    <div
+                      class="d-flex justify-content-between align-items-center w-100"
+                    >
+                      <div class="d-flex align-items-center">
+                        <div
+                          class="navigation-component m-right-16"
+                          [ngStyle]="{
+                            'background-color': action.iconBgColor,
+                            'border-radius.px': 8
+                          }"
+                        >
+                          <mat-icon
+                            *ngIf="action?.iconName"
+                            [style.color]="action?.iconColor"
+                            class="material-symbols-rounded"
+                            >{{
+                              action?.iconName ? action?.iconName : "link"
+                            }}</mat-icon
+                          >
+                          <mat-icon
+                            *ngIf="
+                              action?.iconName === '' &&
+                              action?.iconUrl === null
+                            "
+                            [style.color]="action?.iconColor"
+                            class="material-symbols-rounded"
+                            >link</mat-icon
+                          >
+                          <img
+                            *ngIf="action?.iconUrl && action?.iconUrl?._path"
+                            [src]="getAemDamFullPath(action?.iconUrl._path)"
+                            [alt]="action?.label"
+                            [ngStyle]="{
+                              'border-radius.px': 8
+                            }"
+                            height="32px"
+                            width="32px"
+                          />
+                        </div>
+                        <a
+                          class="cursor-pointer"
+                          (click)="
+                            onNavigate(
+                              action.linkPath,
+                              action.isExternal,
+                              action.appId,
+                              action.label
+                            )
+                          "
+                          >{{ action.label }}</a
+                        >
+                      </div>
+                      <img
+                        *ngIf="action.isOneIdIcon"
+                        [src]="
+                          getAemDamFullPath('/content/dam/my-ai/icon/oneID.svg')
+                        "
+                        class="img-fluid"
+                      />
+                    </div>
+                  </mat-list-item>
+                </ng-container>
+              </mat-list>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                toolCategory &&
+                toolCategory.actionList &&
+                toolCategory.actionList.length === 0
+              "
+            >
+              <div class="text-center">
+                {{ data?.navigationData?.noAppsData }}
+              </div>
+            </ng-container>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <ng-template #showSkeletonAccordion>
+          <mat-accordion>
+            <mat-expansion-panel
+              hideToggle
+              class="navigation-expansion-panel"
+              *ngFor="let _ of [].constructor(3)"
+            >
+              <mat-expansion-panel-header
+                class="navigation-expansion-panel-header p-0"
+              >
+                <mat-panel-title>
+                  <div class="navigation-expansion-panel-title">
+                    <div class="mat-panel-title-skeleton">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="16px"
+                        width="100px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description class="m-right-0-nav">
+                  <div class="navigation-expansion-panel-indicator">
+                    <div class="mat-panel-description-skeleton">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="24px"
+                        width="24px"
+                        borderRadius="2.5rem"
+                      ></app-skeleton-loader>
+                    </div>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-template>
+      </ng-container>
+      <ng-container *ngIf="isSearch">
+        <div class="m-top-24">
+          <h2 class="myai-nav-subTitle">
+            {{ data?.navigationData?.searchResultText }}
+          </h2>
+          <div class="row m-top-24">
+            <div
+              class="col-3 m-bottom-24"
+              *ngFor="let action of searchResultArray"
+            >
+              <app-icon-with-text
+                [tool]="action"
+                (clickLink)="
+                  onNavigate(
+                    action.linkPath,
+                    action.isExternal,
+                    action.appId,
+                    action.label
+                  )
+                "
+                [borderRadius]="20"
+                [isClass]="false"
+              >
+              </app-icon-with-text>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<!-- <ng-template #showLoader>
+    <div
+      class="d-flex justify-content-center align-items-center loader-container-height"
+    >
+      <app-loaders class="loader-block"></app-loaders>
+    </div>
+  </ng-template> -->

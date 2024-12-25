@@ -1,0 +1,45 @@
+@import '../../../styles.scss';
+
+.chat-bot-button {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  z-index: 998;
+
+  img.chat-bot-blue-icon {
+    width: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .m-top-24-res-home {
+    margin-top: $size-24;
+  }
+  .m-top-24 {
+    margin-top: $size-0;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 994px) {
+  .m-top-24-res-home {
+    margin-top: $size-24;
+  }
+  .remove-m-top-24-res-home-my-board {
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 995px) and (max-width: 1200px) {
+  .m-top-24-res-home {
+    margin-top: $size-24;
+  }
+  .remove-m-top-24-res-home {
+    margin-top: 0px;
+  }
+}

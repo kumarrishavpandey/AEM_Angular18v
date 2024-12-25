@@ -1,0 +1,137 @@
+@use '../../styles.scss';
+
+.ai-dialog-container {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .ai-dialog-box {
+    box-shadow: 0px 4px 8px -2px rgba(30, 41, 59, 0.05);
+    position: absolute;
+    z-index: 999;
+    background-color: map-get(styles.$surface, surface-default);
+    overflow: hidden auto;
+
+    .ai-dialog-header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: styles.$padding-md;
+      padding-bottom: 0;
+      background-color: map-get(styles.$surface, surface-default);
+
+      .ai-close-button {
+        width: styles.$size-20;
+        height: styles.$size-20;
+
+        mat-icon {
+          width: styles.$size-20;
+          height: styles.$size-20;
+          font-size: styles.$size-20;
+        }
+      }
+    }
+
+    .ai-dialog-content {
+      padding: styles.$padding-md;
+      padding-top: 0;
+
+      .ai-event-container {
+        margin-top: styles.$size-8;
+
+        .ai-dialog-title {
+          font-size: styles.$font-size-xs;
+          font-style: normal;
+          font-weight: 700;
+          color: map-get(styles.$text, text-subtle);
+        }
+
+        .ai-event {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: styles.px2em(20px);
+          padding: styles.$padding-sm;
+          border-radius: 0 styles.$border-radius-sm styles.$border-radius-sm 0;
+          margin-top: styles.px2em(10px);
+
+          .ai-title {
+            font-size: styles.$font-size-xs;
+            font-weight: bold;
+          }
+
+          .ai-content {
+            font-size: styles.$font-size-xxs;
+            font-weight: 600;
+            letter-spacing: styles.px2em(0.04px);
+            color: map-get(styles.$text, text-subtle);
+          }
+
+          .ai-title,
+          .ai-content {
+            white-space: nowrap;
+            max-width: 30vw;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+
+          &.ai-pending,
+          &.ai-pending_cancellation {
+            background-color: map-get(styles.$global-colours, ai-orange, o50);
+            border-left: 2px solid
+              map-get(styles.$global-colours, ai-orange, o500);
+            color: map-get(styles.$global-colours, ai-orange, o800);
+          }
+
+          &.ai-approved {
+            background-color: map-get(styles.$global-colours, ai-green, g50);
+            border-left: 2px solid map-get(styles.$semantic, positive);
+            color: map-get(styles.$semantic, positive);
+          }
+
+          &.ai-all-day {
+            background-color: styles.$all-day-event-bg;
+            border-left: 2px solid
+              map-get(styles.$global-colours, ai-purple, p600);
+            color: map-get(styles.$global-colours, ai-purple, p600);
+          }
+        }
+      }
+    }
+
+    &.ai-visible {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .ai-dialog-container {
+    .ai-dialog-box {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 280px;
+      max-width: 75vw;
+      max-height: 50vh;
+      border-radius: styles.$border-radius-sm;
+    }
+  }
+}
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .ai-dialog-container {
+    .ai-dialog-box {
+      width: 100%;
+      bottom: 0;
+      height: 50vh;
+      border-radius: styles.$border-radius-sm styles.$border-radius-sm 0 0;
+    }
+  }
+}

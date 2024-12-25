@@ -1,0 +1,236 @@
+<ng-container>
+  <!-- Header Section -->
+  <div class="d-flex" *ngIf="isDataLoaded; else showSkeletonHead">
+    <h4 class="header-text col-6">
+      {{ upcomingLabels.title }}
+    </h4>
+
+    <div class="d-flex justify-content-end col-6" *ngIf="viewMoreToggle">
+      <a class="view-more-link" (click)="viewAlertModal()"
+        >{{ upcomingLabels?.btnText
+        }}<mat-icon class="material-symbols-rounded">{{
+          upcomingLabels?.viewMoreIcon
+        }}</mat-icon></a
+      >
+    </div>
+  </div>
+  <ng-template #showSkeletonHead>
+    <div class="d-flex">
+      <div class="header-text col-6">
+        <div class="ua-skeleton-head">
+          <app-skeleton-loader
+            type="text-load"
+            height="24px"
+            width="100%"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end col-6">
+        <div class="qa-skeleton-view-more">
+          <app-skeleton-loader
+            type="text-load"
+            height="24px"
+            width="100%"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Listing Section -->
+  <div
+    class="white-box second-white-box m-top-16"
+    [ngClass]="{
+      'crew-white-box': userPersona === 'Pilot' || userPersona === 'Cabin Crew'
+    }"
+  >
+    <div class="padding-24" *ngIf="isDataLoaded; else showSkeletonContent">
+      <ng-container *ngIf="alertList?.length > 0; else noData">
+        <!-- Non flying persona -->
+        <ng-container
+          *ngIf="
+            userPersona !== 'Pilot' && userPersona !== 'Cabin Crew';
+            else pilotCrew
+          "
+        >
+          <div
+            *ngFor="let list of alertList.slice(0, 2); let last = last"
+            [ngClass]="
+              list.isExternal
+                ? 'd-flex light-grey-border-bottom p-bottom-16 m-bottom-16 cursor-pointer-custom'
+                : 'd-flex light-grey-border-bottom p-bottom-16 m-bottom-16'
+            "
+            (click)="navigateToURL(list)"
+          >
+            <div class="col-2">
+              <div
+                class="upcoming-row-icon"
+                [style]="{ background: list?.iconBgColor }"
+              >
+                <mat-icon
+                  class="icon-color material-symbols-rounded no-fill"
+                  [style]="{ color: list?.iconColor }"
+                >
+                  {{ list?.icon }}
+                </mat-icon>
+              </div>
+            </div>
+
+            <div class="col-10">
+              <p class="title-text">{{ list?.name }}</p>
+              <p
+                class="desc-text"
+                *ngIf="list?.summary"
+                
+              >
+                {{
+                  list?.summary?.length <=
+                  (list?.summaryAlert !== "NA" || list?.eventLocation
+                    ? 80
+                    : 120)
+                    ? list?.summary
+                    : (list?.summary
+                        | slice
+                          : 0
+                          : (list?.summaryAlert !== "NA" || list?.eventLocation
+                              ? 80
+                              : 120)) + "..."
+                }}
+              </p>
+
+              <ng-container
+                *ngIf="list?.summaryAlert !== 'NA'; else locationSection"
+              >
+                <span class="summary-alert-text" *ngIf="list?.summaryAlert">
+                  {{ list?.summaryAlert }}
+                </span>
+              </ng-container>
+
+              <ng-template #locationSection>
+                <span
+                  class="location-text"
+                  *ngIf="list?.eventLocation || list?.date || list?.designation"
+                >
+                  <ng-container *ngIf="list?.eventLocation">
+                    <span class="m-right-16 icon-spacing">
+                      <mat-icon class="material-symbols-rounded">
+                        location_on </mat-icon
+                      ><span
+                        class="icon-name"
+                        >{{ list?.eventLocation }}</span
+                      >
+                    </span>
+                  </ng-container>
+
+                  <ng-container *ngIf="list?.date">
+                    <span class="m-right-16 icon-spacing">
+                      <mat-icon class="date-icon material-symbols-rounded">
+                        calendar_today </mat-icon
+                      ><span class="icon-name">{{ list?.date }}</span>
+                    </span>
+                  </ng-container>
+                  <ng-container *ngIf="list?.designation">
+                    <span class="m-right-16 icon-spacing">
+                      <mat-icon class="date-icon material-symbols-rounded">
+                        badge </mat-icon
+                      ><span
+                        class="icon-name"
+                        >{{ list?.designation }}</span
+                      >
+                    </span>
+                  </ng-container>
+                </span>
+              </ng-template>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #pilotCrew>
+          <div
+            *ngFor="let list of alertList.slice(0, 3); let last = last"
+            class="d-flex light-grey-border-bottom p-bottom-16 m-bottom-16 pilotCrew-light-grey-border-bottom"
+          >
+            <!-- [class.row-border]="!last" -->
+            <div>
+              <div class="upcoming-row-icon">
+                <mat-icon class="icon-color material-symbols-rounded">
+                  {{ list?.icon }}
+                </mat-icon>
+              </div>
+            </div>
+
+            <div class="summary-container m-left-16">
+              <div class="summary-wrapper">
+                <p
+                  class="desc-text"
+                  *ngIf="list?.summary"
+                  [innerHTML]="list.summary"
+                ></p>
+                <p
+                  class="desc-text-alert"
+                  *ngIf="list?.alert"
+                  [innerHTML]="list.alert"
+                ></p>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+      <ng-template #noData>
+        <div class="row empty-section d-flex align-items-center">
+          <!-- No data found -->
+          <div class="col-3">
+            <img [src]="dataNotComingImagePath" class="img-fluid" />
+          </div>
+          <div class="col-9">
+            <p class="no-data-text">{{ upcomingLabels?.noDataTitle }}</p>
+            <p class="no-data-desc">
+              {{ upcomingLabels?.noDataDesc }}
+            </p>
+          </div>
+        </div>
+      </ng-template>
+      <!--  -->
+    </div>
+    <ng-template #showSkeletonContent>
+      <div class="padding-24" *ngFor="let _ of [].constructor(2)">
+        <div
+          class="d-flex light-grey-border-bottom m-bottom-16 qa-skeleton-content"
+        >
+          <div class="col-2">
+            <div class="upcoming-row-icon-skeleton">
+              <app-skeleton-loader
+                type="icon-load"
+                height="40px"
+                width="40px"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+
+          <div class="col-10">
+            <div class="ua-skeleton-content-text-1">
+              <app-skeleton-loader
+                type="text-load"
+                height="16px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+            <div class="m-top-12 m-bottom-8">
+              <app-skeleton-loader
+                type="text-load"
+                height="12px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+            <div>
+              <app-skeleton-loader
+                type="text-load"
+                height="12px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ng-container>

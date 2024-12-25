@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-12 d-flex light-grey-border-bottom p-bottom-16">
+    <!-- title -->
+    <div class="col-6">
+      <h2 class="pop-heading">{{ data?.upcomingLabels?.title }}</h2>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <button (click)="closeDialog()" mat-dialog-close mat-icon-button>
+        <mat-icon class="material-symbols-rounded" fontIcon="close">{{
+          data?.upcomingLabels?.closeIcon
+        }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Listing Section -->
+<div class="row list-section m-top-16">
+  <div class="col-12">
+    <ng-container
+      *ngIf="
+        userPersona !== 'Pilot' && userPersona !== 'Cabin Crew';
+        else pilotCrew
+      "
+    >
+      <div
+        *ngFor="let list of alertList"
+        [ngClass]="
+          list.isExternal
+            ? 'd-flex light-grey-border-bottom p-bottom-16 m-bottom-16 cursor-pointer-custom'
+            : 'd-flex light-grey-border-bottom p-bottom-16 m-bottom-16'
+        "
+        (click)="navigateToURL(list)"
+      >
+        <div class="col-2">
+          <div
+            class="upcoming-row-icon"
+            [style]="{ background: list?.iconBgColor }"
+          >
+            <mat-icon
+              class="icon-color material-symbols-rounded no-fill"
+              [style]="{ color: list?.iconColor }"
+            >
+              {{ list?.icon }}
+            </mat-icon>
+          </div>
+        </div>
+
+        <div class="col-10">
+          <p class="title-text">{{ list?.name }}</p>
+          <p class="desc-text" *ngIf="list?.summary">
+            {{ list?.summary }}
+          </p>
+
+          <ng-container
+            *ngIf="list?.summaryAlert !== 'NA'; else locationSection"
+          >
+            <span class="summary-alert-text" *ngIf="list?.summaryAlert">
+              {{ list?.summaryAlert }}
+            </span>
+          </ng-container>
+
+          <ng-template #locationSection>
+            <span
+              class="location-text"
+              *ngIf="list?.eventLocation || list?.date || list?.designation"
+            >
+              <ng-container *ngIf="list?.eventLocation">
+                <span class="m-right-16 icon-spacing">
+                  <mat-icon class="material-symbols-rounded">
+                    location_on </mat-icon
+                  ><span
+                    class="icon-name upcoming-ellipsis"
+                    >{{ list?.eventLocation }}</span
+                  >
+                </span>
+              </ng-container>
+
+              <ng-container *ngIf="list?.date">
+                <span class="m-right-16 icon-spacing">
+                  <mat-icon class="date-icon material-symbols-rounded">
+                    calendar_today </mat-icon
+                  ><span class="icon-name">{{ list?.date }}</span>
+                </span>
+              </ng-container>
+              <ng-container *ngIf="list?.designation">
+                <span class="m-right-16 icon-spacing">
+                  <mat-icon class="date-icon material-symbols-rounded">
+                    badge </mat-icon
+                  ><span
+                    class="icon-name upcoming-ellipsis"
+                    >{{ list?.designation }}</span
+                  >
+                </span>
+              </ng-container>
+            </span>
+          </ng-template>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #pilotCrew>
+      <div
+        *ngFor="let list of alertList; let last = last"
+        class="d-flex light-grey-border-bottom p-bottom-16 m-bottom-16"
+      >
+        <!-- [class.row-border]="!last" -->
+        <div>
+          <div class="upcoming-row-icon">
+            <mat-icon class="icon-color material-symbols-rounded">
+              {{ list?.icon }}
+            </mat-icon>
+          </div>
+        </div>
+
+        <div class="summary-container m-left-16">
+          <div class="summary-wrapper">
+            <p
+              class="desc-text"
+              *ngIf="list?.summary"
+              [innerHTML]="list.summary"
+            ></p>
+            <p
+              class="desc-text-alert"
+              *ngIf="list?.alert"
+              [innerHTML]="list.alert"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

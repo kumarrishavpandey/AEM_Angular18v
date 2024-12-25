@@ -1,0 +1,265 @@
+@import '../../../../styles.scss';
+
+.upload-container-width {
+  width: 95%;
+}
+.leave-application-container {
+  margin: 1rem;
+  display: flex;
+}
+.leave-application-container-left-box {
+  border-right: 1px solid $lighter-grey;
+}
+.leave-application-container-right-box {
+  margin: 1rem;
+}
+.leave-comment-container {
+  width: 95%;
+}
+.leave-comment-field {
+  width: 100%;
+}
+
+.icon-font-size {
+  font-size: $font-16;
+  width: $size-16;
+  height: $size-16;
+  margin-left: $size-4;
+}
+
+.upload-heading {
+  color: $dark-blue;
+  font-size: $font-16;
+  font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.day-font-number {
+  font-weight: 700;
+  color: $dark-blue;
+}
+
+.day-text {
+  font-weight: 400;
+  color: $dark-blue;
+  padding-left: $size-4;
+}
+
+.duration-text {
+  color: $dark-grey;
+  font-size: $font-14;
+  font-weight: 700;
+}
+
+.approver-text {
+  margin-bottom: $size-20;
+  color: $dark-grey;
+  font-size: $font-16;
+  font-weight: 700;
+}
+
+.icon-violet {
+  color: $violet;
+}
+
+.file-upload-border {
+  padding: $size-8;
+  border-radius: $size-4;
+  border: 1px solid $lighter-grey;
+  background: $off-white;
+  -webkit-border-radius: $size-4;
+  -moz-border-radius: $size-4;
+  -ms-border-radius: $size-4;
+  -o-border-radius: $size-4;
+
+  .file-upload-name {
+    font-family: 'Nunito Sans', sans-serif !important;
+    color: $black;
+    font-size: $font-14;
+    font-weight: 400;
+  }
+}
+.file-upload-delete-btn {
+  background: $white;
+}
+.file-upload-view-btn {
+  background: $border-white;
+  border: 1px solid $border-white;
+}
+
+/* CUstomize the loader in submit button*/
+.uploader-status ::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: white;
+}
+
+.button-width-primary {
+  width: 93.16px;
+}
+.ellipsis-label-30 {
+  width: auto;
+}
+.mobile-button {
+  display: none;
+}
+
+/// #######################################
+/// Media Query
+/// #######################################
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .upload-container-width {
+    width: 100%;
+  }
+  .button-width {
+    width: 100%;
+  }
+  .m-bottom-res-16 {
+    margin-bottom: $size-16;
+  }
+  .file-upload-border {
+    width: 100%;
+    height: $size-40;
+  }
+
+  .m-right-16 {
+    margin-right: $size-0;
+  }
+  .p-right-16 {
+    padding-right: $size-0;
+  }
+  .duration-text {
+    margin-bottom: $size-24;
+  }
+  .button-width-primary {
+    width: 100%;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+  .mobile-button {
+    display: block;
+  }
+  .desktop-buttons {
+    display: none;
+  }
+  .close-button-upload-mobile {
+    justify-content: flex-end;
+    display: flex;
+    width: inherit;
+  }
+  .view-button-width-mobile {
+    width: 40px;
+    height: 40px;
+  }
+  .over-ride-ellipsis-calendar {
+    ::ng-deep {
+      .mat-form-field-label {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .upload-container-width {
+    width: 100%;
+  }
+  .button-width {
+    width: 100%;
+  }
+  .m-bottom-res-16 {
+    margin-bottom: $size-16;
+  }
+  .file-upload-border {
+    width: 100%;
+  }
+  .m-right-16 {
+    margin-right: $size-0;
+  }
+  .duration-text {
+    margin-bottom: $size-24;
+  }
+  .p-right-16 {
+    padding-right: $size-0;
+  }
+  .button-width-primary {
+    width: 100%;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+  .mobile-button {
+    display: block;
+  }
+  .desktop-buttons {
+    display: none;
+  }
+  .close-button-upload-mobile {
+    justify-content: flex-end;
+    display: flex;
+    width: inherit;
+  }
+  .view-button-width-mobile {
+    width: 40px;
+    height: 40px;
+  }
+  .over-ride-ellipsis-calendar {
+    ::ng-deep {
+      .mat-form-field-label {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .leave-application-container-left-box {
+    border-right: 1px solid $lighter-grey !important;
+  }
+  .m-left-29 {
+    margin-left: 16px !important;
+  }
+  .m-right-16 {
+    margin-right: $size-16;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+  .over-ride-ellipsis-calendar {
+    ::ng-deep {
+      .mat-form-field-label {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1199px) and (max-width: 1400px) {
+  .leave-application-container-left-box {
+    border-right: 1px solid $lighter-grey !important;
+  }
+  .m-left-29 {
+    margin-left: 20px !important;
+  }
+  .m-top-res-24 {
+    margin-top: 0px !important;
+  }
+  .over-ride-ellipsis-calendar {
+    ::ng-deep {
+      .mat-form-field-label {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1399px) and (max-width: 1921px) {
+  .over-ride-ellipsis-calendar {
+    ::ng-deep {
+      .mat-form-field-label {
+        width: 250px;
+      }
+    }
+  }
+}

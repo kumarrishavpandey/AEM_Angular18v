@@ -1,0 +1,162 @@
+@import '../../../../../styles.scss';
+
+::ng-deep {
+  .white-box {
+    height: unset;
+  }
+  .dropdown {
+    padding: 10px;
+  }
+
+  .select-region {
+    color: $violet;
+    font-size: $font-16;
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .mat-menu-content:not(:empty) {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .select-region-menu-panel.mat-menu-panel {
+    border-radius: 8px;
+    position: absolute;
+    right: 40px;
+    top: 8px;
+    overflow-x: hidden;
+    height: 240px;
+    min-height: 240px;
+  }
+  .exapnd-collaps-icon mat-icon {
+    float: right;
+  }
+  .region-icon .mat-icon {
+    color: $violet;
+  }
+
+  .location-font {
+    color: $dark-grey;
+    font-size: $font-18;
+    font-weight: 700;
+  }
+  .main-region-item {
+    display: flex;
+    align-items: center;
+    width: 280px;
+    overflow-x: hidden;
+  }
+  .sub-region-list button.mat-menu-item {
+    padding-left: 40px !important;
+    font-weight: 400;
+    font-size: $font-14;
+    color: $dark-blue;
+  }
+  .exapnd-collaps-icon {
+    cursor: pointer;
+  }
+  .exapnd-collaps-icon .chevron_right {
+    display: block;
+  }
+  .exapnd-collaps-icon.expanded .chevron_right {
+    display: none;
+  }
+  .exapnd-collaps-icon .exapand_more {
+    display: none;
+  }
+  .exapnd-collaps-icon.expanded .exapand_more {
+    display: block;
+  }
+  .sub-region-list {
+    display: none;
+  }
+  .sub-region-list.expanded {
+    display: block;
+  }
+
+  .phone-trigger-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}
+
+.arrow-position-region {
+  position: absolute;
+  right: 0;
+  mat-icon {
+    color: $grey-blue;
+  }
+}
+
+.region-menu-hover {
+  &:hover {
+    background: $border-white;
+  }
+  span {
+    font-weight: 400;
+    font-size: $font-14;
+    color: $dark-blue;
+  }
+}
+
+.region-icon {
+  line-height: 0;
+  margin-right: $size-8;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  ::ng-deep {
+    .select-region-menu-panel.mat-menu-panel {
+      right: 16px;
+    }
+  }
+  .responsive-ellipsis {
+    width: 100px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  ::ng-deep {
+    .select-region-menu-panel.mat-menu-panel {
+      right: 32px;
+    }
+  }
+  .responsive-ellipsis {
+    width: 100px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1400px) {
+  ::ng-deep {
+    .select-region-menu-panel.mat-menu-panel {
+      right: 32px;
+    }
+  }
+  .responsive-ellipsis {
+    width: 92px;
+  }
+}
+
+@media (min-width: 1401px) and (max-width: 1599px) {
+  ::ng-deep {
+    .select-region-menu-panel.mat-menu-panel {
+      right: 32px;
+    }
+  }
+  .responsive-ellipsis {
+    width: 152px;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1800px) {
+  ::ng-deep {
+    .select-region-menu-panel.mat-menu-panel {
+      right: 32px;
+    }
+  }
+}

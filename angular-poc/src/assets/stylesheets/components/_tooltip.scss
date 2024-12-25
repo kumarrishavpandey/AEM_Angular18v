@@ -1,0 +1,19 @@
+@import '../abstracts/variables';
+
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the tooltip component.
+// -----------------------------------------------------------------------------
+
+::ng-deep {
+  .mat-tooltip {
+    font-family: 'Nunito Sans', sans-serif !important;
+    background-color: $dark-blue;
+    font-size: $font-18;
+    font-weight: 700;
+  }
+
+  .mat-tooltip-content {
+    color: $white;
+    padding: $size-8 $size-16;
+  }
+}

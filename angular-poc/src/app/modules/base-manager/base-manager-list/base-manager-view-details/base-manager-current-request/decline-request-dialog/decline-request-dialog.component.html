@@ -1,0 +1,76 @@
+<div class="decline-padding-l-r-14">
+  <!-- Header -->
+  <div class="row">
+    <div class="col-12 d-flex light-grey-border-bottom p-0 decline-p-bottom-8">
+      <!-- title -->
+      <div class="col-6">
+        <h2 class="pop-heading">{{ dialogRejectAcm?.labelDialogRejectAcm }}</h2>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <button
+          (click)="closeDialog('cancel')"
+          mat-dialog-close
+          mat-icon-button
+        >
+          <mat-icon fontIcon="close">{{ dialogRejectAcm?.iconClose }}</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- body -->
+  <div class="row m-top-16">
+    <form [formGroup]="rejectForm" class="p-0">
+      <!-- add a comment -->
+      <div class="col-xxl-12 col-xl-12 col-sm-12">
+        <mat-form-field
+          appearance="fill"
+          class="example-full-width comment-field"
+        >
+          <mat-label>{{ dialogRejectAcm?.placeholderComment }}</mat-label>
+          <textarea
+            matInput
+            #commentInput
+            formControlName="comment"
+            [maxlength]="data?.dialogDeclinedAcm?.commentMaxLength"
+            [placeholder]="dialogRejectAcm?.placeholderComment"
+            (keydown)="onKeydown($event)"
+            (paste)="onPaste($event)"
+          ></textarea>
+          <mat-hint class="hint-text"
+            >{{ commentMaxLength - commentInput?.value?.length }}
+            {{ dialogRejectAcm?.charValidationMsg }}.</mat-hint
+          >
+        </mat-form-field>
+      </div>
+    </form>
+
+    <!-- Button section -->
+    <div class="d-xl-flex d-lg-flex justify-content-end m-top-24 p-0">
+      <button
+        class="button primary-stroke-red m-right-16"
+        (click)="closeDialog('cancel')"
+      >
+        {{ dialogRejectAcm?.labelBtnCancel }}
+      </button>
+
+      <button
+        class="button primary-solid-dark-red m-top-8-decline no-border-custom"
+        (click)="onSubmit()"
+        [disabled]="!rejectForm.valid"
+        *ngIf="rejectForm.valid"
+      >
+        {{ dialogRejectAcm?.btnReject }}
+      </button>
+
+      <button
+        *ngIf="!rejectForm.valid"
+        mat-flat-button
+        class="button m-top-8-decline"
+        disabled
+      >
+        {{ dialogRejectAcm?.btnReject }}
+      </button>
+    </div>
+  </div>
+</div>

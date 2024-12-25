@@ -1,0 +1,46 @@
+@use "../../styles.scss";
+
+.ai-header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  padding: styles.$padding-md styles.$padding-md styles.$padding-sm
+    styles.$padding-md;
+
+  .ai-toolbar-title {
+    font-size: styles.$font-size-md;
+    font-style: normal;
+    font-weight: 700;
+    line-height: styles.px2em(22.5px);
+  }
+
+  .ai-btn-group {
+    display: flex;
+    gap: styles.px2em(8px);
+
+    .ai-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: styles.$size-32;
+      height: styles.$size-32;
+      background-color: map-get(styles.$global-colours, ai-grey, g200);
+      border-radius: 50%;
+
+      mat-icon {
+        color: map-get(styles.$interactive, interactive-default);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &.ai-mobile {
+    .ai-toolbar-title {
+      font-size: styles.$font-size-default;
+      line-height: styles.px2em(20.5px);
+    }
+  }
+}

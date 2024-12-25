@@ -1,0 +1,41 @@
+<div
+  *ngFor="let _ of [].constructor(stackCardCount)"
+  class="stack-card"
+>
+  <div class="white-box white-box-approvals padding-24 res-padding-24">
+    <div class="d-flex align-items-center gap-2">
+      <app-skeleton
+        [width]="180"
+        [height]="29"
+      ></app-skeleton>
+
+      <div class="red-circle-number">
+        <app-skeleton
+          [width]="100"
+          [widthUnit]="enumSkeletonUnit.pc"
+          [height]="100"
+          [heightUnit]="enumSkeletonUnit.pc"
+          [borderRadius]="50"
+          [borderRadiusUnit]="enumSkeletonUnit.pc"
+        ></app-skeleton>
+      </div>
+    </div>
+  </div>
+
+  <div class="grey-background">
+    <div class="position-relative">
+      <app-approval-card-skeleton
+        *ngFor="let item of [0, 1, 2]; let i = index"
+        [showDetailLink]="true"
+        [index]="item"
+      ></app-approval-card-skeleton>
+    </div>
+
+    <div class="view-more-card">
+      <app-skeleton
+        [width]="105"
+        [height]="24"
+      ></app-skeleton>
+    </div>
+  </div>
+</div>

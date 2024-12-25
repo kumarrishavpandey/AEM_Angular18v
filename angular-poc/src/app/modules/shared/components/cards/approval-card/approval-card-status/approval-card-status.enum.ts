@@ -1,0 +1,6 @@
+export enum EnumApprovalCardRequestStatus {
+  PENDING = 'PENDING',
+  PENDING_CANCELLATION = 'PENDING_CANCELLATION',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
+}

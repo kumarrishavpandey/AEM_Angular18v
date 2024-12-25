@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <!-- title + close -->
+  <div class="row d-flex light-grey-border-bottom p-bottom-16">
+    <div class="col-11 p-0">
+      <h4 class="popup-title">{{ data.warningInfo.title }}</h4>
+    </div>
+    <div class="col-1 p-0 d-flex justify-content-end">
+      <button
+        class="remove-button-effect"
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        (click)="cancel()"
+      >
+        <mat-icon class="material-symbols-rounded">close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- paragraph -->
+  <div class="row p-top-24">
+    <div class="col-12 p-0">
+      <p [innerHTML]="data.warningInfo.message"></p>
+    </div>
+  </div>
+
+  <!-- buttons -->
+  <div class="row p-top-24">
+    <div
+      class="col-12 d-xxl-flex d-xl-flex d-lg-flex d-md-flex justify-content-end p-0"
+    >
+      <button
+        (click)="cancel()"
+        mat-dialog-close
+        mat-stroked-button
+        class="button secondary-solid-outline-grey cancel-color m-right-8 button-w-100"
+      >
+        Cancel
+      </button>
+      <button
+        [mat-dialog-close]="closeDeleteWarning"
+        (click)="confirm()"
+        class="button m-top-res-8 approve-reject-button button-w-100"
+        mat-flat-button
+        color="warn"
+        [ngClass]="
+          data.warningInfo.buttonText === 'Approve' ||
+          data.warningInfo.title === 'Approval Pending' ||
+          data.warningInfo.buttonText === 'Yes'
+            ? 'primary-solid-red'
+            : 'primary-solid-dark-red '
+        "
+      >
+        {{ data.warningInfo.buttonText }}
+      </button>
+    </div>
+  </div>
+</div>

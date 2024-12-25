@@ -1,0 +1,100 @@
+@import '../../../../../styles.scss';
+.engineer-card {
+  padding: 24px 20px;
+  display: flex;
+  gap: 12px;
+  .profile-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.engineer-card-search-content {
+  .emp-id {
+    font-family: AirIndiaVariable !important;
+    font-size: $font-12;
+    font-weight: 500;
+    color: $grey-900;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .name {
+    font-family: AirIndiaVariable !important;
+    font-size: $font-14;
+    font-weight: 500;
+    color: $red-title;
+    text-transform: uppercase;
+  }
+  .email {
+    font-size: $font-12;
+    font-weight: 600;
+    color: $trip-text-grey;
+    text-decoration: none;
+  }
+  .designation {
+    font-size: $font-12;
+    font-weight: 600;
+    letter-spacing: 0.004em;
+    color: $trip-text-grey;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .remove-white-padding {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .search-engineer-form {
+    padding: 36px 24px;
+  }
+  .box-button-edit {
+    width: 50%;
+  }
+  .padding-bottom-16-conditional {
+    padding-bottom: 16px;
+  }
+  .remove-padding-top {
+    padding-top: 0;
+  }
+  .engineer-card-search-content {
+    .designation {
+      display: block;
+      span {
+        margin-left: 4px;
+        margin-right: 4px;
+        &:first-child {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .box-button-edit {
+    width: auto;
+  }
+  .engineer-card-search-content {
+    .designation {
+      display: block;
+      span {
+        margin-left: 4px;
+        margin-right: 4px;
+        &:first-child {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+  .padding-bottom-16-conditional {
+    padding-bottom: 16px;
+  }
+  .remove-padding-top {
+    padding-top: 0;
+  }
+}

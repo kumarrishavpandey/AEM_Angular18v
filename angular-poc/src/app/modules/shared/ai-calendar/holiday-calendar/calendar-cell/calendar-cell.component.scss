@@ -1,0 +1,91 @@
+@use '../../styles.scss';
+
+.ai-calendar-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid map-get(styles.$stroke, stroke-subtle);
+  background-color: map-get(styles.$global-colours, ai-grey, g50);
+  position: relative;
+
+  &.ai-current-month {
+    background-color: map-get(styles.$surface, surface-default);
+  }
+
+  &.ai-faded {
+    background: map-get(styles.$global-colours, ai-grey, g200);
+  }
+
+  .ai-month-date {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    .ai-month-name,
+    .ai-date {
+      color: map-get(styles.$text, text-subtle);
+      font-size: styles.$font-size-sm;
+      font-style: normal;
+      font-weight: 400;
+      line-height: styles.px2em(19.6px);
+      letter-spacing: styles.px2em(0.035px);
+    }
+
+    .ai-date {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: styles.px2em(10px);
+    }
+
+    .ai-today {
+      width: styles.px2em(28px);
+      height: styles.px2em(28px);
+      color: map-get(styles.$text, text-on-dark);
+      border-radius: 50%;
+      background: map-get(styles.$global-colours, ai-purple, p800);
+    }
+  }
+
+  .ai-more {
+    position: absolute;
+    color: map-get(styles.$text, text-default);
+    font-size: styles.$font-size-xs;
+    line-height: styles.px2em(19.8px);
+    cursor: pointer;
+  }
+
+  &.ai-desktop,
+  &.ai-tablet {
+    min-height: 120px;
+    padding: styles.$padding-sm;
+
+    .ai-more {
+      top: 9px;
+      right: 15px;
+    }
+  }
+
+  &.ai-mobile {
+    justify-content: center;
+    align-items: center;
+    min-height: styles.px2em(56px);
+
+    .ai-more {
+      bottom: 1px;
+      right: 2px;
+    }
+
+    .ai-toggle-dialog {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      height: 100%;
+      padding: styles.$padding-sm;
+      cursor: pointer;
+    }
+  }
+}

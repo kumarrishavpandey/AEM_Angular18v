@@ -1,0 +1,249 @@
+<form class="myai-search-bar">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-icon class="material-symbols-rounded" matPrefix>{{
+      searchBarLabels?.searchIcon?.toLowerCase()
+    }}</mat-icon>
+    <input
+      type="text"
+      #globalSearchInput
+      matInput
+      [matAutocomplete]="auto"
+      [(ngModel)]="searchValue"
+      [ngModelOptions]="{ standalone: true }"
+      (keyup)="searchSubject.next($event.target['value'])"
+      (paste)="onPaste($event)"
+      (keypress)="removeSpecialCharacters($event)"
+      (keydown.enter)="onSearchChange($event)"
+      (focus)="searchClicked('open')"
+      (blur)="onBlur(searchValue)"
+      name="{{ searchBarLabels?.searchPlaceholder }}"
+      placeholder="{{ searchBarLabels?.searchPlaceholder }}"
+      maxlength="50"
+      [readonly]="searchBarReadonly"
+    />
+    <mat-icon
+      *ngIf="(isFocused || searchValue) && !searchBarReadonly"
+      class="close-button-search material-symbols-rounded"
+      (click)="clearSearchValue()"
+      >{{ searchBarLabels?.closeIcon?.toLowerCase() }}</mat-icon
+    >
+
+    <mat-autocomplete #auto="matAutocomplete" class="search-drop">
+      <!-- employee name search with initials -->
+      <ng-container *ngIf="isDataLoaded; else showLoader">
+        <div *ngIf="employeeSearch.length > 0">
+          <h6 class="heading-search-bar">
+            {{ searchBarLabels?.labelEmployee }}
+          </h6>
+          <mat-option
+            *ngFor="let search of employeeSearch"
+            [value]="searchValue"
+            (click)="onClickRedirection(searchValue, search?.employeeId)"
+            tabindex="1"
+          >
+            <div class="myai-employee-designation-container typecursor">
+              <div class="employee-content">
+                <app-employee-card
+                  class="me-2"
+                  [empData]="search"
+                  [initialsTheme]="avatarTheme.SECONDARY"
+                  [initialsSize]="headerSize.XS"
+                  [size]="avatarSize.XXS"
+                ></app-employee-card>
+
+                <div>
+                  {{ search?.firstName || "" }} {{ search?.lastName || "" }} ({{
+                    search?.email || ""
+                  }})
+                </div>
+              </div>
+            </div>
+          </mat-option>
+        </div>
+      </ng-container>
+      <ng-template #showLoader>
+        <div class="search-bar-skeleton-head">
+          <!-- <app-skeleton-loader
+            type="text-load"
+            height="16px"
+            width="100%"
+          ></app-skeleton-loader> -->
+        </div>
+        <div
+          class="search-bar-skeleton-block-1"
+          *ngFor="let _ of [].constructor(4)"
+        >
+          <div class="search-bar-skeleton-icon">
+            <!-- <app-skeleton-loader
+              type="icon-load"
+              height="16px"
+              width="100%"
+            ></app-skeleton-loader> -->
+          </div>
+          <div class="search-bar-skeleton-icon-text">
+            <!-- <app-skeleton-loader
+              type="text-load"
+              height="16px"
+              width="100%"
+            ></app-skeleton-loader> -->
+          </div>
+        </div>
+      </ng-template>
+
+      <!-- Action search -->
+      <ng-container *ngIf="actionSearch?.length > 0 && isDataLoaded">
+        <h6 class="heading-search-bar">{{ searchBarLabels?.labelAction }}</h6>
+        <mat-option
+          *ngFor="let search of actionSearch"
+          [value]="searchValue"
+          (click)="
+            onClickDocumentRedirection(
+              searchValue,
+              constantData?.label?.actionLabel
+            )
+          "
+        >
+          <mat-icon
+            *ngIf="search?.iconName"
+            aria-hidden="false"
+            [style.color]="search.iconColor"
+            aria-label="Example history icon"
+          >
+            <span class="material-symbols-rounded m-right-16">{{
+              search?.iconName
+            }}</span>
+          </mat-icon>
+
+          <img
+            *ngIf="search?.iconUrl && search?.iconUrl?._path"
+            [src]="getAemDamFullPath(search?.iconUrl?._path)"
+            [alt]="search.cardTitle"
+            class="img-fluid m-right-16"
+            height="24px"
+            width="24px"
+          />
+
+          {{ search?.cardTitle }}</mat-option
+        >
+      </ng-container>
+
+      <!-- Document Search -->
+      <ng-container *ngIf="policySearch?.length > 0 && isDataLoaded">
+        <h6 class="heading-search-bar">{{ searchBarLabels?.labelPolicy }}</h6>
+        <mat-option
+          *ngFor="let search of policySearch"
+          [value]="searchValue"
+          (click)="
+            onClickDocumentRedirection(
+              searchValue,
+              constantData?.label?.policyLabel,
+              search
+            )
+          "
+        >
+          <mat-icon
+            *ngIf="search?.iconName"
+            aria-hidden="false"
+            [style.color]="search.iconColor"
+            aria-label="Example history icon"
+          >
+            <span class="material-symbols-rounded m-right-16">{{
+              search?.iconName
+            }}</span>
+          </mat-icon>
+
+          <img
+            *ngIf="search?.iconUrl && search?.iconUrl?._path"
+            [src]="getAemDamFullPath(search?.iconUrl?._path)"
+            [alt]="search.cardTitle"
+            class="img-fluid m-right-16"
+            height="24px"
+            width="24px"
+          />
+          {{ search?.cardTitle }}</mat-option
+        >
+      </ng-container>
+
+      <ng-container
+        *ngIf="benefitsSearch.length > 0 && checkIsEmpFromInd && isDataLoaded"
+      >
+        <h6 class="heading-search-bar">{{ searchBarLabels?.labelBenefits }}</h6>
+        <mat-option
+          *ngFor="let search of benefitsSearch"
+          [value]="searchValue"
+          (click)="
+            onClickDocumentRedirection(
+              searchValue,
+              constantData?.label?.benefitsLabel,
+              search
+            )
+          "
+        >
+          <mat-icon
+            *ngIf="search?.iconName"
+            aria-hidden="false"
+            [style.color]="search.iconColor"
+            aria-label="Example history icon"
+          >
+            <span class="material-symbols-rounded m-right-16">{{
+              search?.iconName
+            }}</span>
+          </mat-icon>
+
+          <img
+            *ngIf="search?.iconUrl && search?.iconUrl?._path"
+            [src]="getAemDamFullPath(search?.iconUrl?._path)"
+            [alt]="search.cardTitle"
+            class="img-fluid m-right-16"
+            height="24px"
+            width="24px"
+          />
+          {{ search?.cardTitle }}</mat-option
+        >
+      </ng-container>
+
+      <ng-container *ngIf="isDataLoaded; else showSkeleton">
+        <mat-option
+          class="text-center see-all-text"
+          *ngIf="
+            searchValue.length > 2 &&
+            (actionSearch?.length > 0 ||
+              employeeSearch?.length > 0 ||
+              policySearch?.length > 0 ||
+              benefitsSearch?.length > 0)
+          "
+          [value]="searchValue"
+          (click)="
+            onClickDocumentRedirection(
+              searchValue,
+              constantData?.label?.allLabel
+            )
+          "
+          >{{ searchBarLabels?.labelSeeAll }}</mat-option
+        >
+      </ng-container>
+      <ng-template #showSkeleton>
+        <mat-option
+          class="text-center see-all-text"
+          *ngIf="
+            searchValue.length > 2 &&
+            (actionSearch?.length > 0 ||
+              employeeSearch?.length > 0 ||
+              policySearch?.length > 0 ||
+              benefitsSearch?.length > 0)
+          "
+        >
+          <div class="search-bar-skeleton-see-all">
+            <!-- <app-skeleton-loader
+              type="text-load"
+              height="12px"
+              width="100%"
+            ></app-skeleton-loader> -->
+          </div>
+        </mat-option>
+      </ng-template>
+
+      <!-- </ng-template> -->
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

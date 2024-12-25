@@ -1,0 +1,174 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// #######################################
+/// color
+/// #######################################
+
+$dark-blue: #2f304a;
+$red: #da0e29;
+$dark-red: #aa1130;
+$light-red: #fef2f5;
+$violet: #531251;
+$dark-grey: #595b6b;
+$darkest-grey: rgba(28, 18, 19, 0.15);
+$black: #000000;
+$white: #ffffff;
+$body-background: #e4e9f7;
+$border-white: #f0f1f7;
+$lighter-grey: #d7d8e1;
+$light-grey: #c4c4c4;
+$darker-black: #11101d;
+$medium-grey: #a4a4a4;
+$off-white: #fbfbfc;
+$grey-blue: #3a3d57;
+$medium-plus-grey: #838493;
+$dull-white: #f7f8fa;
+$light-blue: #ebf2ff;
+$dark-grey-l2: #b9bac3;
+$sky-blue: #2160c7;
+$navy-blue: #11418f;
+$black-90: #1c1213;
+$grey-80: #383c42;
+$green: #008000;
+$light-green: #e0f0e0;
+$mat-orange-20: #e1657a;
+$yellow-green: yellowgreen;
+$purple: #952391;
+$dark-orange-1: #a84907;
+$light-purple: #f3f0f3;
+$light-orange: #ffefdb;
+$purple-10: #9523911a;
+$light-grey-20: #828a99;
+$yellow: #efca08;
+$light-violet: #bfacc8;
+$pink: #fecee9;
+$purple-10: #9523911a;
+$purple-90: #f4e9f4;
+$dark-grey-100: #ced4d8;
+$black-60: #1f2b34;
+$abbey: #4e565a;
+$black-6: #0000000f;
+$grey-ligter: #b0b5bf;
+$grey-lighter-2: #626773;
+$grey-05: #f3f4f7;
+$orange: #ff8c00;
+$oragne-100: #ffd9aa;
+$lightest-green: #e5ffec;
+$gradient-blue: linear-gradient(
+  90deg,
+  #2f304a 0.01%,
+  #232c39 23.44%,
+  #25274a 30.72%,
+  rgba(14, 70, 136, 0.56) 47.38%,
+  rgba(47, 48, 74, 0.11) 74.99%,
+  #7868b2 99.99%
+);
+$lavender-blush: #fff4f7;
+$grey-900: #25272c;
+$violet-50: #53125185;
+$black-95: #191a29;
+$black-80: #323232;
+$lightest-blue-99: #f3f7fd;
+$lightest-blue-10: #3174e0;
+$dark-orange: #d05e0e;
+$light-white-grey: #d9d9d9;
+$lighter-red: #eba9b5;
+$mat-black: #41444c;
+$bid-period: #eae0e9;
+$training: #2aa646;
+$all-day-event-bg: #f1e2f1;
+$approved-green: #17732b;
+$light-blue-53: #538ae5;
+$grey-dark-50: #c1bbbb;
+$border-blue-light: #b0ccfb;
+$red-title: #b61032;
+$trip-text-grey: #494e5c;
+$card-trip-dark-grey: #383c42;
+$light-white-bg: #f7f8f8;
+$border-light-grey-98: #edeef1;
+$green-ribbon: #158c30;
+$orange-ribbon: #e96f1a;
+$light-yellow: #f9f6ee;
+$lightest-pink: #fef3f0;
+$light-violet: #ddd0dc;
+$lighest-red: #f3cfd5;
+$white-light-90: #efefef;
+$ai-grey-g200: #d3d6db;
+$light-background-violet: #ead9e9;
+$border-profile-circle: #f9f9f9;
+$light-yellow-acm: #fcfbf7;
+$border-comment: #b4b5bf;
+
+/// Copy text color
+/// @type Color
+$text-color: $dark-blue !default;
+
+/// Main brand color Air India
+/// @type Color
+$brand-color: #c02d32 !default;
+//$text-color: rgb(34, 34, 34) !default;
+
+.sky-blue-font {
+  color: $sky-blue;
+}
+
+.violet-font {
+  color: $violet;
+}
+
+.error-font {
+  color: $red;
+}
+
+/// #######################
+//  Sizes in px
+/// #######################
+///
+
+$size-0: 0px;
+$size-2: 2px;
+$size-1: 1px;
+$size-2: 2px;
+$size-3: 3px;
+$size-4: 4px;
+$size-5: 5px;
+$size-6: 6px;
+$size-7: 7px;
+$size-8: 8px;
+$size-9: 9px;
+$size-10: 10px;
+$size-11: 11px;
+$size-12: 12px;
+$size-13: 13px;
+$size-14: 14px;
+$size-15: 15px;
+$size-16: 16px;
+$size-18: 18px;
+$size-20: 20px;
+$size-22: 22px;
+$size-24: 24px;
+$size-25: 25px;
+$size-28: 28px;
+$size-29: 29px;
+$size-30: 30px;
+$size-32: 32px;
+$size-34: 34px;
+$size-36: 36px;
+$size-40: 40px;
+$size-48: 48px;
+$size-50: 50px;
+$size-60: 60px;
+$size-65: 65px;
+$size-80: 80px;
+$size-100: 100px;
+$size-120: 120px;
+$size-480: 480px;
+$size-900: 900px;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'https://cdn.example.com/assets/';
+$base-url: '/assets/' !default;

@@ -1,0 +1,102 @@
+<ng-container>
+  <div class="col-12" *ngIf="isDataLoaded; else showSkeletonHead">
+    <h6 class="myai-employee-header-title m-bottom-0">
+      {{ quickActionLabels.title }}
+    </h6>
+  </div>
+  <ng-template #showSkeletonHead>
+    <div class="col-12">
+      <div class="qa-skeleton-head">
+        <app-skeleton-loader
+          type="text-load"
+          height="24px"
+          width="100%"
+        ></app-skeleton-loader>
+      </div>
+    </div>
+  </ng-template>
+  <div class="quick-action-wrapper">
+    <div class="white-box px-3 py-4">
+      <ng-container *ngIf="isDataLoaded; else showSkeletonData">
+        <div
+          id="home-quick-action-carousel"
+          class="carousel slide indicator-position"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <div
+              type="button"
+              *ngFor="let actions of QUICK_ACTION; let i = index"
+              [class.active]="i === 0"
+              data-bs-target="#home-quick-action-carousel"
+              [attr.data-bs-slide-to]="i"
+              [attr.aria-label]="'slide ' + i"
+              class="dot circle-indicator quick-active-circle"
+            ></div>
+          </div>
+          <div class="carousel-inner">
+            <div
+              class="carousel-item"
+              *ngFor="let actions of QUICK_ACTION; let i = index"
+              [class.active]="i === 0"
+            >
+              <div class="row">
+                <div
+                  class="col-md-3 col-4 m-bottom-32 d-flex align-items-center justify-content-center"
+                  *ngFor="let toolLink of actions"
+                >
+                  <!-- <app-icon-with-text
+                    [tool]="toolLink"
+                    (clickLink)="
+                      onNavigate(
+                        toolLink.linkPath,
+                        toolLink.isExternal,
+                        toolLink.label,
+                        toolLink.isMaleFemaleCheck,
+                        toolLink.femaleUniformFormPath || '',
+                        toolLink.maleUniformFormPath || ''
+                      )
+                    "
+                    [borderRadius]="8"
+                    [isClass]="false"
+                  >
+                  </app-icon-with-text> -->
+                  <app-icon-with-text
+                    [tool]="toolLink"
+                    (clickLink)="onNavigate(toolLink)"
+                    [borderRadius]="8"
+                    [isClass]="false"
+                  >
+                  </app-icon-with-text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #showSkeletonData>
+        <div class="row">
+          <div
+            class="col-md-3 col-4 m-bottom-32 align-items-center justify-content-center"
+            *ngFor="let _ of [].constructor(8)"
+          >
+            <div class="qa-skeleton-icon">
+              <app-skeleton-loader
+                type="text-load"
+                height="100%"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+            <div class="m-top-8 qa-skeleton-icon-text">
+              <app-skeleton-loader
+                type="text-load"
+                height="100%"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ng-container>

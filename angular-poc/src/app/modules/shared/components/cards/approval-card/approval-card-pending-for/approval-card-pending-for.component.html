@@ -1,0 +1,20 @@
+<span
+  *ngIf="shouldShowPendingForData()"
+  class="d-flex align-items-center gap-1 darkbrown"
+>
+  <mat-icon class="material-symbols-rounded">
+    {{ iconTimer }}
+  </mat-icon>
+
+  <span>
+    {{ getPendingForLabel() }}
+  </span>
+
+  <span>
+    {{ getPendingForData() }}
+  </span>
+
+  <span>
+    {{ getPendingForDayLabel() }}
+  </span>
+</span>

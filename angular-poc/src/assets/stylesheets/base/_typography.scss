@@ -1,0 +1,61 @@
+/**
+ * Basic typography style for copy text
+ */
+
+/// #######################
+//  Global Base font
+/// #######################
+
+body {
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+/// #######################
+//  Font Sizes
+/// #######################
+
+$font-8: 0.5rem;
+$font-9: 0.563rem;
+$font-10: 0.625rem;
+$font-12: 0.75rem;
+$font-13: 0.813rem;
+$font-14: 0.875rem;
+$font-15: 0.938rem;
+$font-16: 1rem;
+$font-18: 1.125rem;
+$font-20: 1.25rem;
+$font-22: 1.375rem;
+$font-24: 1.5rem;
+$font-28: 1.75rem;
+$font-32: 2rem;
+$font-36: 2.25rem;
+$font-40: 2.5rem;
+$font-48: 3rem;
+
+/// #######################
+//  Font Alignment
+/// #######################
+
+.text-center {
+  text-align: center;
+}
+
+/// #######################################
+//  Ellipsis
+/// #######################################
+
+/* 30 characters */
+.ellipsis-label-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 222px;
+}
+
+/// #######################################
+//  Font color
+/// #######################################
+
+.red-font {
+  color: $red;
+}

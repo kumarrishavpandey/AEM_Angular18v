@@ -1,0 +1,28 @@
+@import 'src/styles.scss';
+
+.request-status {
+  font-size: $size-12;
+  font-weight: 600;
+  line-height: 16.8px;
+  letter-spacing: 0.004em;
+  padding: $size-4 $size-8;
+  border-radius: $size-4;
+
+
+  &.pending,
+  &.pending_cancellation {
+    color: $dark-orange-1;
+    padding: unset;
+  }
+
+  &.approved {
+    color: $approved-green;
+    background-color: $lightest-green;
+  }
+
+  &.rejected,
+  &.cancelled {
+    color: $dark-red;
+    background-color: $lavender-blush;
+  }
+}

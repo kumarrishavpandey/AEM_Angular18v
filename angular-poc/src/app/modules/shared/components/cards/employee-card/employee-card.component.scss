@@ -1,0 +1,66 @@
+// @import 'src/styles.scss';
+
+@import '../../../../../../styles.scss';
+
+.initials-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  .initials {
+    font-family: AirIndiaVariable !important;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 0px;
+
+    &.small {
+      font-size: small;
+    }
+
+    &.x-small {
+      font-size: xx-small;
+    }
+  }
+
+  &.primary {
+    background-color: rgba(83, 18, 81, 0.09);
+
+    &::after {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      padding: 18px;
+      border: 2px solid rgba(249, 249, 249, 1);
+      border-radius: 50%;
+    }
+  }
+
+  &.secondary {
+    color: $white;
+    background-color: $violet;
+  }
+
+  &.tertiary {
+    color: $white;
+    background-color: $sky-blue;
+  }
+}
+
+.inital-letter {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 100%;
+  background-color: $violet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h6 {
+    font-size: $font-16;
+    font-weight: 500;
+    text-align: center;
+    color: $white;
+    font-family: AirIndiaVariable !important;
+  }
+}

@@ -1,0 +1,47 @@
+<ng-container *ngIf="isDataLoaded; else showSkeletonForData">
+  <app-roster-card
+    [recentCards]="recentCards"
+    [numberOfCards]="numberOfCards"
+  ></app-roster-card>
+  <div *ngIf="isApiErr" class="white-box m-right-16 no-data-error align-items-center height-mob">
+    <p class="text-center p-3 no-data-desc">{{ aemResponse?.errorTxt }}</p>
+  </div>
+  <div
+    *ngIf="!isApiErr && !isLoading && recentFl && recentFl.length === 0"
+    class="white-box m-right-16 no-data-error height-mob"
+  >
+    <div class="row d-flex m-auto padding-24">
+      <div class="col-3 left-img">
+        <img [src]="dataNotComingImagePath" class="img-fluid" />
+      </div>
+      <div class="col-9">
+        <p class="no-data-text">{{ aemResponse?.noDataTitle }}</p>
+        <p class="no-data-desc">
+          {{ aemResponse?.noDataDesc }}
+        </p>
+      </div>
+    </div>
+    <!-- <p class="text-center p-3">{{ aemResponse?.noData }}</p> -->
+  </div>
+</ng-container>
+<ng-template #showSkeletonForData>
+  <div class="col-12">
+    <div>
+      <app-skeleton-loader
+        type="text-load"
+        height="24px"
+        width="100px"
+      ></app-skeleton-loader>
+    </div>
+  </div>
+  <div class="rs-skeleton-content-block">
+    <div class="white-box m-right-16 rs-skeleton-white-box w-100"></div>
+    <div>
+      <app-skeleton-loader
+        type="text-load"
+        height="206px"
+        width="100%"
+      ></app-skeleton-loader>
+    </div>
+  </div>
+</ng-template>

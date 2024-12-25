@@ -1,0 +1,9 @@
+<div *ngIf="isGeneral">
+  <app-emp-dashboard-awards
+    [awardsAndAppreciationsLabels]="awardsAndAppreciationsLabels"
+    [siteSection]="siteSection"
+  ></app-emp-dashboard-awards>
+</div>
+<div *ngIf="!isGeneral" class="roaster-wrapper">
+  <app-roster-section [numberOfCards]="1"></app-roster-section>
+</div>

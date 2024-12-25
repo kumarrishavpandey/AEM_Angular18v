@@ -1,0 +1,103 @@
+<h4 class="box-heading-18">{{ dashboardLabels?.labelUpcomingHeading }}</h4>
+<div class="divider"></div>
+<!-- Month title and navigation buttons -->
+<div class="div-month m-bottom-16 d-flex space-between">
+  <div class="box-heading-18">{{ currentMonth }}</div>
+  <div class="button-container">
+    <button
+      mat-mini-fab
+      class="bg-gray-icons"
+      aria-label="Example icon button with a navigate_before icon"
+      (click)="getPreviousMonth()"
+    >
+      <mat-icon class="material-symbols-rounded">{{
+        dashboardLabels?.iconNavigateBefore
+      }}</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      class="bg-gray-icons"
+      aria-label="Example icon button with a navigate_next icon"
+      (click)="getNextMonth()"
+    >
+      <mat-icon class="material-symbols-rounded">{{
+        dashboardLabels?.iconNavigateNext
+      }}</mat-icon>
+    </button>
+  </div>
+</div>
+<!-- Leaves/Holiday List -->
+<ul class="holiday-leave-list">
+  <ng-container
+    *ngIf="
+      holidayLeaveList && holidayLeaveList.length > 0;
+      else noHolidayLeaveList
+    "
+  >
+    <li class="m-bottom-16" *ngFor="let leaveHoliday of holidayLeaveList">
+      <div *ngIf="leaveHoliday">
+        <div class="list-date-title mb-1">
+          {{ leaveHoliday.start | date : holidayCalendarDateFormat }}
+          <span *ngIf="leaveHoliday.start !== leaveHoliday.end">
+            - {{ leaveHoliday.end | date : holidayCalendarDateFormat }}</span
+          >
+        </div>
+        <div class="leave-strip bg-{{ getLeaveStatus(leaveHoliday) }}">
+          <!-- Icons -->
+          <div class="leave-title d-flex item-center">
+            <div [ngSwitch]="getEventIconType(leaveHoliday)">
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngSwitchCase="'casual'"
+                >{{ dashboardLabels?.iconTimelapse }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngSwitchCase="'sick'"
+                >{{ dashboardLabels?.iconMasks }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngSwitchCase="'privilege'"
+                >{{ dashboardLabels?.iconLuggage }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngSwitchCase="'all day'"
+                >{{ dashboardLabels?.iconFlag }}</mat-icon
+              >
+              <mat-icon class="material-symbols-rounded" *ngSwitchDefault>{{
+                dashboardLabels?.iconLogout
+              }}</mat-icon>
+            </div>
+            <div>{{ leaveHoliday.extendedProps.name }}</div>
+          </div>
+          <!-- Full Day/Half Day and status -->
+          <div class="d-flex space-between status-heading m-top-8">
+            <div [ngSwitch]="leaveHoliday.extendedProps.duration">
+              <div *ngSwitchCase="'0'">{{ dashboardLabels?.labelHalfDay }}</div>
+              <div *ngSwitchDefault>{{ dashboardLabels?.labelAllDay }}</div>
+            </div>
+            <div [ngSwitch]="leaveHoliday.extendedProps.status">
+              <div *ngSwitchCase="'APPROVED'">
+                {{ dashboardLabels?.labelApproved }}
+              </div>
+              <div *ngSwitchCase="'PENDING'">
+                {{ dashboardLabels?.labelPending }}
+              </div>
+              <div *ngSwitchCase="'CANCELLED'">
+                {{ dashboardLabels?.labelRejected }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ng-container>
+
+  <ng-template #noHolidayLeaveList>
+    <div class="noHolidayLeaveList">
+      {{ dashboardLabels?.labelNoHolidayLeaveList }}
+    </div>
+  </ng-template>
+</ul>

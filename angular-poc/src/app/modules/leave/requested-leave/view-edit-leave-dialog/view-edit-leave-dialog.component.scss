@@ -1,0 +1,199 @@
+@import '../../../../../styles.scss';
+
+.view-edit-leave-form {
+  border: 1px solid $border-white;
+  border-radius: $size-8;
+  padding: $size-24;
+  background: $off-white;
+}
+
+.view-edit-form-container {
+  overflow-y: auto;
+  height: 450px;
+  width: auto;
+  overflow-x: hidden;
+}
+
+.duration-text {
+  color: $dark-grey;
+  font-size: $font-14;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.day-font-number {
+  font-weight: 700;
+  color: $dark-blue;
+  border-bottom: 1px solid $lighter-grey;
+  width: 100%;
+  display: flex;
+  padding-bottom: $size-16;
+}
+
+.day-text {
+  font-weight: 400;
+  padding-left: $size-4;
+}
+
+.heading-pop {
+  font-size: $font-24;
+  color: $black;
+  margin: 0;
+}
+
+.leave-comment-container {
+  width: 100%;
+}
+
+.leave-comment-field {
+  width: 100%;
+}
+
+.approval-status-approved {
+  color: $approved-green;
+  font-size: $size-14;
+  font-weight: 400;
+}
+.approval-status-rejected {
+  color: $red;
+  font-size: $size-14;
+  font-weight: 400;
+}
+
+.approval-status-pending {
+  color: $dark-orange;
+  font-size: $size-14;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.pop-heading {
+  color: $dark-blue;
+  font-size: $font-24;
+  font-weight: 700;
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.icon-violet {
+  color: $violet;
+}
+
+.file-upload-border {
+  padding: $size-8;
+  width: auto;
+  border-radius: $size-4;
+  border: 1px solid $lighter-grey;
+  background: $off-white;
+  -webkit-border-radius: $size-4;
+  -moz-border-radius: $size-4;
+  -ms-border-radius: $size-4;
+  -o-border-radius: $size-4;
+
+  .file-upload-name {
+    font-family: 'Nunito Sans', sans-serif !important;
+    color: $black;
+    font-size: $font-14;
+    font-weight: 400;
+  }
+}
+.ellipsis-label-30 {
+  width: auto;
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    width: 730px;
+    max-width: 100%;
+  }
+}
+
+/* CUstomize the loader in submit button*/
+.uploader-status ::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $white;
+}
+.file-upload-view-btn {
+  background: $border-white;
+  border: 1px solid $border-white;
+}
+
+::ng-deep .rejected-leave-reason .mat-form-field-infix {
+  border-top: none!important;
+}
+
+/* media query */
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .ellipsis-label-30 {
+    width: 156px;
+  }
+
+  .p-right-16 {
+    padding-right: $size-0;
+  }
+
+  .view-edit-form-container {
+    overflow-y: auto;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .m-right-16 {
+    margin-right: $size-0;
+  }
+
+  ::ng-deep .mat-dialog-container {
+    border-radius: $size-24 $size-24 $size-0 $size-0 !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 95%;
+    -webkit-border-radius: $size-24 $size-24 $size-0 $size-0 !important;
+    -moz-border-radius: $size-24 $size-24 $size-0 $size-0 !important;
+    -ms-border-radius: $size-24 $size-24 $size-0 $size-0 !important;
+    -o-border-radius: $size-24 $size-24 $size-0 $size-0 !important;
+  }
+  .m-top-res-8 {
+    margin-top: $size-8;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+  .file-upload-border {
+    width: 100%;
+  }
+  .mobile-responsive-with-upload {
+    width: auto;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .m-top-res-8 {
+    margin-top: $size-8;
+  }
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+  .file-upload-border {
+    width: 100%;
+  }
+  .mobile-responsive-with-upload {
+    width: inherit;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .extra-margin-bottom-8 {
+    margin-bottom: 8px;
+  }
+  .file-upload-border {
+    width: 100%;
+  }
+  .mobile-responsive-with-upload {
+    width: inherit;
+  }
+}

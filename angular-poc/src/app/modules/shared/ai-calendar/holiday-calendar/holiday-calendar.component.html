@@ -1,0 +1,25 @@
+<div
+  class="ai-holiday-calendar ai-{{ deviceType }}"
+  [ngStyle]="{
+    'font-family': fontFamily,
+    'font-size': scale + 'em',
+    width: width,
+    height: height
+  }"
+>
+  <div class="ai-calendar-header">
+    <app-header-toolbar
+      [currentDate]="currentDate"
+      [deviceType]="deviceType"
+      (previousMonth)="previousMonth()"
+      (nextMonth)="nextMonth()"
+    ></app-header-toolbar>
+  </div>
+
+  <app-calendar-grid
+    [currentDate]="currentDate"
+    [dateEventMap]="dateEventMap"
+    [days]="days"
+    [deviceType]="deviceType"
+  ></app-calendar-grid>
+</div>

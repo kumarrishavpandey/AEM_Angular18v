@@ -1,0 +1,357 @@
+<div class="container-fluid p-bottom-60 p-0">
+  <div class="row m-bottom-24 m-top-24">
+    <!-- Calendar Views Buttons -->
+    <div class="col-xxl-9 col-lg-9 col-md-8 col-sm-12">
+      <div
+        class="calendar-view-buttons d-flex m-res-bottom-24"
+        *ngIf="isDataLoaded; else showSkeletonForViewBtns"
+      >
+        <button
+          mat-stroked-button
+          class="m-right-8 requested-leave-btn"
+          [class.active-btn]="selectedView === dashboardLabels.btnCalendarView"
+          (click)="onHeaderButtonClick(dashboardLabels.btnCalendarView)"
+        >
+          <mat-icon class="material-symbols-rounded">{{
+            dashboardLabels?.iconBtnCalendarView
+          }}</mat-icon>
+          {{ dashboardLabels?.btnCalendarView }}
+        </button>
+
+        <button
+          mat-stroked-button
+          class="m-right-8 requested-leave-btn"
+          [class.active-btn]="selectedView === dashboardLabels.btnListView"
+          (click)="onHeaderButtonClick(dashboardLabels.btnListView)"
+        >
+          <mat-icon class="material-symbols-rounded m-top-4">{{
+            dashboardLabels?.iconBtnListView
+          }}</mat-icon
+          >{{ dashboardLabels?.btnListView }}
+        </button>
+      </div>
+      <ng-template #showSkeletonForViewBtns>
+        <div class="calendar-view-buttons d-flex m-res-bottom-24">
+          <div class="m-right-8">
+            <app-skeleton-loader
+              type="text-load"
+              height="30px"
+              width="100px"
+            ></app-skeleton-loader>
+          </div>
+          <div>
+            <app-skeleton-loader
+              type="text-load"
+              height="30px"
+              width="100px"
+            ></app-skeleton-loader>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <!-- Select Region -->
+    <ng-container *ngIf="isDataLoaded; else showSkeletonRegion">
+      <div
+        class="col-xxl-3 col-lg-3 col-md-12 col-sm-12 m-top-8-res custom-leave-dashboard-region-dropdown"
+        *ngIf="holidayCalendarsList.length > 0"
+      >
+        <app-select-region
+          [selectedElementName]="selectedElementName"
+          [holidayCalendarsList]="holidayCalendarsList"
+          (updateSelectedRegionInDashboard)="
+            updateDashboardSelectedRegion($event)
+          "
+          (selectRegionClick)="selectRegionButtonClicked()"
+          [dashboardLabels]="dashboardLabels"
+        ></app-select-region>
+      </div>
+    </ng-container>
+    <ng-template #showSkeletonRegion>
+      <div class="col-xxl-3 col-lg-3 col-md-12 col-sm-12 m-top-8-res d-flex">
+        <div class="m-right-8">
+          <app-skeleton-loader
+            type="text-load"
+            height="12px"
+            width="130px"
+          ></app-skeleton-loader>
+        </div>
+        <div>
+          <app-skeleton-loader
+            type="text-load"
+            height="12px"
+            width="130px"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="row">
+    <!-- Calendars -->
+    <ng-container *ngIf="isDataLoaded; else showSkeletonCalendar">
+      <div
+        *ngIf="upcomingHolidayLeaves.length > 0"
+        class="col-xxl-9 col-lg-9 col-md-12 col-sm-12"
+      >
+        <div class="white-box padding-24 m-bottom-24">
+          <app-calendar-view
+            *ngIf="selectedView === dashboardLabels.btnCalendarView"
+            [selectedCalendarDate]="selectedCalendarDate"
+            [upcomingHolidayLeavesList]="upcomingHolidayLeaves"
+            (getSelectedDate)="setSelectedDate($event)"
+            [dashboardLabels]="dashboardLabels"
+          >
+          </app-calendar-view>
+
+          <app-holiday-leaves-list-view
+            *ngIf="selectedView === dashboardLabels.btnListView"
+            [currentDate]="selectedCalendarDate"
+            [upcomingHolidayLeavesList]="upcomingHolidayLeaves"
+            (getSelectedDate)="setSelectedDate($event)"
+            [dashboardLabels]="dashboardLabels"
+          >
+          </app-holiday-leaves-list-view>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #showSkeletonCalendar>
+      <div
+        class="col-xxl-9 col-lg-9 col-md-12 col-sm-12 show-calendar-skeleton-desktop"
+      >
+        <div class="white-box">
+          <div class="d-flex padding-24 m-bottom-24">
+            <div>
+              <app-skeleton-loader
+                type="text-load"
+                height="30px"
+                width="100px"
+              ></app-skeleton-loader>
+            </div>
+            <div class="d-flex skeleton-leave-margin-left-auto">
+              <div class="m-right-16">
+                <app-skeleton-loader
+                  type="icon-load"
+                  height="32px"
+                  width="32px"
+                ></app-skeleton-loader>
+              </div>
+              <div>
+                <app-skeleton-loader
+                  type="icon-load"
+                  height="32px"
+                  width="32px"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <!-- Calendar Skeleton -->
+          <div class="row skeleton-leave-calendar-main-block">
+            <div
+              class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-12 skeleton-leave-calendar-block-left"
+            >
+              <app-skeleton-loader
+                type="text-load"
+                height="600px"
+                width="150px"
+              ></app-skeleton-loader>
+            </div>
+            <div
+              class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 skeleton-leave-calendar-block-center"
+            >
+              <div class="row m-top-120">
+                <div class="col-md-3 offset-md-6">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="70px"
+                    width="120px"
+                  ></app-skeleton-loader>
+                </div>
+              </div>
+              <div class="row m-top-48">
+                <div class="col-md-3 offset-md-3">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="70px"
+                    width="120px"
+                  ></app-skeleton-loader>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-12 skeleton-leave-calendar-block-right"
+            >
+              <div class="d-flex justify-content-end">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="600px"
+                  width="150px"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="m-right-16 d-flex m-top-16 m-left-8">
+            <div *ngFor="let _ of [].constructor(2)" class="d-flex">
+              <div class="m-right-8">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="30px"
+                  width="30px"
+                  borderRadius="8px"
+                ></app-skeleton-loader>
+              </div>
+              <div
+                class="m-right-8 d-flex justify-content-center align-items-center"
+              >
+                <app-skeleton-loader
+                  type="text-load"
+                  height="11px"
+                  width="66px"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="show-calendar-skeleton-mobile">
+        <div class="white-box padding-16">
+          <div>
+            <app-skeleton-loader
+              type="text-load"
+              height="26px"
+              width="170px"
+            ></app-skeleton-loader>
+          </div>
+          <div class="d-flex">
+            <div>
+              <app-skeleton-loader
+                type="text-load"
+                height="26px"
+                width="90px"
+              ></app-skeleton-loader>
+            </div>
+            <div class="d-flex skeleton-leave-margin-left-auto">
+              <div class="m-right-8">
+                <app-skeleton-loader
+                  type="icon-load"
+                  height="35px"
+                  width="35px"
+                ></app-skeleton-loader>
+              </div>
+              <div>
+                <app-skeleton-loader
+                  type="icon-load"
+                  height="35px"
+                  width="35px"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="m-top-16 w-100">
+            <app-skeleton-loader
+              type="text-load"
+              height="240px"
+              width="100%"
+            ></app-skeleton-loader>
+          </div>
+          <div class="m-right-16 d-flex">
+            <div *ngFor="let _ of [].constructor(2)" class="d-flex">
+              <div class="m-right-8">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="30px"
+                  width="30px"
+                  borderRadius="8px"
+                ></app-skeleton-loader>
+              </div>
+              <div
+                class="m-right-8 d-flex justify-content-center align-items-center"
+              >
+                <app-skeleton-loader
+                  type="text-load"
+                  height="11px"
+                  width="66px"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- leave balance -->
+    <div class="col-xxl-3 col-lg-3 col-md-12 col-sm-12 m-top-8-res">
+      <div class="white-box padding-16 h-auto">
+        <h4
+          class="box-heading-18 light-grey-border-bottom p-bottom-8"
+          *ngIf="isDataLoaded; else showSkeletonBalanceHead"
+        >
+          {{ dashboardLabels?.labelBalance }}
+        </h4>
+        <ng-template #showSkeletonBalanceHead>
+          <div>
+            <app-skeleton-loader
+              type="text-load"
+              height="23px"
+              width="150px"
+            ></app-skeleton-loader>
+          </div>
+        </ng-template>
+        <ul
+          class="balance-leave-list"
+          *ngIf="isDataLoaded; else showSkeletonBalanceData"
+        >
+          <ng-container *ngFor="let leave of leave_balance_data">
+            <li
+              class="leave-type p-top-16 p-bottom-16"
+              *ngIf="leave.leaveBalance"
+            >
+              <span> {{ leave.leaveDescription }}</span>
+              <span class="balanced-leave"
+                >{{ leave.leaveBalance }} {{ dashboardLabels?.labelDays }}</span
+              >
+            </li>
+          </ng-container>
+        </ul>
+        <ng-template #showSkeletonBalanceData>
+          <div *ngFor="let _ of [].constructor(3)" class="d-flex m-top-24">
+            <div>
+              <app-skeleton-loader
+                type="text-load"
+                height="19px"
+                width="130px"
+              ></app-skeleton-loader>
+            </div>
+            <div class="skeleton-leave-margin-left-auto">
+              <app-skeleton-loader
+                type="text-load"
+                height="19px"
+                width="65px"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <div
+        class="d-flex justify-content-end"
+        *ngIf="isDataLoaded; else showSkeletonApplyBtn"
+      >
+        <button
+          (click)="onApplyLeaveButtonClick()"
+          mat-stroked-button
+          class="button primary-solid-red m-right-8 m-top-16"
+        >
+          <!-- apply-leave-btn - removed this class-->
+          {{ dashboardLabels?.btnApplyLeave }}
+        </button>
+      </div>
+      <ng-template #showSkeletonApplyBtn>
+        <div class="d-flex justify-content-end m-top-24">
+          <app-skeleton-loader
+            type="text-load"
+            height="30px"
+            width="130px"
+          ></app-skeleton-loader>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

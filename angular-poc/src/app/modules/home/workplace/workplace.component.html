@@ -1,0 +1,211 @@
+<ng-container>
+  <!-- Workplace Title -->
+  <div class="row">
+    <!-- heading -->
+    <div class="col-12 m-bottom-16" *ngIf="isDataLoaded; else showSkeletonHead">
+      <h5 class="emp-heading-5">{{ workPlaceLabels?.title }}</h5>
+    </div>
+    <ng-template #showSkeletonHead>
+      <div class="col-12 m-bottom-16">
+        <div class="wp-skeleton-header">
+          <app-skeleton-loader
+            type="text-load"
+            height="24px"
+            width="100%"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+    </ng-template>
+    <!-- Workplace carousel -->
+    <div class="wp-carousel-outer">
+      <div class="wp-carousel">
+        <div
+          id="workplace-carouselExample"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-touch="true"
+        >
+          <!-- Indicators -->
+          <ng-container *ngIf="isDataLoaded; else showSkeletonIndicators">
+            <div class="carousel-indicators">
+              <div
+                type="button"
+                *ngFor="let slide of slides; let i = index"
+                [class.active]="i === 0"
+                data-bs-target="#workplace-carouselExample"
+                [attr.data-bs-slide-to]="i"
+                [attr.aria-label]="'slide ' + i"
+                class="dot"
+              ></div>
+            </div>
+          </ng-container>
+          <ng-template #showSkeletonIndicators> </ng-template>
+          <!-- Slides -->
+          <ng-container *ngIf="isDataLoaded; else showSkeletonContent">
+            <div class="carousel-inner">
+              <div
+                class="carousel-item slide workplace-slide"
+                *ngFor="let slide of slides; let i = index"
+                [class.active]="i === 0"
+                [ngClass]="[qureyParam === 'employee' ? 'emp-slide' : '']"
+              >
+                <div class="carousel-top-section">
+                  <!-- Slider image -->
+                  <img
+                    class="slider-img img-fluid"
+                    [src]="slide.url"
+                    alt=""
+                    [ngStyle]="{
+                      'object-fit': 'contain'
+                    }"
+                  />
+                </div>
+                <div class="carousel-bottom-section">
+                  <!-- Slider Content -->
+                  <div class="slider-texts-section">
+                    <div class="title-and-date-time">
+                      <div class="slider-logo-and-name">
+                        <img class="img-fluid" [src]="slide.profilePic" />
+                        <h5>{{ slide.name }}</h5>
+                        <mat-icon
+                          calss="material-symbols-rounded"
+                          aria-hidden="false"
+                          aria-label="chevron_right"
+                          fontIcon="chevron_right"
+                          >chevron_right</mat-icon
+                        >
+                        <h5>{{ slide.groupName }}</h5>
+                      </div>
+                      <div class="date-and-time text-nowrap">
+                        <span> {{ slide.time }} </span>
+                      </div>
+                    </div>
+                    <div class="slider-body">
+                      <span [innerHTML]="slide.title"></span>
+                      <span *ngIf="slide.isShowMoreEnabled"> ... </span>
+                      <a
+                        *ngIf="slide.isShowMoreEnabled"
+                        class="explore btn-explore see-more"
+                        href="{{ slide.buttonLink }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{{ slide.buttonText }}</a
+                      >
+                    </div>
+                  </div>
+                  <a
+                    class="wp-like-comment-section"
+                    href="{{ slide.buttonLink }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div class="wp-logo-and-heading">
+                      <img
+                        class="img-fluid"
+                        src="assets/icons/fbWorkplaceIcon.svg"
+                      />
+                      <span>{{ slide.groupName }}</span>
+                    </div>
+                    <div class="like-comment-before-time-info">
+                      <div>
+                        <span class="material-symbols-rounded">thumb_up</span>
+                        <span class="like-count">{{ slide.likecount }}</span>
+                      </div>
+                      <div>
+                        <span class="material-symbols-rounded">textsms</span>
+                        <span class="comment-count">{{
+                          slide.commentcount
+                        }}</span>
+                      </div>
+                      <div>
+                        <span class="modified-time-count"
+                          >{{ slide.diffTime }} {{ workPlaceLabels?.ago }}</span
+                        >
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #showSkeletonContent>
+            <div class="carousel-top-section">
+              <!-- Slider image -->
+              <div class="w-100">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="220px"
+                  width="100%"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+            <div class="carousel-bottom-section">
+              <div class="slider-texts-section-skeleton">
+                <div class="skeleton-slides-custom">
+                  <div class="m-right-8 wp-skeleton-icon">
+                    <app-skeleton-loader
+                      type="icon-load"
+                      height="24px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                  <div class="m-right-8 wp-skeleton-icon-text-1">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="12px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                  <div class="wp-skeleton-icon-text-2">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="12px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                </div>
+                <div class="m-top-24">
+                  <div class="w-100">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="12px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                  <div class="m-top-8 w-100">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="12px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                  <div class="m-top-8 w-100">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="12px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                </div>
+              </div>
+              <div class="wp-like-comment-section">
+                <div>
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="45px"
+                    width="100%"
+                  ></app-skeleton-loader>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div *ngIf="isError && isDataLoaded" class="wp-error-section">
+  <div class="white-box error">
+    <p class="no-data-desc">{{ errorTxt }}</p>
+  </div>
+</div>

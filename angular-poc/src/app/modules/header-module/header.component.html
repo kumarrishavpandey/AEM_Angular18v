@@ -1,0 +1,176 @@
+<div *ngIf="!shouldHideHeader" class="header-main">
+  <header class="header">
+    <div class="header-container">
+      <div *ngIf="!hideDetails" class="banner-container">
+        <button
+          class="remove-button-effect"
+          title="Toggle Menu"
+          (click)="toggleMenu(!isOpen)"
+          *ngIf="isDataloaded; else showSkeletonMenu"
+        >
+          <span class="header-button-wrapper">
+            <mat-icon class="material-symbols-rounded">apps</mat-icon>
+
+            <span class="avatar-title d-res-none">Apps</span>
+          </span>
+        </button>
+        <ng-template #showSkeletonMenu>
+          <div class="m-res-top-skeleton">
+            <div class="toggle-icon-skeleton">
+              <app-skeleton-loader
+                type="text-load"
+                height="36px"
+                width="36px"
+              ></app-skeleton-loader>
+            </div>
+            <div class="toggle-icon-text-skeleton">
+              <app-skeleton-loader
+                type="text-load"
+                height="8px"
+                width="30px"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </ng-template>
+        <!-- 2 icons -->
+        <div class="d-flex align-items-center logo-gap">
+          <!-- airindia logo -->
+          <ng-container *ngIf="isDataloaded; else showSkeletonLogo">
+            <button
+              class="remove-button-effect p-0 d-flex justify-content-center"
+              (click)="navigateToHome('Air India')"
+            >
+              <img
+              src="https://myai-dev.airindia.com/content/dam/my-ai/icon/desktop_logo.svg"
+
+                alt="logo"
+                class="img-fluid desktop-only"
+              />
+              <img
+                src="https://myai-dev.airindia.com/content/dam/my-ai/icon/desktop_logo.svg"
+                alt="logo"
+                class="img-fluid mobile-only"
+              />
+            </button>
+            <span
+              class="myai-divider d-xxl-block d-xl-block d-lg-block d-md-block d-sm-none d-none"
+              >|</span
+            >
+            <!-- myai logo  -->
+            <img
+              src="https://myai-dev.airindia.com/content/dam/my-ai/logo/myAILogo.svg"
+              alt="logo"
+              (click)="navigateToHome('myAI')"
+              class="myai-logo"
+            />
+          </ng-container>
+          <ng-template #showSkeletonLogo>
+            <div class="skeleton-block header-icon-skeleton-1">
+              <app-skeleton-loader
+                type="text-load"
+                height="30px"
+                width="100%"
+                class="m-res-top-skeleton"
+              ></app-skeleton-loader>
+            </div>
+            <div
+              class="skeleton-block header-skeleton-desktop-hide header-icon-skeleton-2"
+            >
+              <app-skeleton-loader
+                type="text-load"
+                height="30px"
+                width="100%"
+                class="m-res-top-skeleton"
+              ></app-skeleton-loader>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div
+        class="searchBar-container text-center"
+        [ngStyle]="{ width: hideDetails && isMobileView() ? '97.5%' : '' }"
+        *ngIf="isDataloaded; else showSkeletonSearch"
+      >
+        <div class="text-end mobile-only search-circle" *ngIf="isSearchIcon">
+          <mat-icon
+            class="material-symbols-rounded"
+            (click)="onClickSearchIcon()"
+            >{{
+              headerDetails?.commonData?.searchIcon?.toLowerCase()
+            }}</mat-icon
+          >
+        </div>
+        <app-search-bar
+          *ngIf="isSearchVisible"
+          (clickEvent)="receivedData($event)"
+          [searchApiConfig]="searchApiPayloadConfig"
+          [searchBarLabels]="searchBarLabels"
+          [checkSearchIcon]="checkSearchIcon"
+        ></app-search-bar>
+      </div>
+      <ng-template #showSkeletonSearch>
+        <div class="skeleton-container-search">
+          <app-skeleton-loader
+            type="text-load"
+            height="40px"
+            width="100%"
+            borderRadius="24px"
+            class="m-res-top-skeleton-search"
+          ></app-skeleton-loader>
+        </div>
+      </ng-template>
+
+      <!-- user greeting + todo -->
+      <div *ngIf="!hideDetails" class="user-greeting">
+        <!-- to do -->
+        <div *ngIf="shouldShowTodo()">
+          <a class="to_do_nav" (click)="trackClickEvent('TO DO')">
+            <span class="material-symbols-rounded"> list </span>
+            <span class="to_do_title">To Do</span>
+
+            <span *ngIf="toDoCount > 0" class="red-circle-notify">
+              {{ getTodoCount() }}
+            </span>
+          </a>
+        </div>
+        <!-- initials -->
+        <!-- profile image -->
+        <ng-container *ngIf="isDataloaded; else showSkeletonProfile">
+          <div
+            class="avatar-container"
+            (click)="trackClickEvent('Profile Image')"
+          >
+            <app-employee-card
+              [empData]="userDetail"
+              [size]="avatarSize.XS"
+            ></app-employee-card>
+
+            <div class="avatar-title d-res-none">
+              {{ headerDetails?.headerData?.avatarText }}
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #showSkeletonProfile>
+          <div>
+            <div class="skeleton-block profile-icon-skeleton">
+              <app-skeleton-loader
+                type="icon-load"
+                height="100%"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+            <div class="skeleton-block profile-text-skeleton">
+              <app-skeleton-loader
+                type="text-load"
+                height="8px"
+                width="100%"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </header>
+</div>

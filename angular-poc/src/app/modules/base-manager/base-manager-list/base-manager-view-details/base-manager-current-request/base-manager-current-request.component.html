@@ -1,0 +1,462 @@
+<ng-container *ngIf="isDataLoaded; else showSkeletonTiles">
+  <ng-template #approvalStatusDesktopView>
+    <div [ngSwitch]="managerData?.status">
+      <span
+        *ngSwitchCase="BASE_MANAGER_STATUS.APPROVED"
+        class="base-manager-tag green-tag extra-border-radius d-xxl-block d-xl-block d-lg-block d-md-none d-sm-none d-none"
+        >{{ tabCurrentRequests?.labelApproved }}</span
+      >
+      <span
+        *ngSwitchCase="BASE_MANAGER_STATUS.DECLINED"
+        class="base-manager-tag rejected-tag extra-border-radius d-xxl-block d-xl-block d-lg-block d-md-none d-sm-none d-none"
+        >{{ tabCurrentRequests?.labelRejected }}</span
+      >
+    </div>
+  </ng-template>
+
+  <ng-template #approvalStatusMobileView>
+    <div
+      class="m-top-4 d-xxl-none d-xl-none d-lg-none d-md-block d-sm-block d-block"
+      [ngSwitch]="managerData?.status"
+    >
+      <span
+        *ngSwitchCase="BASE_MANAGER_STATUS.APPROVED"
+        class="base-manager-tag green-tag extra-border-radius d-xxl-none d-xl-none d-lg-none d-md-block d-sm-block d-block"
+        >{{ tabCurrentRequests?.labelApproved }}</span
+      >
+      <span
+        *ngSwitchCase="BASE_MANAGER_STATUS.DECLINED"
+        class="base-manager-tag rejected-tag extra-border-radius d-xxl-none d-xl-none d-lg-none d-md-block d-sm-block d-block"
+        >{{ tabCurrentRequests?.labelRejected }}</span
+      >
+    </div>
+  </ng-template>
+
+  <!-- Profile Section -->
+  <div class="col-xl-12 m-top-24">
+    <div class="white-box">
+      <!-- == traveler's name + last updated ==  -->
+      <div
+        class="d-flex flex-xl-row flex-lg-row flex-sm-column-reverse flex-column-reverse align-items-xl-center align-items-lg-center align-items-md-center padding-16 border-top-base-manager-line"
+      >
+        <div class="col-xl-6 col-lg-6 col-sm-12">
+          <div
+            class="d-flex align-items-xxl-center align-items-xl-center align-items-lg-center grid-gap-base-manager-16"
+          >
+            <!--  profiel image / initials  -->
+            <div class="profile-image">
+              <app-employee-card
+                [empData]="{
+                  employeeId: managerData?.empId,
+                  firstName: managerData?.firstName,
+                  lastName: managerData?.lastName
+                }"
+                [initialsTheme]="avatarTheme.SECONDARY"
+                [size]="avatarSize.M"
+              ></app-employee-card>
+            </div>
+            <!--  -->
+
+            <div class="profile-details">
+              <!-- heading section  -->
+              <div class="d-flex grid-gap-base-manager-12 align-items-center">
+                <span class="captain-name-text"
+                  >{{ tabCurrentRequests?.labelCaptain }}
+                  {{ managerData?.firstName }}
+                  {{ managerData?.middleName }}
+                  {{ managerData?.lastName }}</span
+                >
+                <span class="profile-text d-none-m"
+                  ><span class="dot"></span>{{ managerData?.empId }}</span
+                >
+                <!-- tags - approved and rejected  - for desktop show hide in responsive -->
+                <ng-container *ngTemplateOutlet="approvalStatusDesktopView">
+                </ng-container>
+              </div>
+              <!-- subheading with 3 dots section -->
+              <div
+                class="d-inline-flex align-items-center grid-gap-base-manager-12"
+              >
+                <span class="profile-text d-show-m hide-desk">{{
+                  managerData?.empId
+                }}</span>
+                <span class="profile-text d-none-m">{{
+                  managerData?.designation
+                }}</span>
+                <span class="dot"></span>
+                <span class="profile-text">
+                  {{ baseManagerRequestsListEnum[managerData?.journeyType] }}
+                </span>
+                <span class="dot"></span>
+                <span class="profile-text">{{
+                  baseManagerRequestsListEnum[managerData?.tripType]
+                }}</span>
+              </div>
+              <!-- tags to be shown in responsive and hide in desktop -->
+              <ng-container *ngTemplateOutlet="approvalStatusMobileView">
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <!-- Date Section -->
+        <div
+          class="col-xl-6 col-lg-6 col-sm-12 col-12 d-flex justify-content-xl-end justify-content-lg-end align-items-center res-border-bottom-8-just"
+        >
+          <span class="updated-date-text"
+            >{{ tabCurrentRequests?.labelLastUpdated }}:
+            {{ managerData?.lastUpdatedDate | utcDateFormat }}
+          </span>
+        </div>
+      </div>
+      <!-- == flight travel details == -->
+      <app-flight-travel-detail-card
+        *ngFor="let tripDetail of managerData?.trips"
+        [isRequestDomestic]="
+          managerData.journeyType === JOURNEY_TYPES.DOMESTIC ? true : false
+        "
+        [flightTripDetails]="tripDetail"
+        [commonLabels]="tabCurrentRequests"
+        [labelStop]="tabCurrentRequests?.labelStop"
+        [labelStops]="tabCurrentRequests?.labelStops"
+        [imgCardLogo]="imgCardLogo"
+      ></app-flight-travel-detail-card>
+      <!--  -->
+    </div>
+  </div>
+
+  <!-- Attachment Section -->
+
+  <div class="col-xl-12 m-top-24">
+    <div class="white-box padding-24">
+      <div class="col-12">
+        <h4 class="m-bottom-24 attach-heading">
+          {{ tabCurrentRequests?.detailsComponent?.labelAttachments }}
+        </h4>
+      </div>
+
+      <div
+        class="row"
+        *ngIf="
+          managerData?.documents && managerData?.documents?.length > 0;
+          else noAttachmentSection
+        "
+      >
+        <div
+          class="col-xl-6 col-lg-6"
+          [class.left-column]="i % 2 !== 0"
+          *ngFor="let doc of managerData?.documents; let i = index"
+        >
+          <div class="d-flex align-items-center m-bottom-24 m-bottom-12-res-bm">
+            <div class="col-xl-6 col-lg-6 col-md-10 col-sm-10 col-10">
+              <div class="file-upload-wrapper">
+                <div class="file-upload-border d-flex align-items-center">
+                  <span class="icon-violet d-flex m-right-8">
+                    <mat-icon>{{
+                      tabCurrentRequests?.detailsComponent?.iconDocList
+                    }}</mat-icon>
+                  </span>
+                  <span class="ellipsis-label-30 file-upload-name m-right-8">
+                    {{ doc?.originalFileName }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-xl-6 col-lg-6 col-md-2 col-sm-2 col-2 d-flex justify-content-end"
+            >
+              <div
+                class="file-upload-border justify-content-center file-upload-view-btn d-flex align-items-center cursor-pointer"
+                (click)="viewDocument(doc)"
+              >
+                <span class="icon-violet d-flex m-right-8">
+                  <mat-icon>{{
+                    tabCurrentRequests?.detailsComponent?.iconBtnView
+                  }}</mat-icon>
+                </span>
+                <span
+                  class="ellipsis-label-30 attach-view-icon-label m-right-8"
+                >
+                  {{ tabCurrentRequests?.detailsComponent?.labelBtnView }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data not found -->
+      <ng-template #noAttachmentSection>
+        <div class="col-xl-12 col-md-12 col-sm-12">
+          <div class="error-details-div">
+            <div class="error-box">
+              <img [src]="noAttachmentImagePath" class="img-fluid" />
+              <div class="error-title m-top-24">
+                {{ tabCurrentRequests?.labelNoAttachmentFound }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Comment Section -->
+
+  <div
+    class="col-xl-12 m-top-24"
+    *ngIf="managerData?.status === BASE_MANAGER_STATUS.DECLINED"
+  >
+    <div class="white-box padding-24">
+      <div class="col-xxl-12 col-xl-12 col-sm-12 over-ride-text-area-bm">
+        <p class="comment-label">
+          {{ tabCurrentRequests?.labelInputComment }}
+        </p>
+        <mat-form-field
+          appearance="fill"
+          class="example-full-width comment-field m-top-12"
+        >
+          <textarea
+            matInput
+            [placeholder]="tabCurrentRequests?.labelInputCommentPlaceholder"
+            [value]="managerData?.comment"
+            [readonly]="true"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button Section -->
+  <div
+    class="col-xl-12 d-xl-flex d-lg-flex justify-content-end m-top-24 p-0"
+    *ngIf="managerData?.status === BASE_MANAGER_STATUS.PENDING"
+  >
+    <button
+      class="button primary-stroke-red m-right-16"
+      mat-stroked-button
+      color="accent"
+      (click)="onRejectClick(managerData?.generatedRequestNo)"
+    >
+      {{ labelReject }}
+    </button>
+
+    <button
+      class="button primary-solid-red margin-top-8-res-btn"
+      mat-stroked-button
+      (click)="onApproveClick(managerData?.generatedRequestNo)"
+    >
+      {{ labelApprove }}
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #showSkeletonTiles>
+  <!-- Profile Section -->
+  <div class="col-xl-12 m-top-24">
+    <div class="white-box">
+      <!-- == traveler's name + last updated ==  -->
+      <div
+        class="d-flex flex-xl-row flex-lg-row flex-sm-column-reverse flex-column-reverse align-items-xl-center align-items-lg-center align-items-md-center padding-16 border-top-base-manager-line"
+      >
+        <div class="col-xl-6 col-lg-6 col-sm-12">
+          <div
+            class="d-flex align-items-xxl-center align-items-xl-center align-items-lg-center grid-gap-base-manager-16"
+          >
+            <div class="profile-image">
+              <app-skeleton-loader
+                type="icon-load"
+                height="56px"
+                width="56px"
+              ></app-skeleton-loader>
+            </div>
+
+            <div class="profile-details">
+              <!-- heading section  -->
+              <div class="d-flex grid-gap-base-manager-12 align-items-center">
+                <div class="skeleton-profile-details-block1">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="24px"
+                    width="100%"
+                    borderRadius="4px"
+                  ></app-skeleton-loader>
+                </div>
+              </div>
+              <!-- subheading with 3 dots section -->
+              <div
+                class="d-inline-flex align-items-center grid-gap-base-manager-12"
+              >
+                <div class="skeleton-profile-details-block2">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="20px"
+                    width="100%"
+                    borderRadius="4px"
+                  ></app-skeleton-loader>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Date Section -->
+        <div
+          class="col-xl-6 col-lg-6 col-sm-12 col-12 d-flex justify-content-xl-end justify-content-lg-end align-items-center res-border-bottom-8-just"
+        >
+          <span class="updated-date-text">
+            <app-skeleton-loader
+              type="text-load"
+              height="20px"
+              width="258px"
+              borderRadius="4px"
+            ></app-skeleton-loader
+          ></span>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="col-xl-12 col-lg-12 d-xl-flex d-lg-flex padding-16">
+        <!-- Location Section -->
+        <div class="col-xl-3 col-lg-3 d-flex align-items-center">
+          <div class="d-flex align-items-center">
+            <app-skeleton-loader
+              type="icon-load"
+              height="60px"
+              width="60px"
+              borderRadius="8px"
+            ></app-skeleton-loader>
+            <div class="location-section m-left-16">
+              <app-skeleton-loader
+                type="text-load"
+                height="18px"
+                width="136px"
+                borderRadius="8px"
+              ></app-skeleton-loader>
+              <app-skeleton-loader
+                type="text-load"
+                height="17px"
+                width="68px"
+                borderRadius="8px"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-xl-9 col-lg-9 col-md-12 skeleton-flight-details-display"
+        >
+          <div
+            class="col-xl-6 col-lg-6 col-md-12 skeleton-flight-common-block1"
+          >
+            <app-skeleton-acm-flight-details-common></app-skeleton-acm-flight-details-common>
+          </div>
+          <div
+            class="col-xl-6 col-lg-6 col-md-12 skeleton-flight-common-block2"
+          >
+            <app-skeleton-acm-flight-details-common></app-skeleton-acm-flight-details-common>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+    </div>
+  </div>
+
+  <!-- Attachment Section -->
+  <div class="col-xl-12 m-top-24">
+    <div class="white-box padding-24">
+      <div class="col-12">
+        <h4 class="m-bottom-24 attach-heading">
+          <div class="skeleton-attach-heading">
+            <app-skeleton-loader
+              type="text-load"
+              height="20px"
+              width="100%"
+            ></app-skeleton-loader>
+          </div>
+        </h4>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-xl-6 col-lg-6"
+          [class.left-column]="i % 2 !== 0"
+          *ngFor="let _ of [0, 1]; let i = index"
+        >
+          <div class="d-flex align-items-center m-bottom-24 m-bottom-12-res-bm">
+            <div class="col-xl-6 col-lg-6 col-md-10 col-sm-10 col-10">
+              <div class="file-upload-wrapper">
+                <div class="d-flex align-items-center">
+                  <div class="skeleton-attach-file-wrapper">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="40px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-xl-6 col-lg-6 col-md-2 col-sm-2 col-2 d-flex justify-content-end"
+            >
+              <div
+                class="justify-content-center d-flex align-items-center cursor-pointer"
+              >
+                <span class="icon-violet d-flex m-right-8">
+                  <div class="skeleton-attach-file-view">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="40px"
+                      width="100%"
+                    ></app-skeleton-loader>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comment Section -->
+  <div class="col-xl-12 m-top-24">
+    <div class="white-box padding-24">
+      <div class="col-xxl-12 col-xl-12 col-sm-12 over-ride-text-area-bm">
+        <div class="skeleton-comment-heading">
+          <app-skeleton-loader
+            type="text-load"
+            height="20px"
+            width="100%"
+          ></app-skeleton-loader>
+        </div>
+
+        <app-skeleton-loader
+          type="text-load"
+          height="56px"
+          width="100%"
+        ></app-skeleton-loader>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button Section -->
+  <div class="col-xl-12 d-flex justify-content-end m-top-24 p-0">
+    <div class="m-right-16 skeleton-btn">
+      <app-skeleton-loader
+        type="text-load"
+        height="48px"
+        width="100%"
+      ></app-skeleton-loader>
+    </div>
+
+    <div class="skeleton-btn">
+      <app-skeleton-loader
+        type="text-load"
+        height="48px"
+        width="100%"
+      ></app-skeleton-loader>
+    </div>
+  </div>
+</ng-template>

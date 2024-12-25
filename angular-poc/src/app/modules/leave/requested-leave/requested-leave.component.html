@@ -1,0 +1,494 @@
+<div class="container-fluid m-bottom-24 m-top-24 p-0 leave-responsive-overflow">
+  <div class="row">
+    <!-- Filter button -->
+    <div
+      class="col-12 d-flex m-bottom-24"
+      *ngIf="isDataLoaded; else showSkeletonBtns"
+    >
+      <button
+        mat-stroked-button
+        class="m-right-8 requested-leave-btn m-top-res-8"
+        [class.active-btn]="
+          selectedLeave === constantData?.column?.pendingFilter
+        "
+        (click)="
+          onHeaderButtonsClick(
+            leaveData,
+            constantData?.column?.pendingFilter,
+            requestedLeaveLabels?.btnPending
+          )
+        "
+      >
+        <mat-icon class="material-symbols-rounded">
+          {{ requestedLeaveLabels?.iconPending }} </mat-icon
+        >{{ requestedLeaveLabels?.btnPending }} ({{
+          pendingData?.length + pendingCancellationData?.length
+        }})
+      </button>
+
+      <button
+        mat-stroked-button
+        class="m-right-8 requested-leave-btn m-top-res-8"
+        [class.active-btn]="
+          selectedLeave === constantData?.column?.approvedFilter
+        "
+        (click)="
+          onHeaderButtonsClick(
+            leaveData,
+            constantData?.column?.approvedFilter,
+            requestedLeaveLabels?.btnApproved
+          )
+        "
+      >
+        <mat-icon class="material-symbols-rounded">{{
+          requestedLeaveLabels?.iconApproved
+        }}</mat-icon
+        >{{ requestedLeaveLabels?.btnApproved }} ({{ approvedData?.length }})
+      </button>
+
+      <button
+        mat-stroked-button
+        class="requested-leave-btn m-top-res-8"
+        [class.active-btn]="
+          selectedLeave === constantData?.column?.rejectedFilter
+        "
+        (click)="
+          onHeaderButtonsClick(
+            leaveData,
+            constantData?.column?.rejectedFilter,
+            requestedLeaveLabels?.btnRejected
+          )
+        "
+      >
+        <mat-icon class="material-symbols-rounded">{{
+          requestedLeaveLabels?.iconRejected
+        }}</mat-icon
+        >{{ requestedLeaveLabels?.btnRejected }} ({{ rejectedData?.length }})
+      </button>
+    </div>
+    <ng-template #showSkeletonBtns>
+      <div class="col-12 d-flex m-bottom-24">
+        <div *ngFor="let _ of [].constructor(3)" class="m-right-8">
+          <app-skeleton-loader
+            type="text-load"
+            height="40px"
+            width="105px"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- table -->
+    <div class="m-bottom-24">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="table"
+        matSort
+        [matSortActive]="constantData?.column?.submittedDateColumn"
+        matSortDirection="desc"
+        matSortDisableClear
+        *ngIf="isDataLoaded; else showSkeletonTable"
+      >
+        <!-- Leave Type Column -->
+        <ng-container [matColumnDef]="constantData?.column?.leaveTypeColumn">
+          <th
+            class="table-column-100"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            {{ requestedLeaveLabels?.labelLeaveType }}
+
+            <ng-container
+              *ngIf="
+                sort?.active === constantData?.column?.leaveTypeColumn;
+                else leaveTypeInactive
+              "
+            >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'asc'"
+                >{{ requestedLeaveLabels?.iconArrowDropDown }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'desc'"
+                >{{ requestedLeaveLabels?.iconArrowDropUp }}</mat-icon
+              >
+            </ng-container>
+            <ng-template #leaveTypeInactive>
+              <mat-icon class="mat-sort-inactive material-symbols-rounded">{{
+                requestedLeaveLabels?.iconArrowDropUp
+              }}</mat-icon>
+            </ng-template>
+          </th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            {{ element.leave_type }}
+          </td>
+        </ng-container>
+
+        <!-- Date From Column -->
+        <ng-container [matColumnDef]="constantData?.column?.startDateColumn">
+          <th
+            class="table-column-100"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            {{ requestedLeaveLabels?.labelDateFrom }}
+
+            <ng-container
+              *ngIf="
+                sort?.active === constantData?.column?.startDateColumn;
+                else startDateInactive
+              "
+            >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'asc'"
+                >{{ requestedLeaveLabels?.iconArrowDropDown }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'desc'"
+                >{{ requestedLeaveLabels?.iconArrowDropUp }}</mat-icon
+              >
+            </ng-container>
+            <ng-template #startDateInactive>
+              <mat-icon class="mat-sort-inactive material-symbols-rounded">{{
+                requestedLeaveLabels?.iconArrowDropUp
+              }}</mat-icon>
+            </ng-template>
+          </th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            {{ element.startDate | date : requestedLeaveDateFormat }}
+          </td>
+        </ng-container>
+
+        <!-- Date To Column -->
+        <ng-container [matColumnDef]="constantData?.column?.endDateColumn">
+          <th
+            class="table-column-100"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            {{ requestedLeaveLabels?.labelDateTo }}
+
+            <ng-container
+              *ngIf="
+                sort?.active === constantData?.column?.endDateColumn;
+                else endDateInactive
+              "
+            >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'asc'"
+                >{{ requestedLeaveLabels?.iconArrowDropDown }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'desc'"
+                >{{ requestedLeaveLabels?.iconArrowDropUp }}</mat-icon
+              >
+            </ng-container>
+            <ng-template #endDateInactive>
+              <mat-icon class="mat-sort-inactive material-symbols-rounded">{{
+                requestedLeaveLabels?.iconArrowDropUp
+              }}</mat-icon>
+            </ng-template>
+          </th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            {{ element.endDate | date : requestedLeaveDateFormat }}
+          </td>
+        </ng-container>
+
+        <!-- Requested Days Column -->
+        <ng-container [matColumnDef]="constantData?.column?.durationColumn">
+          <th
+            class="table-column-100"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            {{ requestedLeaveLabels?.labelRequestDays }}
+            <ng-container
+              *ngIf="
+                sort?.active === constantData?.column?.durationColumn;
+                else endDurationInactive
+              "
+            >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'asc'"
+                >{{ requestedLeaveLabels?.iconArrowDropDown }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'desc'"
+                >{{ requestedLeaveLabels?.iconArrowDropUp }}</mat-icon
+              >
+            </ng-container>
+            <ng-template #endDurationInactive>
+              <mat-icon class="mat-sort-inactive material-symbols-rounded">{{
+                requestedLeaveLabels?.iconArrowDropUp
+              }}</mat-icon>
+            </ng-template>
+          </th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            {{ element.duration }}
+          </td>
+        </ng-container>
+
+        <!-- Submitted Date Column -->
+        <ng-container
+          [matColumnDef]="constantData?.column?.submittedDateColumn"
+        >
+          <th
+            class="table-column-100"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            {{ requestedLeaveLabels?.labelSubmittedDate }}
+            <ng-container
+              *ngIf="
+                sort?.active === constantData?.column?.submittedDateColumn;
+                else submittedDateInactive
+              "
+            >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'asc'"
+                >{{ requestedLeaveLabels?.iconArrowDropDown }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'desc'"
+                >{{ requestedLeaveLabels?.iconArrowDropUp }}</mat-icon
+              >
+            </ng-container>
+            <ng-template #submittedDateInactive>
+              <mat-icon class="mat-sort-inactive material-symbols-rounded">{{
+                requestedLeaveLabels?.iconArrowDropUp
+              }}</mat-icon>
+            </ng-template>
+          </th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            {{ element.submittedDate | date : requestedLeaveDateFormat }}
+          </td>
+        </ng-container>
+
+        <!-- Approve/Rejected Date Column -->
+        <ng-container
+          [matColumnDef]="constantData?.column?.approvedRejectedDateColumn"
+        >
+          <th
+            class="table-column-100"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            <ng-container
+              *ngIf="
+                selectedLeave === constantData?.column?.approvedFilter;
+                else rejectedLabel
+              "
+            >
+              {{ requestedLeaveLabels?.labelApprovedDate }}
+            </ng-container>
+            <ng-template #rejectedLabel>
+              {{ requestedLeaveLabels?.labelRejectedDate }}
+            </ng-template>
+
+            <ng-container
+              *ngIf="
+                sort?.active ===
+                  constantData?.column?.approvedRejectedDateColumn;
+                else approvedRejectedDateInactive
+              "
+            >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'asc'"
+                >{{ requestedLeaveLabels?.iconArrowDropDown }}</mat-icon
+              >
+              <mat-icon
+                class="material-symbols-rounded"
+                *ngIf="sort?.direction === 'desc'"
+                >{{ requestedLeaveLabels?.iconArrowDropUp }}</mat-icon
+              >
+            </ng-container>
+            <ng-template #approvedRejectedDateInactive>
+              <mat-icon class="mat-sort-inactive material-symbols-rounded">{{
+                requestedLeaveLabels?.iconArrowDropUp
+              }}</mat-icon>
+            </ng-template>
+          </th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            {{ element.approvedRejectedDate | date : requestedLeaveDateFormat }}
+          </td>
+        </ng-container>
+
+        <!-- Edit Column -->
+        <ng-container [matColumnDef]="constantData?.column?.editColumn">
+          <th class="table-column-100" mat-header-cell *matHeaderCellDef></th>
+          <td class="table-column-100" mat-cell *matCellDef="let element">
+            <button
+              (click)="openViewEditDialog(element)"
+              mat-stroked-button
+              class="view-edit-btn"
+            >
+              {{
+                element?.status === constantData?.column?.rejectedFilter ||
+                element?.status ===
+                  constantData?.column?.pendingCancellationFilter ||
+                !element?.isWithinFinancialYear
+                  ? requestedLeaveLabels?.btnView
+                  : requestedLeaveLabels?.btnViewEdit
+              }}
+            </button>
+          </td>
+        </ng-container>
+
+        <tr
+          class="table-column-100"
+          mat-header-row
+          *matHeaderRowDef="leaveColumns"
+        ></tr>
+        <tr
+          class="table-column-100"
+          mat-row
+          *matRowDef="let row; columns: leaveColumns"
+        ></tr>
+      </table>
+      <ng-template #showSkeletonTable>
+        <div class="skeleton-loader-container">
+          <!-- Scrollable container for the table -->
+          <div class="table-responsive">
+            <table class="table Skeleton-table">
+              <!-- Table Head with Skeleton Loaders for Headers -->
+              <thead>
+                <tr>
+                  <th class="table-column-100 padding-24">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="77px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </th>
+                  <th class="table-column-100 padding-24">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="77px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </th>
+                  <th class="table-column-100 padding-24">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="77px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </th>
+                  <th class="table-column-100 padding-24">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="77px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </th>
+                  <th class="table-column-100 padding-24">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="77px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </th>
+                  <th class="table-column-100 padding-24">
+                    <div class="d-flex justify-content-center"></div>
+                  </th>
+                </tr>
+              </thead>
+
+              <!-- Table Body with Skeleton Loaders for Data Rows -->
+              <tbody>
+                <tr *ngFor="let _ of [].constructor(5)">
+                  <td class="table-column-100 padding-24 vertical-align-middle">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="120px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </td>
+                  <td class="table-column-100 padding-24 vertical-align-middle">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="120px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </td>
+                  <td class="table-column-100 padding-24 vertical-align-middle">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="120px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </td>
+                  <td class="table-column-100 padding-24 vertical-align-middle">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="120px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </td>
+                  <td class="table-column-100 padding-24 vertical-align-middle">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="12px"
+                        width="120px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </td>
+                  <td class="table-column-100 padding-24 vertical-align-middle">
+                    <div class="d-flex justify-content-center">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="32px"
+                        width="84px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </ng-template>
+
+      <!-- <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator> -->
+    </div>
+  </div>
+</div>

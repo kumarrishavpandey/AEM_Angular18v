@@ -1,0 +1,443 @@
+<div class="container-fluid container-97">
+  <div class="row">
+    <div
+      class="col-xl-12 col-md-12 col-sm-12"
+      *ngIf="isTabDataLoaded; else showSkeletonTitle"
+    >
+      <app-title [title]="labelsBaseManagerAcmList?.pageTitle"></app-title>
+    </div>
+    <ng-template #showSkeletonTitle>
+      <div class="col-xl-12 col-md-12 col-sm-12">
+        <app-skeleton-loader
+          type="text-load"
+          height="40px"
+          width="220px"
+          borderRadius="8px"
+        ></app-skeleton-loader>
+      </div>
+    </ng-template>
+  </div>
+
+  <!--  -->
+  <div class="aem-list-container">
+    <!-- Tabs -->
+    <mat-tab-group
+      mat-align-tabs="start"
+      #tabGroup
+      class="mat-tab-group"
+      [(selectedIndex)]="selectedTabIndex"
+      (selectedTabChange)="onTabChange($event)"
+    >
+      <mat-tab
+        class="m-bottom-24"
+        *ngFor="let tabData of isTabDataLoaded ? tabList : [].constructor(3)"
+        [label]="getTabLabel(tabData)"
+      >
+        <ng-template mat-tab-label>
+          <app-skeleton-loader
+            *ngIf="!isTabDataLoaded; else tabLabelContent"
+            type="text-load"
+            height="21px"
+            width="137px"
+            borderRadius="8px"
+          ></app-skeleton-loader>
+          <ng-template #tabLabelContent>
+            {{ getTabLabel(tabData) }}
+          </ng-template>
+        </ng-template>
+
+        <!-- ACM Requests -->
+        <div class="m-bottom-24 m-top-24 p-0">
+          <div class="row m-0">
+            <ng-container *ngIf="isTabDataLoaded; else showSkeletonFilter">
+              <div
+                class="col-12 col-xxl-6 col-lg-6 col-md-12 col-sm-12 d-flex approve-decline-button-cont"
+              >
+                <button
+                  mat-stroked-button
+                  class="m-right-8 requested-leave-btn m-top-res-8"
+                  [class.active-btn]="
+                    selectedButton ===
+                    labelsBaseManagerAcmList?.tabList?.btnPendingView
+                  "
+                  (click)="
+                    onFilterChange(
+                      labelsBaseManagerAcmList?.tabList?.btnPendingView
+                    )
+                  "
+                >
+                  <mat-icon
+                    class="material-symbols-rounded m-right-8 pending-icon-color"
+                    >{{
+                      labelsBaseManagerAcmList?.tabList?.iconPendingView
+                    }}</mat-icon
+                  >
+                  {{ labelsBaseManagerAcmList?.tabList?.btnPendingView }} ({{
+                    selectedTabData?.pendingCount
+                  }})
+                </button>
+                <button
+                  mat-stroked-button
+                  class="m-right-8 requested-leave-btn m-top-res-8"
+                  [class.active-btn]="
+                    selectedButton ===
+                    labelsBaseManagerAcmList?.tabList?.btnApprovedView
+                  "
+                  (click)="
+                    onFilterChange(
+                      labelsBaseManagerAcmList?.tabList?.btnApprovedView
+                    )
+                  "
+                >
+                  <mat-icon
+                    class="material-symbols-rounded m-right-8 approved-icon-color"
+                    >{{
+                      labelsBaseManagerAcmList?.tabList?.iconBtnApprovedView
+                    }}</mat-icon
+                  >
+                  {{ labelsBaseManagerAcmList?.tabList?.btnApprovedView }} ({{
+                    selectedTabData?.approvedCount
+                  }})
+                </button>
+                <button
+                  mat-stroked-button
+                  class="requested-leave-btn m-top-res-8"
+                  [class.active-btn]="
+                    selectedButton ===
+                    labelsBaseManagerAcmList?.tabList?.btnDeclinedView
+                  "
+                  (click)="
+                    onFilterChange(
+                      labelsBaseManagerAcmList?.tabList?.btnDeclinedView
+                    )
+                  "
+                >
+                  <mat-icon
+                    class="material-symbols-rounded m-right-8 rejected-icon-color"
+                    >{{
+                      labelsBaseManagerAcmList?.tabList?.iconBtnDeclinedView
+                    }}</mat-icon
+                  >
+                  {{ labelsBaseManagerAcmList?.tabList?.btnDeclinedView }} ({{
+                    selectedTabData?.declinedCount
+                  }})
+                </button>
+              </div>
+
+              <!-- Search -->
+              <div
+                class="col-12 col-xxl-6 col-lg-6 col-md-12 col-sm-12 d-flex search-bar-base-manager-cont search-margin-top-res"
+              >
+                <div class="search-bar-base-manager">
+                  <mat-form-field appearance="fill">
+                    <mat-icon matPrefix>{{
+                      labelsBaseManagerAcmList?.tabList?.iconLabelSearch
+                    }}</mat-icon>
+                    <input
+                      matInput
+                      [placeholder]="
+                        labelsBaseManagerAcmList?.tabList?.labelSearch
+                      "
+                      [(ngModel)]="searchKeyword"
+                      (keyup)="searchSubject.next($event.target.value)"
+                      (focus)="onFocus()"
+                      (blur)="onBlur()"
+                      (keyup.enter)="
+                        onEnterSearch(
+                          labelsBaseManagerAcmList.tabList.labelSearch
+                        )
+                      "
+                    />
+                    <mat-icon
+                      matSuffix
+                      *ngIf="isFocused || searchKeyword"
+                      class="close-button-search"
+                      (click)="resetSearch()"
+                      >{{
+                        labelsBaseManagerAcmList?.tabList?.iconSearchReset
+                      }}</mat-icon
+                    >
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-template #showSkeletonFilter>
+              <!-- filter & search skeleton -->
+              <div class="col-12 col-xxl-6 col-lg-6 col-md-12 col-sm-12 d-flex">
+                <div class="m-right-8">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="40px"
+                    width="137px"
+                    borderRadius="8px"
+                  ></app-skeleton-loader>
+                </div>
+                <div class="m-right-8">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="40px"
+                    width="137px"
+                    borderRadius="8px"
+                  ></app-skeleton-loader>
+                </div>
+                <div class="skeleton-tab-hide-mobile">
+                  <app-skeleton-loader
+                    type="text-load"
+                    height="40px"
+                    width="137px"
+                    borderRadius="8px"
+                  ></app-skeleton-loader>
+                </div>
+              </div>
+              <div
+                class="col-12 col-xxl-6 col-lg-6 col-md-12 col-sm-12 d-flex m-bottom-24 justify-content-xxl-end justify-content-lg-end"
+              >
+                <app-skeleton-loader
+                  type="text-load"
+                  height="48px"
+                  width="296px"
+                  borderRadius="8px"
+                ></app-skeleton-loader>
+              </div>
+            </ng-template>
+
+            <p
+              *ngIf="searchKeyword && searchTextToggle"
+              class="search-result-text"
+            >
+              {{ totalDataCount }}
+              {{ getSelectedButtonLabel() }}
+              {{
+                totalDataCount === 1
+                  ? labelsBaseManagerAcmList?.tabList?.labelSearchResult
+                  : labelsBaseManagerAcmList?.tabList?.labelSearchResultsFound
+              }}
+              "{{ searchKeyword }}"
+            </p>
+
+            <ng-container
+              *ngIf="
+                isListDataLoaded && isTabDataLoaded;
+                else showSkeletonListing
+              "
+            >
+              <app-base-manager-list
+                *ngIf="baseManagerRequestsList?.length > 0; else noDataSection"
+                [baseManagerRequestsList]="baseManagerRequestsList"
+                [labelsBaseManager]="labelsBaseManagerAcmList?.tabList"
+                [selectedButton]="selectedButton"
+                [labelsBaseManagerAcmList]="labelsBaseManagerAcmList"
+                [activeTab]="tabLabel"
+                [selectedTabIndex]="selectedTabIndex"
+              ></app-base-manager-list>
+              <ng-template #noDataSection>
+                <!-- Empty state -->
+                <div class="col-xl-12 m-top-24">
+                  <div class="white-box padding-24">
+                    <div class="col-xl-12 col-md-12 col-sm-12">
+                      <div class="error-details-div">
+                        <div class="text-center">
+                          <img [src]="noDataImagePath" class="img-fluid" />
+                          <div class="error-title m-top-24">
+                            {{
+                              labelsBaseManagerAcmList?.tabList
+                                ?.labelNoRequestHeading
+                            }}
+                          </div>
+                          <p class="unauthorized-text m-top-12">
+                            <ng-container
+                              *ngIf="
+                                selectedButton ===
+                                labelsBaseManagerAcmList?.tabList
+                                  ?.btnPendingView
+                              "
+                            >
+                              {{
+                                labelsBaseManagerAcmList?.tabList
+                                  ?.labelNoRequestPendingText
+                              }}
+                            </ng-container>
+                            <ng-container
+                              *ngIf="
+                                selectedButton ===
+                                labelsBaseManagerAcmList?.tabList
+                                  ?.btnApprovedView
+                              "
+                            >
+                              {{
+                                labelsBaseManagerAcmList?.tabList
+                                  ?.labelNoRequestApprovedText
+                              }}
+                            </ng-container>
+                            <ng-container
+                              *ngIf="
+                                selectedButton ===
+                                labelsBaseManagerAcmList?.tabList
+                                  ?.btnDeclinedView
+                              "
+                            >
+                              {{
+                                labelsBaseManagerAcmList?.tabList
+                                  ?.labelNoRequestRejectedText
+                              }}
+                            </ng-container>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+            <ng-template #showSkeletonListing>
+              <div *ngFor="let _ of [].constructor(2)" class="m-bottom-12">
+                <div class="white-box padding-24 m-top-24">
+                  <div
+                    class="d-flex flex-xl-row flex-lg-row flex-sm-column-reverse flex-column-reverse align-items-xl-center align-items-lg-center align-items-md-center padding-16 border-top-base-manager-line"
+                  >
+                    <div class="col-xl-6 col-lg-6 col-sm-12">
+                      <div class="d-flex align-items-center">
+                        <div>
+                          <app-skeleton-loader
+                            type="icon-load"
+                            height="56px"
+                            width="56px"
+                            borderRadius="8px"
+                          ></app-skeleton-loader>
+                        </div>
+                        <div class="profile-details m-left-16">
+                          <div class="d-flex align-items-center">
+                            <div class="skeleton-profile-details-block1">
+                              <app-skeleton-loader
+                                type="text-load"
+                                height="24px"
+                                width="100%"
+                                borderRadius="8px"
+                              ></app-skeleton-loader>
+                            </div>
+                          </div>
+                          <div class="d-inline-flex align-items-center">
+                            <div class="skeleton-profile-details-block2">
+                              <app-skeleton-loader
+                                type="text-load"
+                                height="20px"
+                                width="100%"
+                                borderRadius="8px"
+                              ></app-skeleton-loader>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Date Section -->
+                    <div
+                      class="col-xl-6 col-lg-6 col-sm-12 col-12 justify-content-xl-end justify-content-lg-end align-items-center justify-content-xxl-end justify-content-xl-end"
+                    >
+                      <div class="col-sm-12 col-12 skeleton-seach-block-list">
+                        <div class="skeleton-search-block">
+                          <app-skeleton-loader
+                            type="text-load"
+                            height="20px"
+                            width="100%"
+                            borderRadius="8px"
+                          ></app-skeleton-loader>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-12 w-100 hide-block-desktop">
+                        <app-skeleton-loader
+                          type="text-load"
+                          height="2px"
+                          width="100%"
+                          borderRadius="8px"
+                        ></app-skeleton-loader>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- flight details -->
+                  <div
+                    class="col-xl-12 col-lg-12 d-xl-flex d-lg-flex padding-16"
+                  >
+                    <!-- Location Section -->
+                    <div class="col-xl-3 col-lg-3 d-flex align-items-center">
+                      <div class="d-flex align-items-center">
+                        <app-skeleton-loader
+                          type="icon-load"
+                          height="60px"
+                          width="60px"
+                          borderRadius="8px"
+                        ></app-skeleton-loader>
+                        <div class="location-section m-left-16">
+                          <app-skeleton-loader
+                            type="text-load"
+                            height="18px"
+                            width="136px"
+                            borderRadius="8px"
+                          ></app-skeleton-loader>
+                          <app-skeleton-loader
+                            type="text-load"
+                            height="17px"
+                            width="68px"
+                            borderRadius="8px"
+                          ></app-skeleton-loader>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="col-xl-9 col-lg-9 col-md-12 skeleton-flight-details-display"
+                    >
+                      <div
+                        class="col-xl-6 col-lg-6 col-md-12 skeleton-flight-common-block1"
+                      >
+                        <app-skeleton-acm-flight-details-common></app-skeleton-acm-flight-details-common>
+                      </div>
+                      <div
+                        class="col-xl-6 col-lg-6 col-md-12 skeleton-flight-common-block2"
+                      >
+                        <app-skeleton-acm-flight-details-common></app-skeleton-acm-flight-details-common>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-100">
+                    <app-skeleton-loader
+                      type="text-load"
+                      height="2px"
+                      width="100%"
+                      borderRadius="8px"
+                    ></app-skeleton-loader>
+                  </div>
+                  <div
+                    class="d-flex justify-content-lg-end justify-content-xl-end align-items-center justify-content-center justify-content-md-end"
+                  >
+                    <div class="skeleton-btn-view">
+                      <app-skeleton-loader
+                        type="text-load"
+                        height="40px"
+                        width="100%"
+                        borderRadius="8px"
+                      ></app-skeleton-loader>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+
+          <!-- View more section -->
+          <div
+            class="d-flex justify-content-center m-top-12"
+            *ngIf="viewMoreData"
+          >
+            <a class="view-more-link" (click)="onClickViewMore()">
+              {{ labelsBaseManagerAcmList?.tabList?.labelViewMore }}
+              <mat-icon>
+                {{ labelsBaseManagerAcmList?.tabList?.iconViewMore }}
+              </mat-icon>
+            </a>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

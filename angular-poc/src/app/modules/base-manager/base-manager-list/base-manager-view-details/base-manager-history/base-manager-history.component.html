@@ -1,0 +1,280 @@
+<!-- Filtered Buttons -->
+<div class="col-12 d-flex m-top-24" *ngIf="isDataLoaded; else showSkeletonBtns">
+  <button
+    mat-stroked-button
+    class="m-right-8 history-filter-btn m-top-res-8"
+    [class.active-btn]="selectedType === JOURNEY_TYPES.DOMESTIC"
+    (click)="onTabClick(JOURNEY_TYPES.DOMESTIC)"
+  >
+    <mat-icon class="material-symbols-rounded">
+      {{ historyTabLabels?.iconBtnDomestic }}
+    </mat-icon>
+    {{ historyTabLabels?.labelBtnDomestic }}
+  </button>
+
+  <button
+    mat-stroked-button
+    class="m-right-8 history-filter-btn m-top-res-8"
+    [class.active-btn]="selectedType === JOURNEY_TYPES.INTERNATIONAL"
+    (click)="onTabClick(JOURNEY_TYPES.INTERNATIONAL)"
+  >
+    <mat-icon class="material-symbols-rounded">{{
+      historyTabLabels?.iconBtnInternational
+    }}</mat-icon
+    >{{ historyTabLabels?.labelBtnInternational }}
+  </button>
+</div>
+<ng-template #showSkeletonBtns>
+  <div class="col-12 col-xxl-6 col-lg-6 col-md-12 col-sm-12 d-flex m-top-24">
+    <div class="m-right-16">
+      <app-skeleton-loader
+        type="text-load"
+        height="40px"
+        width="150px"
+        borderRadius="8px"
+      ></app-skeleton-loader>
+    </div>
+    <div>
+      <app-skeleton-loader
+        type="text-load"
+        height="40px"
+        width="153px"
+        borderRadius="8px"
+      ></app-skeleton-loader>
+    </div>
+  </div>
+</ng-template>
+
+<ng-container *ngIf="isDataLoaded; else showSkeletonContent">
+  <ng-container
+    *ngIf="historyData && historyData?.length > 0; else noDataSection"
+  >
+    <!-- Listing data -->
+    <div class="white-box m-top-24" *ngFor="let data of historyData">
+      <!-- Trip Details Section -->
+
+      <div
+        class="col-12 d-flex align-items-center padding-16 flex-xl-row flex-lg-row flex-column-sm-reverse flex-column-reverse border-top-base-manager-line"
+      >
+        <!-- left -->
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-center grid-gap-base-manager-12"
+        >
+          <ng-container [ngSwitch]="data?.status">
+            <span
+              *ngSwitchCase="RequestStatusEnum.APPROVED"
+              class="base-manager-tag green-tag extra-border-radius"
+              >{{ historyTabLabels?.labelApproved }}</span
+            >
+            <span
+              *ngSwitchCase="RequestStatusEnum.DECLINED"
+              class="base-manager-tag rejected-tag extra-border-radius"
+              >{{ historyTabLabels?.labelRejected }}</span
+            >
+            <span
+              *ngSwitchCase="RequestStatusEnum.WITHDRAWN"
+              class="base-manager-tag warning-tag extra-border-radius"
+              >{{ historyTabLabels?.labelWithdrawn }}</span
+            >
+          </ng-container>
+
+          <span class="domestic-btn">
+            {{ baseManagerRequestsListEnum[data?.journeyType] }}
+          </span>
+
+          <span
+            class="domestic-btn d-flex align-items-center grid-gap-base-manager-12"
+          >
+            <span class="dot"></span>
+            {{ baseManagerRequestsListEnum[data?.tripType] }}
+          </span>
+        </div>
+
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-flex justify-content-xl-end justify-content-lg-end res-border-bottom-8-just"
+        >
+          <span class="updated-date-text"
+            >{{
+              baseManagerRequestsListEnum[data?.status] ===
+              baseManagerRequestsListEnum.DECLINED
+                ? baseManagerRequestsListEnum.REJECTED
+                : baseManagerRequestsListEnum[data?.status]
+            }}
+            On: {{ data?.lastUpdatedDate | utcDateFormat }}</span
+          >
+        </div>
+      </div>
+      <!-- == flight travel details == -->
+      <app-flight-travel-detail-card
+        *ngFor="let tripDetail of data?.trips"
+        [isRequestDomestic]="data?.journeyType === JOURNEY_TYPES.DOMESTIC"
+        [flightTripDetails]="tripDetail"
+        [commonLabels]="historyTabLabels?.detailsComponent"
+        [labelStop]="historyTabLabels?.labelStop"
+        [labelStops]="historyTabLabels?.labelStops"
+        [imgCardLogo]="historyTabLabels?.imgCardLogo"
+      ></app-flight-travel-detail-card>
+
+      <!-- View details section -->
+      <div
+        class="col-12 d-flex justify-content-end padding-16 border-bottom-base-manager-line"
+        *ngIf="data?.status !== RequestStatusEnum.WITHDRAWN"
+      >
+        <button
+          mat-stroked-button
+          class="box-button-edit"
+          (click)="navigateToHistoryViewDetails(data?.generatedRequestNo)"
+        >
+          <mat-icon class="material-symbols-rounded">{{
+            historyTabLabels?.iconBtnViewDetails
+          }}</mat-icon
+          >{{ historyTabLabels?.labelBtnViewDetails }}
+        </button>
+      </div>
+    </div>
+
+    <!-- View more section -->
+    <div class="d-flex justify-content-center m-top-12" *ngIf="viewMoreData">
+      <a class="view-more-link" (click)="onClickViewMore()">
+        {{ historyTabLabels?.labelBtnViewMore }}
+        <mat-icon> {{ historyTabLabels?.iconBtnViewMore }} </mat-icon>
+      </a>
+    </div>
+  </ng-container>
+
+  <ng-template #noDataSection>
+    <div class="col-xl-12 m-top-24">
+      <div class="white-box padding-24">
+        <div class="col-xl-12 col-md-12 col-sm-12">
+          <div class="error-details-div">
+            <div class="text-center">
+              <img [src]="noDataImagePath" class="img-fluid" />
+              <div class="error-title m-top-24">
+                {{ historyTabLabels?.labelNoRequestFound }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #showSkeletonContent>
+  <div class="white-box m-top-24">
+    <div
+      class="col-12 d-flex align-items-center padding-16 flex-xl-row flex-lg-row flex-column-sm-reverse flex-column-reverse"
+    >
+      <div
+        class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-center grid-gap-base-manager-12"
+      >
+        <div>
+          <app-skeleton-loader
+            type="text-load"
+            height="36px"
+            width="106px"
+            borderRadius="8px"
+          ></app-skeleton-loader>
+        </div>
+        <div>
+          <app-skeleton-loader
+            type="text-load"
+            height="23px"
+            width="187px"
+            borderRadius="8px"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+
+      <div
+        class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-flex justify-content-xl-end justify-content-lg-end res-border-bottom-8-just"
+      >
+        <div>
+          <app-skeleton-loader
+            type="text-load"
+            height="20px"
+            width="257px"
+            borderRadius="8px"
+          ></app-skeleton-loader>
+        </div>
+      </div>
+    </div>
+    <!-- horizontal line -->
+    <div class="w-100">
+      <div>
+        <app-skeleton-loader
+          type="text-load"
+          height="2px"
+          width="100%"
+          borderRadius="8px"
+        ></app-skeleton-loader>
+      </div>
+    </div>
+    <!-- flight details -->
+    <div *ngFor="let _ of [].constructor(3)">
+      <div class="col-xl-12 col-lg-12 d-xl-flex d-lg-flex padding-16">
+        <!-- Location Section -->
+        <div class="col-xl-3 col-lg-3 d-flex align-items-center">
+          <div class="d-flex align-items-center">
+            <app-skeleton-loader
+              type="icon-load"
+              height="60px"
+              width="60px"
+              borderRadius="8px"
+            ></app-skeleton-loader>
+            <div class="location-section m-left-16">
+              <app-skeleton-loader
+                type="text-load"
+                height="18px"
+                width="136px"
+                borderRadius="8px"
+              ></app-skeleton-loader>
+              <app-skeleton-loader
+                type="text-load"
+                height="17px"
+                width="68px"
+                borderRadius="8px"
+              ></app-skeleton-loader>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-xl-9 col-lg-9 col-md-12 skeleton-flight-details-display"
+        >
+          <div
+            class="col-xl-6 col-lg-6 col-md-12 skeleton-flight-common-block1"
+          >
+            <app-skeleton-acm-flight-details-common></app-skeleton-acm-flight-details-common>
+          </div>
+          <div
+            class="col-xl-6 col-lg-6 col-md-12 skeleton-flight-common-block2"
+          >
+            <app-skeleton-acm-flight-details-common></app-skeleton-acm-flight-details-common>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- horizontal line -->
+    <div class="w-100">
+      <div>
+        <app-skeleton-loader
+          type="text-load"
+          height="2px"
+          width="100%"
+          borderRadius="8px"
+        ></app-skeleton-loader>
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center justify-content-lg-end justify-content-xl-end justify-content-center justify-content-md-end"
+    >
+      <div class="skeleton-btn-view">
+        <app-skeleton-loader
+          type="text-load"
+          height="40px"
+          width="100%"
+          borderRadius="8px"
+        ></app-skeleton-loader>
+      </div>
+    </div>
+  </div>
+</ng-template>

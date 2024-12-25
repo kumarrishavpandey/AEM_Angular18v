@@ -1,0 +1,161 @@
+<ng-container>
+  <!-- heading -->
+  <div class="col-12 m-bottom-16" *ngIf="isDataLoaded; else showSkeletonHead">
+    <h6 class="award-heading">{{ awardsTitle }}</h6>
+  </div>
+  <ng-template #showSkeletonHead>
+    <div class="col-12 m-bottom-16">
+      <div class="emp-award-skeleton-head">
+        <app-skeleton-loader
+          type="text-load"
+          height="24px"
+          width="100%"
+        ></app-skeleton-loader>
+      </div>
+    </div>
+  </ng-template>
+  <ng-container *ngIf="isDataLoaded; else showSkeletonForData">
+    <div class="white-box border-white-box padding-24 white-box-no-data-custom">
+      <!-- carousel -->
+      <div class="col-12 m-top-24" *ngIf="awardsData.length > 0">
+        <div id="awardsCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div
+              class="carousel-item"
+              *ngFor="let awardsGroup of awardsDataAfterSlice; let i = index"
+              [class.active]="i === 0"
+            >
+              <div>
+                <div class="d-flex justify-content-evenly">
+                  <div
+                    class="text-center d-flex align-items-center flex-column"
+                    *ngFor="let award of awardsGroup"
+                  >
+                    <div class="badge-image-number-block">
+                      <img
+                        [src]="award.imageSrc"
+                        alt="Award slide"
+                        class="img-fluid award-image-width"
+                      />
+                      <div
+                        class="badge-number-block"
+                        *ngIf="award.numberOfAwardsReceived > 1"
+                      >
+                        {{ award.numberOfAwardsReceived }}
+                      </div>
+                    </div>
+                    <div class="award-badge-text award-badge-text-head">
+                      {{ award.awardName }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- arrows -->
+          <div *ngIf="awardsData.length > 2">
+            <a
+              class="carousel-control-prev align-items-center carousel-block"
+              href="#awardsCarousel"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <mat-icon class="material-symbols-rounded"
+                >keyboard_arrow_left</mat-icon
+              >
+            </a>
+            <a
+              class="carousel-control-next align-items-center carousel-block"
+              href="#awardsCarousel"
+              role="button"
+              data-bs-slide="next"
+            >
+              <mat-icon class="material-symbols-rounded"
+                >keyboard_arrow_right</mat-icon
+              >
+            </a>
+          </div>
+        </div>
+        <!-- button -->
+        <div class="d-flex justify-content-center m-top-24">
+          <button
+            mat-stroked-button
+            class="box-button-edit"
+            (click)="navigateOnAwardsBtnClick()"
+          >
+            {{ awardsBtn }}
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="col-12 m-top-24 d-flex justify-content-center align-items-center"
+        *ngIf="awardsData.length === 0 && isDataLoaded"
+      >
+        <div class="col-4 col-xxl-3 col-lg-3 col-md-3 col-sm-4">
+          <img
+            class="img-fluid"
+            [src]="badgesDefaultImagePath"
+            alt="No Award"
+          />
+        </div>
+        <div
+          class="col-8 col-xxl-9 col-lg-9 col-md-9 col-sm-8 no-award-appreciation-block"
+        >
+          <span class="no-award-appreciation-title">{{
+            noAwardsAndAppreciations
+          }}</span>
+          <button
+            mat-stroked-button
+            class="box-button-edit m-top-16 no-awards-button-text"
+            [disabled]="disableAwardCTA"
+            (click)="navigateOnAwardsBtnClick()"
+          >
+            {{ awardsBtn }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #showSkeletonForData>
+    <div class="white-box border-white-box padding-24 white-box-no-data-custom">
+      <div class="col-12 m-top-24">
+        <div>
+          <div class="d-flex justify-content-evenly">
+            <div
+              class="text-center align-items-center flex-column"
+              *ngFor="let _ of [].constructor(2)"
+            >
+              <div
+                class="d-flex justify-content-center align-item-center emp-award-skeleton-img"
+              >
+                <app-skeleton-loader
+                  type="text-load"
+                  height="54px"
+                  width="100%"
+                ></app-skeleton-loader>
+              </div>
+              <div class="emp-award-skeleton-img-text">
+                <app-skeleton-loader
+                  type="text-load"
+                  height="12px"
+                  width="100%"
+                ></app-skeleton-loader>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- button -->
+        <div class="d-flex justify-content-center align-item-center">
+          <div class="m-top-24 emp-award-skeleton-btn">
+            <app-skeleton-loader
+              type="text-load"
+              height="40px"
+              width="100%"
+            ></app-skeleton-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>

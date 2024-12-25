@@ -1,0 +1,21 @@
+<sly data-sly-use.model="org.myai.core.models.NativeModel" />
+
+<h3>Component Text: ${model.textData} </h3>
+<h4>Image Path: ${model.imagePath} </h4>
+
+<br>
+===============
+<br>
+
+<div>
+	<p>Text property : ${properties.textData}</p>
+
+	<div data-sly-use.models="org.myai.core.models.TestComponent"
+		data-sly-test="${models.textData}">
+		<p>Model Text : ${models.textData}</p>
+		<p>Model Resources Type : ${models.resourcesType}</p>
+		<p>Model Current Page : ${models.currentPage}</p>
+	</div>
+
+</div>
+

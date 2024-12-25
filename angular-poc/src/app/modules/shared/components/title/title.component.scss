@@ -1,0 +1,16 @@
+@import '../../../../styles.scss';
+.myai-title {
+  font-weight: 600;
+  font-size: $font-32;
+  color: $dark-blue;
+  font-family: AirIndiaVariable !important;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .myai-title {
+    font-size: $font-24;
+    font-weight: 500;
+  }
+}

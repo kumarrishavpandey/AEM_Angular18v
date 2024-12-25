@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div *ngIf="!successScreenToggle" class="row d-flex justify-content-center">
+    <!-- modal close button -->
+    <div class="col-12 d-flex justify-content-end">
+      <mat-icon
+        class="close-icon material-symbols-rounded"
+        (click)="closeDialog('cancel')"
+        >{{ constantData?.icon?.closeIcon }}</mat-icon
+      >
+    </div>
+    <!-- heading -->
+    <div class="col-12 text-center m-top-16">
+      <h3 class="feedback-heading">
+        {{ constantData?.heading?.feedbackHeading }}
+      </h3>
+    </div>
+    <!-- nps para -->
+    <div
+      class="col-xxl-8 col-lg-8 col-md-8 col-sm-8 col-12 text-center m-top-8"
+    >
+      <p class="feedback-subheading">
+        {{ constantData?.heading?.recommendHeading }}
+      </p>
+    </div>
+    <!-- nps feedback button selection -->
+    <div class="col-12 m-top-32">
+      <form [formGroup]="feedbackForm" class="text-center">
+        <div *ngFor="let rating of ratings" class="rating-container mt-2">
+          <div
+            [ngStyle]="{ 'background-color': rating.color }"
+            class="feedback-rectangle"
+          ></div>
+          <button
+            [style.background-color]="rating.checked ? rating.color : ''"
+            type="button"
+            (click)="onClickRating(rating.ratingNumber)"
+            [class.selected]="rating.ratingNumber === selectedRating"
+            class="rating-button"
+          >
+            {{ rating.ratingNumber }}
+          </button>
+        </div>
+        <div class="d-flex justify-content-center m-top-32">
+          <div
+            class="col-xxl-10 col-lg-10 col-md-10 col-sm-10 col-12 feedback-subheading-2"
+          >
+            <p>{{ ratingMessage }}</p>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center m-top-24 m-bottom-24">
+          <mat-form-field
+            class="col-xxl-10 col-lg-10 col-md-10 col-sm-10 col-12 mt-4"
+          >
+            <mat-label>{{ constantData?.label?.inputPlaceholder }}</mat-label>
+            <textarea
+              matInput
+              #feedbackReasonMessage
+              [maxlength]="constantData?.label?.inputMaxLength"
+              formControlName="feedback"
+            >
+            </textarea>
+            <mat-hint
+              >{{ feedbackReasonMessage.value.length }}/{{
+                constantData?.label?.inputMaxLength
+              }}</mat-hint
+            >
+          </mat-form-field>
+        </div>
+        <!-- submit button -->
+        <div class="d-flex justify-content-center">
+          <div class="col-xxl-11 col-lg-11 col-md-11 col-sm-11 col-12">
+            <button
+              mat-raised-button
+              [disabled]="selectedRating === 0"
+              class="button full-width-button"
+              [class.invalid-btn]="selectedRating === 0"
+              [class.valid-btn]="selectedRating !== 0"
+              (click)="onSubmit()"
+            >
+              {{ constantData?.label?.submitLabel }}
+            </button>
+          </div>
+        </div>
+        <!-- cancel button -->
+        <div class="d-flex justify-content-center m-top-4">
+          <div class="col-xxl-11 col-lg-11 col-md-11 col-sm-11 col-12">
+            <button
+              class="button primary-stroke-red no-border full-width-button"
+              mat-button
+              (click)="closeDialog('cancel')"
+            >
+              {{ constantData?.label?.cancelLabel }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- success pop up -->
+  <div class="text-center" *ngIf="successScreenToggle">
+    <img [src]="thumbsUpImage" class="success-thumb-img" />
+    <p class="success-thank-text">Thank You!</p>
+    <p class="success-feedback-text">Your feedback is appreciated</p>
+  </div>
+</div>

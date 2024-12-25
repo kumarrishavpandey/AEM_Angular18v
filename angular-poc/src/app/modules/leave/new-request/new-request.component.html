@@ -1,0 +1,479 @@
+<div class="container-fluid white-box p-0 m-top-24">
+  <div class="padding-24">
+    <!-- heading -->
+    <div class="row">
+      <div class="col-12">
+        <h4 class="m-bottom-24 box-heading-18">
+          {{ newRequestLabels.labelFormHeading }}
+        </h4>
+      </div>
+    </div>
+    <!-- Rule errors -->
+    <div
+      *ngIf="
+        apiErrors?.length > 0 ||
+        documentMandatoryError ||
+        documentSizeOrTypeError ||
+        doubleFileExtensionError ||
+        errorFileUploadingMultipleTimesError
+      "
+      class="m-bottom-16"
+    >
+      <app-common-error-message-bar
+        [errorMessagesList]="apiErrors"
+      ></app-common-error-message-bar>
+      <app-common-error-message-bar
+        *ngIf="documentMandatoryError"
+        [errorMessage]="newRequestLabels?.labelMandatoryDocumentErrorMsg"
+      ></app-common-error-message-bar>
+      <app-common-error-message-bar
+        *ngIf="documentSizeOrTypeError"
+        [errorMessage]="newRequestLabels?.labelWrongDocumentTypeOrSizeErrorMsg"
+      ></app-common-error-message-bar>
+      <app-common-error-message-bar
+        *ngIf="doubleFileExtensionError"
+        [errorMessage]="newRequestLabels?.labelDoubleFileExtensionErrorMsg"
+      ></app-common-error-message-bar>
+      <app-common-error-message-bar
+        *ngIf="errorFileUploadingMultipleTimesError"
+        [errorMessage]="newRequestLabels?.labelFileUploadingMultipleTimesError"
+      ></app-common-error-message-bar>
+    </div>
+    <!-- form -->
+    <div class="row">
+      <form [formGroup]="applyLeaveForm">
+        <!-- form fields + upload popup -->
+        <div class="col-12 col-12 d-xxl-flex d-lg-flex">
+          <!-- left side form -->
+          <div
+            class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 leave-application-container-left-box"
+          >
+            <div class="upload-container-width">
+              <!-- leave type + leave balance  -->
+              <div class="col-12 d-xxl-flex d-lg-flex">
+                <div
+                  class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 col-12 p-right-16 m-right-16 m-bottom-8"
+                >
+                  <app-common-dropdown
+                    [selectInputName]="'Leave Type'"
+                    [selectInputOptions]="leaveTypesOptionArray"
+                    [customFormGroup]="applyLeaveForm"
+                    [customFormControlName]="'leaveType'"
+                    (selectValueChanged)="selectValueChange($event)"
+                  >
+                  </app-common-dropdown>
+                </div>
+                <div
+                  *ngIf="
+                    showLeaveBalanceField && applyLeaveForm?.value?.leaveType
+                  "
+                  class="col-xxl-6 col-lg-6 col-md-12 p-right-16 col-sm-12 col-12 m-bottom-8"
+                >
+                  <p class="duration-text">
+                    {{
+                      leaveBalanceDynamicTitle +
+                        " " +
+                        leaveInputFieldsTitle?.leaveBalance
+                    }}<br />
+                    <span class="day-font-number"
+                      >{{ applyLeaveForm?.value?.leaveBalance }}
+                      <span class="day-text">
+                        {{ newRequestLabels?.labelDays }}
+                      </span></span
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- start end + end date -->
+              <div class="col-12 d-xxl-flex d-xl-flex d-lg-flex">
+                <!-- calendar start date -->
+                <div
+                  class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 p-right-16 m-bottom-24"
+                >
+                  <app-common-calendar
+                    [isrequired]="true"
+                    [applyLeaveForm]="applyLeaveForm"
+                    [calenderTitle]="newRequestLabels?.labelStartDate"
+                    [customFormControlName]="'startDate'"
+                    (dateValueChanged)="dateValueChange()"
+                  >
+                  </app-common-calendar>
+                </div>
+                <!-- calendar end date -->
+                <div
+                  class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 m-bottom-24"
+                >
+                  <app-common-calendar
+                    [isrequired]="true"
+                    [applyLeaveForm]="applyLeaveForm"
+                    [calenderTitle]="newRequestLabels?.labelEndDate"
+                    [customFormControlName]="'endDate'"
+                    (dateValueChanged)="dateValueChange()"
+                  ></app-common-calendar>
+                </div>
+              </div>
+              <!-- leave duration + returning to work -->
+              <div class="col-12 d-xxl-flex d-lg-flex">
+                <!-- left side -->
+                <div
+                  *ngIf="
+                    this.applyLeaveForm.value?.leaveType ===
+                      this.leaveTypesCode?.casualLeave &&
+                    applyLeaveForm.value?.leaveDuration === 1
+                  "
+                  class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 col-12 p-right-16 m-right-16 m-bottom-8"
+                >
+                  <app-common-dropdown
+                    [selectInputName]="newRequestLabels?.labelLeaveDuration"
+                    [selectInputOptions]="fractionQuantityOptions"
+                    [customFormGroup]="applyLeaveForm"
+                    [customFormControlName]="'fractionQuantity'"
+                    (selectValueChanged)="onFractionalQuantityChange()"
+                    class="p-right-16"
+                  ></app-common-dropdown>
+                </div>
+
+                <!-- <ng-template #elseBlock> -->
+                <div
+                  *ngIf="
+                    !(
+                      this.applyLeaveForm.value?.leaveType ===
+                        this.leaveTypesCode?.casualLeave &&
+                      this.applyLeaveForm.value?.leaveDuration === 1
+                    )
+                  "
+                  class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 p-right-16 m-bottom-24"
+                >
+                  <p class="duration-text border-bottom-1">
+                    {{ newRequestLabels?.labelLeaveDuration }}<br /><span
+                      class="day-font-number"
+                      >{{
+                        applyLeaveForm?.value?.leaveDuration
+                          ? applyLeaveForm?.value?.leaveDuration
+                          : 0
+                      }}
+                      <span class="day-text">
+                        {{ newRequestLabels?.labelDays }}
+                      </span></span
+                    >
+                  </p>
+                </div>
+                <!-- </ng-template> -->
+
+                <!-- right side -->
+                <div
+                  *ngIf="
+                    applyLeaveForm?.value?.fractionQuantity !==
+                    fractionQuantityOptions[0]?.value
+                  "
+                  class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 border-bottom-1 m-bottom-8"
+                >
+                  <p class="duration-text">
+                    {{ newRequestLabels?.labelReturningToWork }}<br /><span
+                      class="day-font-number"
+                      >{{
+                        getReturningDateInFormat(
+                          applyLeaveForm?.value?.returningToWorkDate
+                        )
+                      }}</span
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <!-- showing dynamic fields which are dpending of the leave type selected -->
+              <div
+                *ngIf="showDateOfDelivery()"
+                class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+              >
+                <app-common-calendar
+                  [applyLeaveForm]="applyLeaveForm"
+                  [calenderTitle]="newRequestLabels?.labelDateOfDelivery"
+                  [customFormControlName]="'dateOfDelivery'"
+                ></app-common-calendar>
+              </div>
+
+              <div
+                *ngIf="isLeaveAdoption()"
+                class="col-12 d-xxl-flex d-xl-flex d-lg-flex"
+              >
+                <!-- Age of child -->
+                <div
+                  class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 m-bottom-24"
+                >
+                  <app-common-dropdown
+                    [selectInputName]="newRequestLabels?.labelEmployeeChildAge"
+                    [selectInputOptions]="employeeChildAgeOptionsArray"
+                    [customFormGroup]="applyLeaveForm"
+                    [customFormControlName]="'employeeChildAge'"
+                  ></app-common-dropdown>
+                </div>
+              </div>
+              <div
+                *ngIf="showActualOrExpectedDateOfChild()"
+                class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+              >
+                <app-common-calendar
+                  [isrequired]="true"
+                  [applyLeaveForm]="applyLeaveForm"
+                  [calenderTitle]="
+                    newRequestLabels?.labelExpectedOrActualDateOfChildBirth
+                  "
+                  [customFormControlName]="'expectedOrActualDateOfChildBirth'"
+                ></app-common-calendar>
+              </div>
+
+              <div
+                *ngIf="showDateOfRelocation()"
+                class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+              >
+                <app-common-calendar
+                  [isrequired]="true"
+                  [applyLeaveForm]="applyLeaveForm"
+                  [calenderTitle]="newRequestLabels?.labelDateOfRelocation"
+                  [customFormControlName]="'dateOfRelocation'"
+                ></app-common-calendar>
+              </div>
+              <div
+                *ngIf="showExpectedDateOfChild()"
+                class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+              >
+                <app-common-calendar
+                  [isrequired]="true"
+                  [applyLeaveForm]="applyLeaveForm"
+                  [calenderTitle]="newRequestLabels?.labelExpectedDateOfChild"
+                  [customFormControlName]="'expectedDateOfDelivery'"
+                ></app-common-calendar>
+              </div>
+
+              <div
+                *ngIf="showDateOfCompoff()"
+                class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+              >
+                <app-common-calendar
+                  [isrequired]="true"
+                  [applyLeaveForm]="applyLeaveForm"
+                  [calenderTitle]="newRequestLabels?.labelCompoffDate"
+                  [customFormControlName]="'compoffDate'"
+                ></app-common-calendar>
+              </div>
+
+              <div
+                *ngIf="showDateOfMiscarriage()"
+                class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 p-right-16 border-bottom-1 m-bottom-24"
+              >
+                <app-common-calendar
+                  [isrequired]="true"
+                  [applyLeaveForm]="applyLeaveForm"
+                  [calenderTitle]="newRequestLabels?.labelMiscarriageDate"
+                  [customFormControlName]="'miscarriageMedicalDate'"
+                ></app-common-calendar>
+              </div>
+
+              <!-- leave reason -->
+              <div class="col-12 m-top-24">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{
+                    newRequestLabels?.labelLeaveReason
+                  }}</mat-label>
+                  <textarea
+                    matInput
+                    #leaveReasonMessage
+                    formControlName="leaveReason"
+                    [maxlength]="newRequestLabels?.maxCharLengthLeaveReason"
+                    [placeholder]="
+                      newRequestLabels?.labelLeaveReasonPlaceholder
+                    "
+                  ></textarea>
+                  <mat-hint
+                    >{{ leaveReasonMessage?.value?.length }} /
+                    {{ newRequestLabels?.maxCharLengthLeaveReason }}</mat-hint
+                  >
+                </mat-form-field>
+              </div>
+              <!-- About and Policy of Leave Type -->
+              <div
+                *ngIf="applyLeaveForm?.value?.leaveType && aboutSelectedLeave"
+                class="m-top-24"
+              >
+                <div class="card-16 blue-card">
+                  <h4 class="d-inline-flex align-items-center">
+                    <mat-icon class="sky-blue-font m-right-8">{{
+                      aboutSelectedLeave?.iconName
+                    }}</mat-icon>
+                    {{ aboutSelectedLeave?.title }}
+                  </h4>
+                  <p>
+                    {{ aboutSelectedLeave?.shortDescription?.plaintext }}
+                  </p>
+                  <div
+                    *ngIf="
+                      aboutSelectedLeave?.pdfPath?._path ||
+                      aboutSelectedLeave?.pdfUrl
+                    "
+                    class="d-flex justify-content-end"
+                  >
+                    <button
+                      class="button secondary-solid-outline-grey no-border violet"
+                      (click)="onAboutLeaveButtonClick(aboutSelectedLeave)"
+                      mat-flat-button
+                    >
+                      {{ aboutSelectedLeave?.buttonLabel }}
+                      <mat-icon
+                        class="material-symbols-rounded icon-font-size"
+                        >{{ aboutSelectedLeave?.buttonIconName }}</mat-icon
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- right side upload popup -->
+          <div
+            class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 m-top-res-24 d-xxl-flex d-lg-flex d-md-flex justify-content-end"
+          >
+            <div class="upload-container-width">
+              <h4 class="m-bottom-24 upload-heading">
+                {{ newRequestLabels?.labelUploadDocument }}
+              </h4>
+              <!-- Only if need to show the file name with icon  -->
+              <div
+                class="selected-document-info d-xl-flex d-sm-flex d-flex align-items-center justify-content-between"
+                *ngIf="showFileUploader !== true"
+              >
+                <!-- left side button -->
+                <div
+                  class="col-xl-6 col-lg-6 col-md-10 col-sm-10 col-10 extra-margin-bottom-8"
+                >
+                  <div class="file-upload-border d-flex align-items-center">
+                    <span class="icon-violet d-flex m-right-8"
+                      ><mat-icon>{{
+                        newRequestLabels?.iconArticle
+                      }}</mat-icon></span
+                    >
+                    <span
+                      class="ellipsis-label-30 file-upload-name m-right-8"
+                      >{{ selectedUploadDocument["name"] }}</span
+                    >
+                    <button
+                      (click)="onRemoveDocumentButtonClick()"
+                      class="remove-button-effect mobile-button close-button-upload-mobile"
+                    >
+                      <mat-icon>{{ newRequestLabels?.iconClose }}</mat-icon>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- right side button  desktop-buttons-->
+                <div
+                  class="col-xl-6 col-lg-6 col-md-12 col-sm-6 col-6 d-xl-flex d-lg-flex justify-content-end desktop-buttons"
+                >
+                  <!-- first button -->
+                  <div
+                    class="file-upload-border extra-margin-bottom-8 justify-content-center file-upload-delete-btn m-right-16 file-upload-delete-btn d-flex align-items-center cursor-pointer"
+                    (click)="onRemoveDocumentButtonClick()"
+                  >
+                    <span class="icon-violet d-flex m-right-8"
+                      ><mat-icon>{{
+                        newRequestLabels?.iconDelete
+                      }}</mat-icon></span
+                    >
+                    <span
+                      class="ellipsis-label-30 file-upload-name m-right-8"
+                      >{{ newRequestLabels?.labelDelete }}</span
+                    >
+                  </div>
+                  <!-- second button -->
+                  <div
+                    class="file-upload-border extra-margin-bottom-8 justify-content-center file-upload-view-btn d-flex align-items-center cursor-pointer"
+                    (click)="viewDocument()"
+                  >
+                    <span class="icon-violet d-flex m-right-8"
+                      ><mat-icon>{{
+                        newRequestLabels?.iconView
+                      }}</mat-icon></span
+                    >
+                    <span
+                      class="ellipsis-label-30 file-upload-name m-right-8"
+                      >{{ newRequestLabels?.labelView }}</span
+                    >
+                  </div>
+                </div>
+                <!-- Mobile view button -->
+                <div
+                  class="col-sm-2 col-2 d-sm-flex d-flex justify-content-end mobile-button"
+                >
+                  <div
+                    class="file-upload-border view-button-width-mobile extra-margin-bottom-8 justify-content-center file-upload-view-btn d-flex align-items-center cursor-pointer"
+                    (click)="viewDocument()"
+                  >
+                    <span class="icon-violet d-flex"
+                      ><mat-icon>{{
+                        newRequestLabels?.iconView
+                      }}</mat-icon></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="showFileUploader === true">
+                <!-- i have to uncomment this file before pushing on dev-->
+                <app-common-file-uploader
+                  (selectedDocument)="selectedDocument($event)"
+                  (sizeOrTypeError)="onSizeOrTypeErrorInSelectDocument($event)"
+                  (doubleFileExtensionError)="
+                    onDoubleFileExtensionErrorInSelectDocument($event)
+                  "
+                  [errorFileUploadingMultipleTimes]="
+                    errorFileUploadingMultipleTimesError
+                  "
+                  (removeDocument)="onRemoveDocumentButtonClick()"
+                  [isAttachmentFileUploaded]="isAttachmentFileUploaded"
+                  [uploadDocumentLabels]="uploadDocumentLabels"
+                ></app-common-file-uploader>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- button -->
+        <div class="col-12">
+          <!-- button submit + cancel -->
+          <div class="text-end">
+            <button
+              class="button primary-stroke-red m-right-16 m-bottom-res-16"
+              mat-stroked-button
+              color="accent"
+              (click)="onResetButtonClick()"
+            >
+              {{ newRequestLabels?.btnReset }}
+            </button>
+            <button
+              class="button primary-solid-red button-width-primary"
+              mat-flat-button
+              *ngIf="!checkValidation()"
+              color="accent"
+              (click)="onApplyLeaveFormSubmit()"
+              [disabled]="isLoadingOnLeaveSubmit"
+            >
+              <span *ngIf="isLoadingOnLeaveSubmit" class="uploader-status">
+                <mat-spinner diameter="16"></mat-spinner>
+              </span>
+              <span *ngIf="!isLoadingOnLeaveSubmit">
+                {{ newRequestLabels?.btnSubmit }}
+              </span>
+            </button>
+            <button
+              mat-flat-button
+              *ngIf="checkValidation()"
+              class="button"
+              disabled
+            >
+              {{ newRequestLabels?.btnSubmit }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container-fluid container-97">
+  <!-- Holiday Calendar Title -->
+  <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12">
+      <app-title [title]="labelsHolidayModule?.pageTitle"></app-title>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xxl-12 col-lg-12 col-md-12 col-sm-12">
+      <mat-tab-group mat-align-tabs="start" #tabGroup class="mat-tab-group">
+        <mat-tab
+          [label]="labelsHolidayModule?.tabDashboard?.labelTab"
+          class="m-bottom-24"
+        >
+          <div
+            class="d-xxl-flex d-xl-flex d-lg-flex m-top-24 holiday-column-reverse"
+          >
+            <!-- left side -->
+            <div
+              *ngIf="upcomingHolidayLeaves.length > 0"
+              class="col-xxl-6 col-lg-8 col-md-12 col-sm-12 white-box padding-24 m-bottom-24"
+            >
+              <app-holiday-leaves-list-view
+                (openTabEvent)="openTab()"
+                [upcomingHolidayLeavesList]="upcomingHolidayLeaves"
+                [dashboardLabels]="labelsHolidayModule.tabDashboard"
+              >
+              </app-holiday-leaves-list-view>
+            </div>
+            <!-- right side -->
+            <div
+              class="col-xxl-6 col-lg-4 col-md-12 col-sm-12 d-xxl-flex d-lg-flex justify-content-end holiday-res-margin-bottom"
+            >
+              <div *ngIf="holidayCalendarsList.length > 0">
+                <app-select-region
+                  (openTabEvent)="openTab()"
+                  [selectedElementName]="selectedElementName"
+                  [holidayCalendarsList]="holidayCalendarsList"
+                  (updateSelectedRegionInDashboard)="
+                    updateDashboardSelectedRegion($event)
+                  "
+                  [dashboardLabels]="labelsHolidayModule?.tabDashboard"
+                ></app-select-region>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <div class="col-12 m-top-40">
+      <p class="US-calendar-text">
+        {{
+          labelsHolidayModule?.tabDashboard?.labelApplicableHolidayDescription
+        }}
+      </p>
+    </div>
+  </div>
+</div>

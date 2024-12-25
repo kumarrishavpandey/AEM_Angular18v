@@ -1,0 +1,92 @@
+@import '../../../../../styles.scss';
+
+.bg-gray-icons {
+  background-color: $border-white;
+  margin: $size-2;
+  box-shadow: none;
+  width: $size-32;
+  height: $size-32;
+  .material-icons {
+    color: $violet;
+  }
+}
+.holiday-leave-list {
+  padding: 0;
+  list-style: none;
+}
+.leave-strip {
+  border-bottom-right-radius: $size-8;
+  border-top-right-radius: $size-8;
+  border-left: 2px solid;
+  padding: $size-8 $size-16;
+}
+.leave-title {
+  font-size: $font-14;
+  font-weight: 700;
+  gap: 3px;
+
+  .leave-title-icon {
+    width: 16px;
+    height: 16px;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+.status-heading {
+  color: $dark-grey;
+  font-size: $font-12;
+  font-style: normal;
+  font-weight: 400;
+}
+.bg-holiday {
+  border-left-color: $purple;
+  background: $purple-10;
+  .leave-title {
+    color: $purple;
+  }
+}
+.bg-approved {
+  border-left-color: $approved-green;
+  background: $lightest-green;
+  .leave-title {
+    color: $approved-green;
+  }
+  .casual-leave-icon {
+    filter: invert(28%) sepia(99%) saturate(5313%) hue-rotate(112deg)
+      brightness(93%) contrast(105%);
+  }
+}
+.bg-pending_cancellation,
+.bg-pending {
+  border-left-color: $dark-orange;
+  background: $light-orange;
+  .leave-title {
+    color: $dark-orange;
+  }
+}
+.bg-cancelled,
+.bg-rejected {
+  border-left-color: $dark-red;
+  background: $light-red;
+  .leave-title {
+    color: $dark-red;
+  }
+  .casual-leave-icon {
+    filter: invert(13%) sepia(98%) saturate(3454%) hue-rotate(339deg)
+      brightness(82%) contrast(94%);
+  }
+}
+
+.list-date-title {
+  color: $dark-grey;
+  font-size: $font-14;
+}
+
+.noHolidayLeaveList {
+  font-weight: 600;
+  color: $dark-blue;
+}

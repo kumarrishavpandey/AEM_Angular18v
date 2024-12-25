@@ -1,0 +1,21 @@
+@use '../styles.scss';
+
+.ai-holiday-calendar {
+  display: flex;
+  flex-direction: column;
+  border-radius: styles.$border-radius-sm;
+  border: 1px solid map-get(styles.$stroke, stroke-subtle);
+  background-color: map-get(styles.$global-colours, ai-base, ai-white);
+  overflow: hidden;
+  transition: overflow 0.2s ease-in-out;
+
+  .ai-calendar-header {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: map-get(styles.$global-colours, ai-base, ai-white);
+  }
+}

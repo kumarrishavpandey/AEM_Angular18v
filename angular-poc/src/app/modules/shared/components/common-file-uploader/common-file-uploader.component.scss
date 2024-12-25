@@ -1,0 +1,295 @@
+@import '../../../../styles.scss';
+
+.upload-container {
+  width: auto;
+  height: auto;
+  padding: 42px 0px 42px 0px;
+  display: block;
+  text-align: center;
+  border: 1px dashed $dark-grey-l2;
+  border-radius: $size-8;
+  position: relative;
+
+  .upload-icon {
+    font-size: $font-48;
+    color: $grey-ligter;
+    width: auto;
+    display: unset;
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  label {
+    color: $violet;
+    text-decoration: none;
+    font-weight: 700;
+    &:hover {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: none;
+    }
+  }
+
+  h3 {
+    color: $black;
+    font-size: $font-16;
+    letter-spacing: 0.08px;
+    margin-bottom: $size-16;
+    margin-top: $size-4;
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: auto;
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-family: 'Nunito', sans-serif !important;
+  }
+}
+
+.file-icon {
+  margin-right: $size-8;
+  mat-icon {
+    color: $grey-ligter;
+  }
+}
+
+.fileover {
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+}
+
+.files-list .single-file:last-child {
+  margin-bottom: 32px;
+}
+
+.files-list {
+  margin-top: 34px;
+
+  .single-file {
+    display: flex;
+    background: $white;
+    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    border-radius: $size-8;
+    position: relative;
+
+    .delete {
+      display: flex;
+      margin: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      align-self: center;
+      padding: $size-0;
+
+      mat-icon {
+        color: $grey-blue;
+      }
+    }
+
+    display: flex;
+    flex-grow: 1;
+
+    .name {
+      font-size: $font-10;
+      font-weight: 600;
+      color: $dark-blue;
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif !important;
+      font-family: 'Nunito', sans-serif !important;
+    }
+
+    .size {
+      font-size: $font-10;
+      font-weight: 600;
+      color: $medium-grey;
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif !important;
+      font-family: 'Nunito', sans-serif !important;
+
+      span {
+        color: $dark-blue;
+      }
+    }
+
+    .info {
+      width: 100%;
+      display: inline-flex;
+      justify-content: space-between;
+      position: relative;
+      top: -$size-12;
+    }
+  }
+}
+.view-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.upload-text {
+  color: $grey-lighter-2;
+  font-size: $font-12;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.035px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.margin-bottom-8 {
+  margin-bottom: $size-8;
+}
+
+.app-progress {
+  position: absolute;
+  top: 40px;
+  width: 93.5%;
+  left: 48px;
+}
+
+.upload-button {
+  border: 0;
+  display: flex;
+  width: 100%;
+  height: 56px;
+  padding: 0px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 1;
+  background: $violet;
+  color: $white;
+  font-size: $font-16;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.24px;
+  text-transform: capitalize;
+}
+.progress-cont {
+  height: $size-8;
+  width: 100%;
+  border-radius: $size-4;
+  background-color: rgba(83, 18, 81, 0.1);
+  position: absolute;
+  left: $size-0;
+  bottom: -$size-8;
+
+  .progress {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    background-color: $sky-blue;
+    transition: 0.5s all;
+  }
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+// For mobile view
+
+.upload-container-mobile {
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+/// #######################################
+/// Media Query
+/// #######################################
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .button-width {
+    width: 100%;
+  }
+  .ellipsis-label-30 {
+    width: 120px;
+  }
+  .files-list {
+    .single-file {
+      grid-gap: 4px;
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .button-width {
+    width: 100%;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+}
+
+@media (min-width: 1199px) and (max-width: 1400px) {
+}

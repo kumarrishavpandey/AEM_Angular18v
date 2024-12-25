@@ -1,0 +1,16 @@
+@import 'src/styles.scss';
+
+.employee-name {
+  font-family: AirIndiaVariable !important;
+  font-size: $font-18;
+  font-weight: 400;
+  color: $red-title;
+  line-height: 22.5px;
+}
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .employee-name {
+    font-size: $font-14;
+    line-height: 20.3px;
+  }
+}

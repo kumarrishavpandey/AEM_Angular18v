@@ -1,0 +1,19 @@
+@import '../../../../styles.scss';
+
+.US-calendar-text {
+  font-size: $font-16;
+  color: $dark-blue;
+  font-weight: 400;
+}
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .holiday-column-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .holiday-res-margin-bottom {
+    margin-bottom: $size-24;
+  }
+}

@@ -1,0 +1,174 @@
+@import 'src/styles.scss';
+
+.grid-col-3 {
+  grid-template-columns: minmax(calc(33% - 6px), auto) minmax(calc(33% - 6px), auto) minmax(calc(33% - 6px), auto);
+}
+
+.approval-card {
+  .lighter-grey-section {
+    background: $light-white-bg;
+    border-radius: $size-8;
+  }
+
+  .action-btn {
+    width: 100px;
+  }
+}
+
+.card-one {
+  position: relative;
+  z-index: 4;
+}
+
+.card-two {
+  position: absolute;
+  top: $size-8;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 98.5%;
+  height: 100%;
+}
+
+.card-three {
+  position: absolute;
+  top: $size-16;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 96.5%;
+  height: 100%;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .epmloyee-name {
+    font-size: $font-14;
+    margin-bottom: $size-4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 190px;
+  }
+
+  .approval-card {
+    p {
+      margin-bottom: $size-4;
+    }
+
+    .light-yellow-backgroud {
+      font-size: $font-10;
+      display: flex;
+      padding: $size-4 $size-8;
+      margin-top: $size-8;
+    }
+
+    .lighter-grey-section {
+      p {
+        margin-bottom: $size-12;
+      }
+    }
+
+    .action-btn {
+      width: 100%;
+    }
+  }
+
+  .res-flex {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .button-positioning {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-two {
+    position: absolute;
+    top: $size-8;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 96.5%;
+    height: 100%;
+  }
+
+  .card-three {
+    position: absolute;
+    top: $size-16;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 91.5%;
+    height: 100%;
+  }
+
+  .approval-card {
+    p {
+      margin-top: $size-4;
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .card-two {
+    position: absolute;
+    top: $size-8;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 97.5%;
+    height: 100%;
+  }
+
+  .card-three {
+    position: absolute;
+    top: $size-16;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 94.5%;
+    height: 100%;
+  }
+
+  .approval-card {
+    .light-yellow-backgroud {
+      margin-top: $size-8;
+    }
+
+    p {
+      margin-top: $size-4;
+    }
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .card-two {
+    position: absolute;
+    top: $size-8;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 97.5%;
+    height: 100%;
+  }
+
+  .card-three {
+    position: absolute;
+    top: $size-16;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 94.5%;
+    height: 100%;
+  }
+}

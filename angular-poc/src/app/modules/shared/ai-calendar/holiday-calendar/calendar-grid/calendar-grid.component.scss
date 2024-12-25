@@ -1,0 +1,26 @@
+@use '../../styles.scss';
+
+.ai-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  .ai-week-day {
+    display: flex;
+    padding: styles.$padding-sm;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid map-get(styles.$stroke, stroke-default);
+    background-color: map-get(styles.$global-colours, ai-base, ai-white);
+    box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.05);
+
+    .ai-day-name {
+      font-size: styles.$font-size-xs;
+      font-style: normal;
+      font-weight: 700;
+      line-height: styles.px2em(15px);
+      color: map-get(styles.$text, text-subtle);
+      text-align: center;
+    }
+  }
+}

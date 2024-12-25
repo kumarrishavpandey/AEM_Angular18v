@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Leave"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <pageTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="The text to display on the component."
+                                fieldLabel="Page Title"
+                                name="./pageTitle"/>
+                            <tabDashboard
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Dashboard Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Dashboard Tab"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <dashboardLabelTab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Tab Label"
+                                                name="./dashboardLabelTab"/>
+                                            <btnCalendarView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Calendar View"
+                                                name="./btnCalendarView"/>
+                                            <iconBtnCalendarView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Btn Calendar View"
+                                                name="./iconBtnCalendarView"/>
+                                            <btnListView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn List View"
+                                                name="./btnListView"/>
+                                            <iconBtnListView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Btn List View"
+                                                name="./iconBtnListView"/>
+                                            <labelSelectRegion
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Select Region"
+                                                name="./labelSelectRegion"/>
+                                            <iconSelectRegion
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Select Region"
+                                                name="./iconSelectRegion"/>
+                                            <labelBalance
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Balance"
+                                                name="./labelBalance"/>
+                                            <btnApplyLeave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Apply Leave"
+                                                name="./btnApplyLeave"/>
+                                            <iconExpandMore
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Expand More"
+                                                name="./iconExpandMore"/>
+                                            <iconRightArrow
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Right Arrow"
+                                                name="./iconRightArrow"/>
+                                            <labelDaysDashboard
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Days Dashboard"
+                                                name="./labelDaysDashboard"/>
+                                            <labelUpcomingHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Upcoming Heading"
+                                                name="./labelUpcomingHeading"/>
+                                            <labelWeekend
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Weekend"
+                                                name="./labelWeekend"/>
+                                            <labelApprovedLeave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Approved Leave"
+                                                name="./labelApprovedLeave"/>
+                                            <labelPendingLeave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Pending Leave"
+                                                name="./labelPendingLeave"/>
+                                            <labelWorkingWeek
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Working Week"
+                                                name="./labelWorkingWeek"/>
+                                            <labelHoliday
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Holiday"
+                                                name="./labelHoliday"/>
+                                            <iconLeftArrow
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Left Arrow"
+                                                name="./iconLeftArrow"/>
+                                            <labelMore
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label More"
+                                                name="./labelMore"/>
+                                            <iconNavigateBefore
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Navigate Before"
+                                                name="./iconNavigateBefore"/>
+                                            <iconNavigateNext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Navigate Next"
+                                                name="./iconNavigateNext"/>
+                                            <iconTimelapse
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Timelapse"
+                                                name="./iconTimelapse"/>
+                                            <iconMasks
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Masks"
+                                                name="./iconMasks"/>
+                                            <iconLuggage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Luggage"
+                                                name="./iconLuggage"/>
+                                            <iconFlag
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Flag"
+                                                name="./iconFlag"/>
+                                            <iconLogout
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Logout"
+                                                name="./iconLogout"/>
+                                            <labelHalfDay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Half Day"
+                                                name="./labelHalfDay"/>
+                                            <labelAllDay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label All Day"
+                                                name="./labelAllDay"/>
+                                            <labelApproved
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Approved"
+                                                name="./labelApproved"/>
+                                            <labelPending
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Pending"
+                                                name="./labelPending"/>
+                                            <labelRejected
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Rejected"
+                                                name="./labelRejected"/>
+                                            <labelNoHolidayLeaveList
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label No Holiday Leave List"
+                                                name="./labelNoHolidayLeaveList"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </tabDashboard>
+                            <tabNewRequest
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Tab New Request"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Tab New Request"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <newRequestLabelTab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Tab"
+                                                name="./newRequestLabelTab"/>
+                                            <labelFormHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Form Heading"
+                                                name="./labelFormHeading"/>
+                                            <financialYearStartDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Financial Year Start Date"
+                                                name="./financialYearStartDate"/>
+                                            <financialYearEndDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Financial Year End Date"
+                                                name="./financialYearEndDate"/>
+                                            <labelLeaveType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Leave Type"
+                                                name="./labelLeaveType"/>
+                                            <labelLeaveBalance
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Leave Balance"
+                                                name="./labelLeaveBalance"/>
+                                            <labelStartDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Start Date"
+                                                name="./labelStartDate"/>
+                                            <labelEndDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label End Date"
+                                                name="./labelEndDate"/>
+                                            <labelDays
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Days"
+                                                name="./labelDays"/>
+                                            <labelLeaveDuration
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Leave Duration"
+                                                name="./labelLeaveDuration"/>
+                                            <labelReturningToWork
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Returning To Work"
+                                                name="./labelReturningToWork"/>
+                                            <labelDateOfDelivery
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Date Of Delivery"
+                                                name="./labelDateOfDelivery"/>
+                                            <labelEmployeeChildAge
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Employee Child Age"
+                                                name="./labelEmployeeChildAge"/>
+                                            <labelDateOfRelocation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Date Of Relocation"
+                                                name="./labelDateOfRelocation"/>
+                                            <labelExpectedDateOfChild
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Expected Date Of Child"
+                                                name="./labelExpectedDateOfChild"/>
+                                            <labelLeaveReason
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Leave Reason"
+                                                name="./labelLeaveReason"/>
+                                            <maxCharLengthLeaveReason
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Max Char Length Leave Reason"
+                                                name="./maxCharLengthLeaveReason"/>
+                                            <labelUploadDocument
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Upload Document"
+                                                name="./labelUploadDocument"/>
+                                            <btnReset
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Reset"
+                                                name="./btnReset"/>
+                                            <btnSubmit
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Submit"
+                                                name="./btnSubmit"/>
+                                            <iconArticle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Article"
+                                                name="./iconArticle"/>
+                                            <iconClose
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Close"
+                                                name="./iconClose"/>
+                                            <labelLeaveReasonPlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Leave Reason Placeholder"
+                                                name="./labelLeaveReasonPlaceholder"/>
+                                            <labelMandatoryFieldErrorMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Mandatory Field Error Msg"
+                                                name="./labelMandatoryFieldErrorMsg"/>
+                                            <labelMandatoryDocumentErrorMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Mandatory Document Error Msg"
+                                                name="./labelMandatoryDocumentErrorMsg"/>
+                                            <labelWrongDocumentTypeOrSizeErrorMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Wrong Document Type Or Size Error Msg"
+                                                name="./labelWrongDocumentTypeOrSizeErrorMsg"/>
+                                            <labelDoubleFileExtensionErrorMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Double File Extension Error Msg"
+                                                name="./labelDoubleFileExtensionErrorMsg"/>
+                                            <labelApprovedPendingLeaveCancellationErrorMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Approved Pending Leave Cancellation Error Msg"
+                                                name="./labelApprovedPendingLeaveCancellationErrorMsg"/>
+                                            <iconDeleteNewRequest
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Delete Icon"
+                                                name="./iconDeleteNewRequest"/>
+                                            <labelDelete
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Delete Label"
+                                                name="./labelDelete"/>
+                                            <iconView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="View Icon"
+                                                name="./iconView"/>
+                                            <labelView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="View Label"
+                                                name="./labelView"/>
+                                            <labelCompoffDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Compoff Date"
+                                                name="./labelCompoffDate"/>
+                                            <labelMiscarriageDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Miscarriage Date"
+                                                name="./labelMiscarriageDate"/>
+                                            <labelExpectedOrActualDateOfChildBirth
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Expected Or Actual Date Of Child Birth"
+                                                name="./labelExpectedOrActualDateOfChildBirth"/>
+                                            <labelFileUploadingMultipleTimesError
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label File Uploading Multiple Times Error"
+                                                name="./labelFileUploadingMultipleTimesError"/>
+                                            <labelApproverComment
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Approver Comment"
+                                                name="./labelApproverComment"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </tabNewRequest>
+                            <uploadDocument
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Upload Dcoument"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Upload Document"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <iconCloudUpload
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Cloud Upload"
+                                                name="./iconCloudUpload"/>
+                                            <labelDragDropFiles
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Drag Drop Files"
+                                                name="./labelDragDropFiles"/>
+                                            <labelBrowse
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Browse"
+                                                name="./labelBrowse"/>
+                                            <labelDescriptionOne
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Description One"
+                                                name="./labelDescriptionOne"/>
+                                            <labelDescriptionTwo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Description Two"
+                                                name="./labelDescriptionTwo"/>
+                                            <iconCloudUploadMobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Cloud Upload Mobile"
+                                                name="./iconCloudUploadMobile"/>
+                                            <btnUploadDocument
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Upload Document"
+                                                name="./btnUploadDocument"/>
+                                            <labelUploading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Uploading"
+                                                name="./labelUploading"/>
+                                            <labelUploaded
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Uploaded"
+                                                name="./labelUploaded"/>
+                                            <labelProgressIndicator
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Progress Indicator"
+                                                name="./labelProgressIndicator"/>
+                                            <uploadIconArticle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Upload Icon Article"
+                                                name="./uploadIconArticle"/>
+                                            <uploadIconClose
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Upload Icon Close"
+                                                name="./uploadIconClose"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </uploadDocument>
+                            <tabRequestedLeave
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Tab Requested Leave"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Tab Requested Leave"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <requestedLeaveLabelTab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Tab"
+                                                name="./requestedLeaveLabelTab"/>
+                                            <btnPending
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Pending"
+                                                name="./btnPending"/>
+                                            <iconPending
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Pending"
+                                                name="./iconPending"/>
+                                            <btnApproved
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Approved"
+                                                name="./btnApproved"/>
+                                            <iconApproved
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Approved"
+                                                name="./iconApproved"/>
+                                            <btnRejected
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Rejected"
+                                                name="./btnRejected"/>
+                                            <iconRejected
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Rejected"
+                                                name="./iconRejected"/>
+                                            <labelLeaveTypeTabRequested
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Leave Type"
+                                                name="./labelLeaveTypeTabRequested"/>
+                                            <labelDateFrom
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Date From"
+                                                name="./labelDateFrom"/>
+                                            <labelDateTo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Date To"
+                                                name="./labelDateTo"/>
+                                            <labelRequestDays
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Request Days"
+                                                name="./labelRequestDays"/>
+                                            <labelSubmittedDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Submitted Date"
+                                                name="./labelSubmittedDate"/>
+                                            <labelApprovedDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Approved Date"
+                                                name="./labelApprovedDate"/>
+                                            <labelRejectedDate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Rejected Date"
+                                                name="./labelRejectedDate"/>
+                                            <btnViewEdit
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn View Edit"
+                                                name="./btnViewEdit"/>
+                                            <btnView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn View"
+                                                name="./btnView"/>
+                                            <iconArrowDropUp
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Arrow Drop Up"
+                                                name="./iconArrowDropUp"/>
+                                            <iconArrowDropDown
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Arrow Drop Down"
+                                                name="./iconArrowDropDown"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </tabRequestedLeave>
+                            <dialogViewEdit
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Dialog View Edit"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Dialog View Edit"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <labelDialogViewEdit
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Dialog View Edit"
+                                                name="./labelDialogViewEdit"/>
+                                            <labelDialogView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Dialog View"
+                                                name="./labelDialogView"/>
+                                            <labelApprovalStatus
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Approval Status"
+                                                name="./labelApprovalStatus"/>
+                                            <labelCreatedOn
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Created On"
+                                                name="./labelCreatedOn"/>
+                                            <labelUploadedDocuments
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Uploaded Documents"
+                                                name="./labelUploadedDocuments"/>
+                                            <iconDelete
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Delete"
+                                                name="./iconDelete"/>
+                                            <btnDeleteLeave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Delete Leave"
+                                                name="./btnDeleteLeave"/>
+                                            <btnCancelEdit
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Cancel Edit"
+                                                name="./btnCancelEdit"/>
+                                            <btnSave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Save"
+                                                name="./btnSave"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </dialogViewEdit>
+                            <dialogDeleteLeave
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Dialog Delete Leave"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Dialog Delete Leave"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <labelDialogDeleteLeave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Dialog Delete Leave"
+                                                name="./labelDialogDeleteLeave"/>
+                                            <iconCloseDeleteLeave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Icon Close"
+                                                name="./iconCloseDeleteLeave"/>
+                                            <labelDeleteConfirmation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Label Delete Confirmation"
+                                                name="./labelDeleteConfirmation"/>
+                                            <btnCancel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Cancel"
+                                                name="./btnCancel"/>
+                                            <btnDelete
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the component."
+                                                fieldLabel="Btn Delete"
+                                                name="./btnDelete"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </dialogDeleteLeave>
+                            <analyticsInfo
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Analytics Info"
+                                sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Analytics Info"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <countryCode
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Country Code"
+                                                name="./countryCode"/>
+                                            <countryName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Country Name"
+                                                name="./countryName"/>
+                                            <language
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Language"
+                                                name="./language"/>
+                                            <pageName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Page Name"
+                                                name="./pageName"/>
+                                            <pageType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Page Type"
+                                                name="./pageType"/>
+                                            <server
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Server"
+                                                name="./server"/>
+                                            <siteName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Site Name"
+                                                name="./siteName"/>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </analyticsInfo>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

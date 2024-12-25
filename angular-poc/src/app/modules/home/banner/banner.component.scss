@@ -1,0 +1,264 @@
+@import '../../../../styles.scss';
+
+.weather-bg {
+  border-radius: 16px;
+  border: 1px solid var(--Light-Pop_boder, rgba(255, 255, 255, 0.15));
+  background: linear-gradient(
+    102deg,
+    rgba(121, 121, 190, 0.2) 41.95%,
+    rgba(255, 255, 255, 0.13) 100.75%
+  );
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(40px);
+}
+
+.banner-user-name {
+  font-weight: bold;
+}
+
+.banner-date {
+  color: $red;
+  font-family: AirIndiaVariable;
+  font-size: $font-18;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.banner-time {
+  color: $dark-blue;
+  text-align: left;
+  font-size: $font-14;
+  font-weight: 700;
+}
+
+.day-week {
+  color: $dark-blue;
+  font-size: $font-14;
+  font-weight: 300;
+}
+
+.location-home {
+  color: $dark-blue;
+
+  .icon {
+    font-size: $font-24;
+  }
+
+  .location {
+    font-size: $font-16;
+    font-weight: 400;
+    margin-bottom: $size-0;
+    text-transform: capitalize;
+  }
+}
+
+.home-location {
+  color: $white;
+  font-size: $font-18;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.home-temp {
+  color: $white;
+  font-size: $font-12;
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+
+.weather-icon {
+  height: auto;
+  width: 110px;
+}
+
+.home-time {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  padding-bottom: 10px;
+}
+
+.home-weather {
+  font-size: $font-40;
+  color: $white;
+}
+
+.home-time-text {
+  color: $white;
+  font-size: $font-16;
+  font-weight: 400;
+}
+.bgImage {
+  object-fit: cover;
+  height: 310px;
+  height: 310px;
+  width: 100%;
+  border-radius: 8px;
+}
+.banner-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.banner-main-container {
+  // background-image: url('/content/dam/my-ai/home-page/banner/1.png');
+  background-repeat: no-repeat;
+  background-position-y: center;
+  height: 310px;
+  //background: linear-gradient(97deg, rgba(96, 115, 184, 0.90) -15.02%, rgba(162, 121, 215, 0.90) 35.97%, rgba(195, 191, 245, 0.90) 97.88%);
+  border-radius: 8px;
+  background-size: cover;
+  image-rendering: auto;
+}
+
+.banner-date-and-location-box {
+  background-color: $white;
+  border-radius: $size-8 $size-8 0px 0px;
+}
+
+.translucent-background {
+  background: $black-6;
+  backdrop-filter: blur(15px);
+  border-radius: 0px 0px $size-8 $size-8;
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+}
+
+.banner-greeting-message {
+  color: $white;
+  font-size: $font-32;
+  font-weight: 700;
+  font-family: AirIndiaVariable !important;
+  margin-bottom: $size-8;
+}
+
+.banner-user-name {
+  color: $white;
+  font-size: $font-24;
+  font-weight: 400;
+  width: 60%;
+  margin-bottom: 32px;
+}
+
+.banner-weather-card {
+  color: $white;
+}
+
+.background-image-position {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.circle-indicator {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.carousel-indicators {
+  bottom: 0px;
+}
+
+.banner-button {
+  border-radius: $size-24 !important;
+  -webkit-border-radius: $size-24 !important;
+  -moz-border-radius: $size-24 !important;
+  -ms-border-radius: $size-24 !important;
+  -o-border-radius: $size-24 !important;
+  width: max-content;
+}
+
+.skeleton-block {
+  width: 100%;
+}
+
+@keyframes bannerWeatherFrame {
+  0% {
+    background-position: -260px 0;
+  }
+  100% {
+    background-position: 260px 0;
+  }
+}
+
+@keyframes bannerFrame {
+  0% {
+    background-position: -260px 0;
+  }
+  100% {
+    background-position: 260px 0;
+  }
+}
+
+.loader-banner-text {
+  width: 260px; 
+  height: 36px;
+  opacity: 0.2;
+  border-radius: 0.25rem;
+  background: linear-gradient(90deg, #FFFFFF 25%, #B0B0B0 50%, #FFFFFF 75%);
+  background-size: 520px 36px;
+  animation: bannerFrame 2s linear infinite;
+}
+
+.loader-banner-weather {
+  width: 294px; 
+  height: 165px; 
+  border-radius: 1rem;
+  opacity: 0.3;
+  background: linear-gradient(90deg, #FFFFFF 25%, #B0B0B0 50%, #FFFFFF 75%);
+  background-size: 520px 36px;
+  animation: bannerFrame 2s linear infinite;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .background-image-position {
+    background-position: left;
+  }
+  .carousel-indicators {
+    bottom: 0px;
+  }
+
+  .padding-24 {
+    padding: 8px;
+  }
+
+  .banner-greeting-message {
+    font-size: $font-24;
+    margin-bottom: $size-0;
+  }
+  .banner-user-name {
+    font-size: $font-16;
+    width: 100%;
+    margin-bottom: 36px;
+  }
+  .res-bottom-banner {
+    margin-bottom: 16px;
+  }
+  .remove-m-top-40-banner {
+    margin-top: 0;
+  }
+  .banner-main-container {
+    height: 100%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .carousel-indicators {
+    bottom: 0px;
+  }
+  .remove-m-top-40-banner {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1440px) {
+  .carousel-indicators {
+    bottom: 0px;
+  }
+}

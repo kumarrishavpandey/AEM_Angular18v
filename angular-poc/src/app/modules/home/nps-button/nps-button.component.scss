@@ -1,0 +1,56 @@
+@import '../../../../styles.scss';
+
+.feedback-button {
+  position: fixed;
+  top: 360px;
+  right: -48px;
+  z-index: 999;
+  width: 136px;
+  height: 39.184px;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  background: $red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $size-8 $size-8 $size-0 $size-0;
+  -webkit-border-radius: $size-8 $size-8 $size-0 $size-0;
+  -moz-border-radius: $size-8 $size-8 $size-0 $size-0;
+  -ms-border-radius: $size-8 $size-8 $size-0 $size-0;
+  -o-border-radius: $size-8 $size-8 $size-0 $size-0;
+  border: $size-0;
+  color: $white;
+  font-size: $size-16;
+  font-weight: 400;
+  font-family: 'Nunito Sans', sans-serif !important;
+
+  &:hover,
+  :active,
+  :focus {
+    border: $size-0;
+    box-shadow: none;
+  }
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .feedback-button {
+    right: -48px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .feedback-button {
+    right: -48px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1440px) {
+  .feedback-button {
+    right: -48px;
+  }
+}

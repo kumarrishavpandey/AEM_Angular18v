@@ -1,0 +1,21 @@
+@import '../../../../styles.scss';
+
+.new-request-error-info {
+  color: $red;
+  mat-icon {
+    position: relative;
+    top: 4px;
+    color: $red;
+    margin-right: 16px;
+  }
+}
+
+.rule-error-container {
+  background-color: $lavender-blush;
+  border-radius: 4px;
+  p {
+    color: $dark-grey;
+    font-size: $font-16;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,127 @@
+<div
+  *ngFor="let _ of [].constructor(approvalCardCount)"
+  class="white-box px-3 px-md-4 py-4 mb-4"
+  [ngClass]="className"
+>
+  <app-skeleton
+    *ngIf="showBadge"
+    class="loader"
+    [width]="118"
+    [height]="25"
+    [marginLeft]="getBadgePosition()"
+    [marginBottom]="24"
+  ></app-skeleton>
+
+  <div class="d-flex flex-column gap-3 approval-card">
+    <div class="d-flex align-items-lg-center gap-2">
+      <app-skeleton
+        [width]="getEmpAvatarSize()"
+        [height]="getEmpAvatarSize()"
+        [borderRadius]="50"
+        [borderRadiusUnit]="enumSkeletonUnit.pc"
+      ></app-skeleton>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-1 w-100">
+        <div class="d-flex flex-column flex-lg-row justify-content-between">
+          <div class="d-none d-lg-flex flex-column">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <app-skeleton
+                [width]="150"
+                [height]="21"
+              ></app-skeleton>
+
+              <app-skeleton
+                *ngIf="showPendingFor || showRequestStatus"
+                [width]="150"
+                [height]="21"
+              ></app-skeleton>
+            </div>
+
+            <app-skeleton
+              class="d-flex align-items-center gap-2"
+              [count]="2"
+              [width]="150"
+              [height]="18"
+            ></app-skeleton>
+          </div>
+
+          <app-skeleton
+            class="d-flex flex-column d-lg-none gap-1"
+            [count]="4"
+            [width]="150"
+            [height]="18"
+          ></app-skeleton>
+        </div>
+
+        <app-skeleton
+          *ngIf="showTagData"
+          [width]="150"
+          [height]="36"
+        ></app-skeleton>
+      </div>
+    </div>
+
+    <div class="lighter-grey-section p-3 px-md-4">
+      <div class="d-lg-grid d-flex flex-column grid-col-3 gap-3">
+        <ng-container *ngIf="detailFieldCount && detailFieldCount > 0; else defaultDetailFeild">
+          <app-skeleton
+            *ngFor="let _ of [].constructor(detailFieldCount)"
+            class="d-flex flex-column gap-1"
+            [count]="2"
+            [width]="100"
+            [widthUnit]="enumSkeletonUnit.pc"
+            [height]="18"
+          ></app-skeleton>
+        </ng-container>
+
+        <ng-template #defaultDetailFeild>
+          <app-skeleton
+          *ngFor="let _ of [].constructor(4)"
+          class="d-flex flex-column gap-1"
+          [count]="2"
+          [width]="100"
+          [widthUnit]="enumSkeletonUnit.pc"
+          [height]="18"
+        ></app-skeleton>
+
+        <app-skeleton
+          *ngFor="let _ of [].constructor(2)"
+          class="d-none d-md-flex flex-column gap-1"
+          [count]="2"
+          [width]="100"
+          [widthUnit]="enumSkeletonUnit.pc"
+          [height]="18"
+        ></app-skeleton>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+      <app-skeleton
+        *ngIf="showDetailLink"
+        class="d-flex align-items-start w-100"
+        [width]="100"
+        [height]="24"
+      ></app-skeleton>
+
+      <div
+        *ngIf="showActionButtons"
+        class="d-flex flex-column flex-md-row justify-content-md-end gap-3 w-100"
+      >
+        <app-skeleton
+          class="action-btn"
+          [width]="100"
+          [widthUnit]="enumSkeletonUnit.pc"
+          [height]="47.6"
+        ></app-skeleton>
+
+        <app-skeleton
+          class="action-btn"
+          [width]="100"
+          [widthUnit]="enumSkeletonUnit.pc"
+          [height]="47.6"
+        ></app-skeleton>
+      </div>
+    </div>
+  </div>
+</div>

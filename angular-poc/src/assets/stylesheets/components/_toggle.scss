@@ -1,0 +1,50 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the toggle component.
+// -----------------------------------------------------------------------------
+
+
+::ng-deep .mat-slide-toggle-bar {
+    width: 56px;
+    height: 34px;
+    border-radius: $size-24;
+    -webkit-border-radius: $size-24;
+    -moz-border-radius: $size-24;
+    -ms-border-radius: $size-24;
+    -o-border-radius: $size-24;
+}
+
+::ng-deep .mat-slide-toggle-thumb {
+    height: $size-24;
+    width: $size-24;
+    border-radius: 50%;
+    left: 4px;
+    position: absolute;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $white;
+}
+
+::ng-deep .mat-slide-toggle-thumb-container {
+    position: absolute;
+    z-index: 1;
+    width: $size-24;
+    height: $size-24;
+    top: 4.5px;
+    right: 24px;
+    transform: translate3d(0, 0, 0);
+    transition: all 80ms linear;
+    transition-property: transform;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+    transform: translate3d(24px, 0, 0);
+    -webkit-transform: translate3d(24px, 0, 0);
+    -moz-transform: translate3d(24px, 0, 0);
+    -ms-transform: translate3d(24px, 0, 0);
+    -o-transform: translate3d(24px, 0, 0);
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $violet;
+}

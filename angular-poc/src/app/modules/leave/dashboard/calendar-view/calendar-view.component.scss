@@ -1,0 +1,308 @@
+@import "../../../../../styles.scss";
+
+::ng-deep {
+    .fc .fc-view-harness {
+        height: 600px !important;
+    }
+    .fc-toolbar-title {
+        color: $dark-blue;
+        font-size: $font-18 !important;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .fc .fc-button-primary,
+    .fc .fc-button-primary:hover {
+        background-color: $border-white;
+        border-color: $border-white;
+        color: $violet;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child),
+    .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+        border-radius: 50%;
+        margin-left: $size-4;
+    }
+
+    .fc-theme-standard th {
+        border-bottom: 1px solid $lighter-grey;
+        background: $white;
+        text-decoration: none !important;
+    }
+
+    .fc .fc-col-header-cell-cushion,
+    .fc .fc-daygrid-day-number {
+        color: $dark-grey;
+        text-decoration: none;
+    }
+
+    .fc-event-title {
+        font-size: $font-13;
+        line-height: 17.5px;
+        font-weight: 700;
+        display: flex !important;
+        gap: $size-2;
+    }
+    .fc-more-link {
+        color: $dark-blue;
+        font-size: $font-12;
+        line-height: 17.5px;
+        font-weight: 400;
+        text-decoration: none;
+    }
+    .fc .fc-daygrid-day-top {
+        display: flex;
+        flex-direction: row;
+        padding-left: $size-4;
+    }
+    .fc .fc-daygrid-day.fc-day-today {
+        background: $white;
+
+        .fc-daygrid-day-number {
+            background: $violet;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white !important;
+        }
+    }
+    .fc-toolbar-chunk {
+        position: unset !important;
+    }
+    .fc-day-sun,
+    .fc-day-sat {
+        background-color: $border-white;
+        position: relative;
+    }
+    .fc-day.fc-day-sun.fc-day-today.fc-daygrid-day{
+        background-color: $border-white;
+    }
+    .evtsubtitle {
+        color: $dark-grey !important;
+        font-size: $font-12;
+        padding:$size-0 $size-4;
+    }
+
+    .custom-event{     
+        border-radius: 0px $size-8 $size-8 0px;
+        border: none;
+        border-left: 2px solid;
+        padding: $size-8;
+        -webkit-border-radius: 0px $size-8 $size-8 0px;
+        -moz-border-radius: 0px $size-8 $size-8 0px;
+        -ms-border-radius: 0px $size-8 $size-8 0px;
+        -o-border-radius: 0px $size-8 $size-8 0px;
+    }
+
+    .bg-holiday{
+        border-left-color:  $purple;
+        background: $purple-10;
+        .fc-event-title{
+            color:  $purple;            
+        }
+        .fc-event-title::before{
+            font-family: 'Material Icons';
+            content: "flag";
+            font-size: $font-16;
+        }
+      
+    }
+    .casual-leave{
+        .fc-event-title::before{
+            background-image: url('../../../../../assets/icons/timelapse.png');
+            height: $size-16;
+            width: $size-16;
+            content: "";            
+        }
+    }
+    .casual-leave.bg-approved{
+        .fc-event-title::before{
+            filter: invert(28%) sepia(99%) saturate(5313%) hue-rotate(112deg) brightness(93%) contrast(105%);
+        }
+    }
+    .casual-leave.bg-rejected{
+        .fc-event-title::before{
+            filter: invert(13%) sepia(98%) saturate(3454%) hue-rotate(339deg) brightness(82%) contrast(94%);
+        }
+    }
+    .sick-leave{
+        .fc-event-title::before{
+            font-family: 'Material Icons';
+            content: "masks";
+            font-size: $font-16;
+        }
+    }
+    .privilege-leave{
+        .fc-event-title::before{
+            font-family: 'Material Icons';
+            content: "luggage";
+            font-size: $font-16;
+        }
+    }
+
+    .bg-approved{
+        border-left-color: $green;
+        background: $light-green;  
+        .fc-event-title{
+            color:  $green;
+        }
+
+    }
+    .bg-pending{
+        border-left-color:  $dark-orange;
+        background: $light-orange;  
+        .fc-event-title{
+            color:  $dark-orange;
+        }
+    }
+    .bg-rejected{
+        border-left-color: $dark-red;
+        background: $light-red;  
+        .fc-event-title{
+            color:  $dark-red;
+        }
+    }
+
+    .fc-popover-body .fc-daygrid-event-harness {
+        margin-bottom: 10px;
+    }
+
+    ul.leave-type-labels {
+        padding: $size-24;
+        display: flex;
+        list-style: none;
+        margin-bottom: $size-0;
+        gap: $size-30;
+        padding-bottom: $size-0;
+    }
+
+    .leave-type-label-name {
+        display: flex;
+        gap: $size-10;        
+    }
+    .leave-type-bullet {
+        display: block;
+        height: $size-20;
+        width:  $size-20;
+        border: 1px solid;
+        border-radius: $size-4;
+    }
+    .weekend{
+        border-color: $lighter-grey;
+        background-color: $border-white;
+    }
+    .working-week{
+        border-color:$lighter-grey ;
+        background-color: $white;
+    }
+    .leave-approved{
+        border-color: #17732b;
+        background-color: #17732b;
+    }
+    .leave-pending{
+        border-color: #e96f1a;
+        background-color: #e96f1a;
+    }
+    .leave-holiday{
+        border-color: #952391;
+        background-color: #952391;
+    }
+    .holiday{
+        border-color: $purple;
+        background-color: $purple;
+    }
+
+    .visible-mobile{
+        display: none;
+    }
+ 
+/// #######################################
+/// Media Query
+/// #######################################
+
+
+
+    @media (min-width: 350px) and (max-width: 768px) {
+    
+        .fc-daygrid-body .evtsubtitle {
+            display: none !important;       
+        }
+        .fc-daygrid-body .fc-event-main {
+            display: none !important;
+        }
+        .fc-daygrid-body .custom-event {
+            // width: 10px;
+            height: 10px;
+            border-radius: 100px;
+            padding: 0;
+        }
+        .mobile-notifier{
+            display: block;
+        }
+        ul.leave-type-labels {
+            padding: 24px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: $size-9;
+        }
+        .fc .fc-daygrid-day-frame {
+            height: unset;
+        }
+       
+        .bg-holiday{
+            background: $purple;
+        }
+        .bg-approved{
+            background: $green;  
+        }
+        .bg-pending{
+            background: $dark-orange;  
+        }
+        .bg-rejected{
+            background: $dark-red;  
+        }
+        
+        .fc .fc-view-harness {
+            height: 450px !important;
+        }
+        .visible-mobile{
+            display: block;
+        }
+        .leave-type-bullet {
+            border-radius: $size-20;
+        }
+
+        .leave-type-label-name {
+            flex-basis: 32%;
+            align-items: center;
+            gap: $size-5;
+        }
+        .leave-type-bullet {
+            height: $size-18;
+            width: $size-18;
+        }
+        span.leave-type-name {
+            font-size: $font-9;
+            font-weight: 600;
+        }
+    }
+
+    @media (min-width: 767px) and (max-width: 992px) {
+
+    }
+
+    @media (min-width: 991px) and (max-width: 1200px) {
+
+    }
+
+    @media (min-width: 1199px) and (max-width: 1400px) {
+
+    }
+
+}

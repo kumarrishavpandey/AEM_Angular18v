@@ -1,0 +1,72 @@
+<div class="container-fluid container-97">
+  <!-- banner + quick actions -->
+  <div class="row">
+    <!-- banner -->
+    <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+      <app-banner
+        [bannerLabels]="homePageDetails.bannerLabels"
+        [siteSection]="pageTitle"
+        [siteSubSection]="bannerPageTitle"
+      ></app-banner>
+    </div>
+    <!-- quick actions -->
+    <div
+      class="col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 m-top-24-res-home"
+    >
+      <app-quick-action
+        [quickActionLabels]="homePageDetails?.quickActionLabels"
+        [siteSection]="pageTitle"
+      ></app-quick-action>
+    </div>
+  </div>
+
+  <!-- my board + workspace-->
+  <div class="row m-top-24">
+    <!-- my board + app awards + upcoming -->
+    <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+      <!-- my board -->
+      <div class="col-12 m-top-24-res-home remove-m-top-24-res-home-my-board">
+        <app-my-board
+          [myBoardData]="homePageDetails?.myBoardLabels"
+          [siteSection]="pageTitle"
+        ></app-my-board>
+      </div>
+      <!-- app awards + upcoming -->
+      <div class="col-12 d-xxl-flex d-xl-flex d-lg-flex">
+        <!-- my board -->
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+          <app-awards-roster
+            [awardsAndAppreciationsLabels]="
+              homePageDetails?.awardsAndAppreciationsLabels
+            "
+            [siteSection]="pageTitle"
+          ></app-awards-roster>
+        </div>
+        <!-- upcoming -->
+        <div
+          class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 m-top-24-res-home remove-m-top-24-res-home"
+        >
+          <app-upcoming-alerts
+            [upcomingLabels]="homePageDetails?.upComingLabels"
+            [siteSection]="pageTitle"
+          ></app-upcoming-alerts>
+        </div>
+      </div>
+    </div>
+    <!-- workspace -->
+    <div
+      class="col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 m-top-24-res-home"
+    >
+      <app-workplace
+        [workPlaceLabels]="homePageDetails.workPlaceLabels"
+        [siteSection]="pageTitle"
+      ></app-workplace>
+    </div>
+  </div>
+
+  <app-nps-button
+    *ngIf="showNPSbutton"
+    [siteSection]="pageTitle"
+    [btnFeedbackNps]="btnFeedbackNps"
+  ></app-nps-button>
+</div>

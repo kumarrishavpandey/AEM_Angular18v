@@ -1,0 +1,54 @@
+<div
+  class="ai-calendar-cell ai-{{ deviceType }}"
+  [ngClass]="{
+    'ai-faded': [0, 6].includes(date.getDay()),
+    'ai-current-month': isCurrentMonth(date)
+  }"
+  (click)="showDialog()"
+>
+  <div class="ai-month-date">
+    <div
+      *ngIf="renderMonthName()"
+      class="ai-month-name"
+    >
+      {{
+        date.toLocaleDateString('en-US', {
+          month: 'short'
+        })
+      }}
+    </div>
+
+    <div class="ai-date" [ngClass]="{ 'ai-today': isToday(date) }">
+      {{ date.getDate() }}
+    </div>
+  </div>
+
+  <div
+    *ngIf="getEventsCount(date) > 1"
+    class="ai-more"
+  >
+    +{{ getEventsCount(date) - 1 }} <span *ngIf="!isMobile()">more</span>
+  </div>
+
+  <app-calendar-event
+    *ngIf="renderDesktopEvent()"
+    [deviceType]="deviceType"
+    [date]="date"
+    [eventHolidayData]="getEvent(date)"
+  ></app-calendar-event>
+
+  <app-calendar-event
+    *ngIf="renderMobileEvent()"
+    [deviceType]="deviceType"
+    [date]="date"
+    [eventHolidayData]="getMobileEvent(date)"
+  ></app-calendar-event>
+
+  <app-dialog-box
+    *ngIf="getEventsCount(date) > 0"
+    class="ai-toggle-dialog"
+    [date]="date"
+    [eventHolidayData]="getEvents(date)"
+    [(isDialogVisible)]="isDialogVisible"
+  ></app-dialog-box>
+</div>

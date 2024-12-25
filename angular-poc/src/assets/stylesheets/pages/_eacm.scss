@@ -1,0 +1,157 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the eACM page.
+// -----------------------------------------------------------------------------
+
+// common button as per new design
+.eACM-grey-outline-btn {
+  padding: 14px 24px;
+  text-align: center;
+  border-radius: $size-8;
+  -webkit-border-radius: $size-8;
+  -moz-border-radius: $size-8;
+  -ms-border-radius: $size-8;
+  -o-border-radius: $size-8;
+  border: 1px solid $lighter-grey;
+  background: $white;
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  color: $violet;
+  font-size: $font-14;
+}
+
+.eACM-violet-text-btn {
+  font-size: $font-14;
+  font-weight: 500;
+  color: $violet;
+  height: fit-content;
+  &.remove-btn-effect {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+.eACM-solid-grey-btn {
+  padding: 11px 24px;
+  text-align: center;
+  background: $border-white;
+  border-radius: $size-8;
+  -webkit-border-radius: $size-8;
+  -moz-border-radius: $size-8;
+  -ms-border-radius: $size-8;
+  -o-border-radius: $size-8;
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  color: $violet;
+  font-size: $font-14;
+  display: flex;
+  align-items: center;
+  border: 1px solid $border-white;
+  gap: 2px;
+  justify-content: center;
+  mat-icon {
+    color: $violet;
+  }
+}
+
+// tags
+
+.tag {
+  border-radius: $size-4;
+  -webkit-border-radius: $size-4;
+  -moz-border-radius: $size-4;
+  -ms-border-radius: $size-4;
+  -o-border-radius: $size-4;
+  font-size: $font-12;
+  font-weight: 600;
+  text-align: center;
+  width: fit-content;
+  padding: 4px 8px;
+  &.active {
+    color: $sky-blue;
+    background: $light-blue;
+  }
+  &.withdrawn {
+    background: $light-orange;
+    color: $dark-orange-1;
+  }
+  &.expired {
+    background: $lavender-blush;
+    color: $dark-red;
+  }
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .eACM-solid-grey-btn {
+    width: 100%;
+    &.m-res-bottom-8 {
+      margin-bottom: 8px;
+    }
+  }
+  .eACM-grey-outline-btn {
+    width: 100%;
+  }
+  // tags
+
+  .tag {
+    &.active {
+      color: $sky-blue !important;
+    }
+    &.withdrawn {
+      color: $dark-orange-1 !important;
+    }
+    &.expired {
+      color: $dark-red !important;
+    }
+  }
+  .engineer-card-search-content {
+    .emp-id {
+      span {
+        &.tag {
+          font-family: 'Nunito Sans', sans-serif !important;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .eACM-solid-grey-btn {
+    width: 100%;
+    &.m-res-bottom-8 {
+      margin-bottom: 8px;
+    }
+  }
+  .eACM-grey-outline-btn {
+    width: 100%;
+    &.m-res-bottom-8 {
+      margin-bottom: 8px;
+    }
+  }
+  // tags
+
+  .tag {
+    &.active {
+      color: $sky-blue !important;
+    }
+    &.withdrawn {
+      color: $dark-orange-1 !important;
+    }
+    &.expired {
+      color: $dark-red !important;
+    }
+  }
+  .engineer-card-search-content {
+    .emp-id {
+      span {
+        &.tag {
+          font-family: 'Nunito Sans', sans-serif !important;
+        }
+      }
+    }
+  }
+}

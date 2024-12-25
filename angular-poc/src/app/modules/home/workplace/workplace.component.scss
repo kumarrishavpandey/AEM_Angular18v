@@ -1,0 +1,339 @@
+@import '../../../../styles.scss';
+
+.wp-carousel-outer {
+  padding-bottom: $size-20;
+
+  /* TBD */ /*h2 {
+    color: $black-95;
+    font-size: $font-20;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: $size-16;
+  }*/
+
+  .wp-carousel {
+    position: relative;
+    border-radius: $size-8 $size-8 $size-4 $size-4;
+
+    .carousel-indicators {
+      position: absolute;
+      top: 270px;
+      height: fit-content;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: $dark-grey-l2;
+      height: $size-7;
+      width: $size-7;
+      border-radius: 50%;
+      border-top: $size-0;
+      border-bottom: $size-0;
+      opacity: 1;
+    }
+
+    .carousel-indicators .active {
+      background-color: $white;
+      width: $size-7;
+      height: $size-7;
+      border-radius: $size-10;
+    }
+
+    .carousel-inner {
+      .carousel-top-section {
+        min-height: 220px;
+        background-color: $dark-grey;
+        border-radius: $size-8 $size-8 $size-0 $size-0;
+        img {
+          width: 100%;
+          // object-fit: cover;
+          border-radius: $size-8 $size-8 $size-0 $size-0;
+          height: 295px;
+        }
+      }
+
+      .carousel-bottom-section {
+        .slider-texts-section {
+          background-color: $white;
+          padding: $size-16;
+          color: $dark-blue;
+          font-size: $font-14;
+          font-style: normal;
+          font-weight: 400;
+
+          .title-and-date-time {
+            min-height: 35px;
+            max-height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: $size-16;
+
+            .slider-logo-and-name {
+              display: flex;
+              align-items: center;
+
+              img {
+                border-radius: 50%;
+                width: 26px;
+                height: 26px;
+                object-fit: cover;
+                margin-right: $size-8;
+              }
+
+              h5 {
+                font-size: $font-14;
+                font-style: normal;
+                font-weight: 400;
+                margin-bottom: $size-0;
+              }
+            }
+
+            .date-and-time {
+              color: $light-grey-20;
+              font-size: $font-12;
+              font-style: normal;
+              font-weight: 400;
+            }
+          }
+
+          .slider-body {
+            min-height: 74px;
+            max-height: 74px;
+            .btn-explore {
+              color: $dark-blue;
+              font-weight: 700;
+              padding-left: $size-5;
+            }
+          }
+        }
+
+        .wp-like-comment-section {
+          background-color: $light-blue-53;
+          border-radius: $size-0 $size-0 $size-8 $size-8;
+          padding: $size-10 $size-16;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: $white;
+          font-style: normal;
+          font-size: $font-10;
+          font-weight: 500;
+          .wp-logo-and-heading {
+            display: flex;
+            align-items: flex-start;
+            font-size: $font-16;
+            font-style: normal;
+            font-weight: 600;
+
+            img {
+              width: $size-24;
+              height: $size-24;
+              object-fit: cover;
+              margin-right: $size-2;
+            }
+          }
+
+          .like-comment-before-time-info {
+            display: flex;
+            align-items: center;
+
+            > div {
+              display: flex;
+              margin-left: $size-12;
+              align-items: center;
+              .material-icons-outlined {
+                font-size: $font-18;
+              }
+            }
+
+            .like-count,
+            .comment-count {
+              margin-left: $size-5;
+            }
+
+            .modified-time-count {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.emp-heading-5 {
+  font-weight: 700;
+  font-size: $font-18;
+  color: $black-95;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    color: $grey-lighter-2;
+    font-size: $font-14;
+  }
+}
+.slider-texts-section-skeleton {
+  background-color: $white;
+  padding: $size-20;
+  border-radius: 8px;
+  height: 224px;
+}
+
+.skeleton-slides-custom {
+  display: flex;
+  align-items: center;
+}
+
+.wp-error-section {
+  height: 92%;
+  padding-bottom: $size-16;
+}
+
+.wp-skeleton-header {
+  width: 100px;
+}
+
+.wp-skeleton-icon {
+  width: 40px;
+}
+
+.wp-skeleton-icon-text-1 {
+  width: 100%;
+}
+
+.wp-skeleton-icon-text-2 {
+  width: 100%;
+}
+
+@media (min-width: 350px) and (max-width: 450px) {
+  .carousel-bottom-section {
+    .slider-texts-section {
+      .slider-body {
+        min-height: 124px !important;
+        max-height: 124px !important;
+      }
+    }
+  }
+  .carousel-bottom-section {
+    .wp-like-comment-section {
+      min-height: 70px !important;
+      max-height: 70px !important;
+    }
+  }
+}
+@media (min-width: 449px) and (max-width: 768px) {
+  .carousel-bottom-section {
+    .slider-texts-section {
+      .slider-body {
+        min-height: 100px !important;
+        max-height: 100px !important;
+      }
+    }
+  }
+  .carousel-bottom-section {
+    .wp-like-comment-section {
+      min-height: 70px !important;
+      max-height: 70px !important;
+    }
+  }
+}
+@media (min-width: 767px) and (max-width: 992px) {
+  .carousel-inner {
+    .carousel-top-section {
+      img {
+        width: 100%;
+        object-fit: contain;
+        border-radius: $size-8 $size-8 $size-0 $size-0;
+        height: 275px;
+      }
+    }
+    .carousel-bottom-section {
+      .wp-like-comment-section {
+        min-height: 70px !important;
+        max-height: 70px !important;
+      }
+    }
+  }
+}
+@media (min-width: 991px) and (max-width: 1200px) {
+  .wp-carousel-outer {
+    .wp-carousel {
+      .carousel-indicators {
+        position: absolute;
+        top: 250px;
+        height: fit-content;
+      }
+      .carousel-inner {
+        .carousel-top-section {
+          min-height: 220px;
+
+          img {
+            width: 100%;
+            object-fit: contain;
+            border-radius: $size-8 $size-8 $size-0 $size-0;
+            height: 275px;
+          }
+        }
+        .carousel-bottom-section {
+          .wp-like-comment-section {
+            min-height: 70px;
+            max-height: 70px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1199px) and (max-width: 1400px) {
+  .carousel-bottom-section {
+    .slider-texts-section {
+      .slider-body {
+        min-height: 90px !important;
+        max-height: 90px !important;
+      }
+    }
+    .wp-like-comment-section {
+      min-height: 70px !important;
+      max-height: 70px !important;
+    }
+    .title-and-date-time {
+      margin-bottom: $size-8 !important;
+    }
+  }
+  .wp-carousel-outer {
+    .wp-carousel {
+      .carousel-indicators {
+        position: absolute;
+        top: 250px;
+        height: fit-content;
+      }
+      .carousel-inner {
+        .carousel-top-section {
+          min-height: 220px;
+
+          img {
+            width: 100%;
+            // object-fit: cover;
+            border-radius: $size-8 $size-8 $size-0 $size-0;
+            height: 275px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1400px) and (max-width: 1500px) {
+  .carousel-bottom-section {
+    .wp-like-comment-section {
+      min-height: 70px !important;
+      max-height: 70px !important;
+    }
+    .title-and-date-time {
+      margin-bottom: $size-8 !important;
+    }
+  }
+}

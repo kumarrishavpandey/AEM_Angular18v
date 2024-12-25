@@ -1,0 +1,83 @@
+@import '../../../../styles.scss';
+
+.myai-employee-header-title {
+  font-size: $font-18;
+  color: $black;
+}
+
+.quick-active-circle {
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+}
+
+::ng-deep {
+  .frame {
+    .component-wrapper {
+      .component {
+        height: 64px !important;
+        width: 64px !important;
+        padding: 20px !important;
+      }
+    }
+  }
+
+  .quick-action-wrapper {
+    .carousel-inner {
+      height: 390px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  ::ng-deep {
+    .quick-action-wrapper {
+      .carousel-inner {
+        height: 260px;
+      }
+    }
+  }
+}
+
+.qa-skeleton-head {
+  width: 100px;
+  margin-bottom: 18px;
+}
+
+.qa-skeleton-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.qa-skeleton-icon-text {
+  width: 64px;
+  height: 12px;
+}
+
+.circle-indicator {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background: $black-90;
+}
+
+.carousel-indicators {
+  bottom: -24px !important;
+}
+
+// media query
+
+@media (min-width: 350px) and (max-width: 768px) {
+  .qa-skeleton-icon {
+    height: 53px;
+    width: 53px;
+  }
+
+  .qa-skeleton-icon-text {
+    height: 10px;
+    width: 53px;
+  }
+}

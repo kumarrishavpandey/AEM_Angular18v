@@ -1,0 +1,83 @@
+export const headerDeatilsSling = {
+  navigationData: {
+    personalizedNav:
+      '/content/dam/my-ai/content_fragment/in/en/navigation-content/my-ai-personalised-General',
+    policy:
+      '/content/dam/my-ai/content_fragment/in/en/policy-content/my-ai-policy-',
+    quickAction:
+      '/content/dam/my-ai/content_fragment/in/en/navigation-content/my-ai-action-category-list-',
+    benefits:
+      '/content/dam/my-ai/content_fragment/in/en/benefit-content/my-ai-benefit-category-list-',
+    navigationMenuTitle: 'Apps',
+    recent: 'Recent',
+    frequentlyUsed: 'Frequently Used',
+    allApps: 'All Apps',
+    searchForApps: 'Search For Apps',
+    backArrowIcon: 'arrow_back',
+    searchResultText: 'Search Result',
+    noAppsData: 'No results found ',
+    noAppsDataMsg: 'Check your spelling or try a different search term',
+    eelcPdfPath: '/content/dam/my-ai/content_fragment/in/en/eelc/',
+    navCategories: [
+      {
+        categoryId: 'recent',
+        label: 'Recent',
+        iconName: null,
+        iconColor: null,
+        iconBgColor: null,
+        actionList: [],
+      },
+      {
+        categoryId: 'frequent-used',
+        label: 'Frequently Used',
+        iconName: null,
+        iconColor: null,
+        iconBgColor: null,
+        actionList: [],
+      },
+    ],
+  },
+  commonData: {
+    navigationMenuIcon: 'apps',
+    navigationMenuText: 'Apps',
+    searchIcon: 'search',
+    closeIcon: 'close',
+  },
+  headerData: {
+    profileText: 'View Profile',
+    logoutText: 'Logout',
+    avatarText: 'Profile',
+    logo: '/content/dam/my-ai/logo/myAILogo.svg',
+    homeIcon: 'home',
+    homeIconText: 'Home',
+    desktopHomeLogo: '/content/dam/my-ai/icon/desktop_logo.svg',
+    mobileHomeLogo: '/content/dam/my-ai/icon/mobile_logo.svg',
+  },
+  searchData: {
+    searchPlaceholder: 'Search for policies, benefits, applications, etc.',
+    labelAction: 'Actions',
+    labelEmployee: 'Employees',
+    labelPolicy: 'Policy',
+    labelBenefits: 'Benefits',
+    messageNoResult: 'Sorry',
+    labelSeeAll: 'See All',
+    labelViewAll: 'View All',
+  },
+  dateFormat: {
+    profile: 'dd MMM, yyyy',
+    upcomingForGeneralEmployees: 'dd MMM, yyyy',
+    holidayCalendar: 'EEEE,d MMMM, y',
+    myTeamOrgChart: 'dd MMM, yyyy',
+    myTeamBirthday: 'DD MMM',
+    workplace: 'd MMM at hh:mm a',
+    leaves: 'dd MMM, yyyy',
+    lifestyleBidPeriod: 'dd MMM, yyyy',
+    crewDocumentCards: 'dd MMM, yyyy',
+    crewDashboardInfoMessageTooltip: 'dd MMM, yyyy',
+  },
+  labelHeader: {
+    iconMenu: 'list',
+    labelToDo: 'To Do',
+    toDoIsActive: true,
+  },
+};
